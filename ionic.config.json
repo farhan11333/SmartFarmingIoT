@@ -1,5 +1,7 @@
 {
   "name": "smartfarming",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

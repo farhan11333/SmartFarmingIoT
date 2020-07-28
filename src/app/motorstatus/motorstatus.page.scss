@@ -1,0 +1,81 @@
+ion-content {
+    //--background: url('/assets/background.png') no-repeat center/cover fixed;
+    //--background: linear-gradient(90deg, rgb(255, 204, 204), #ffcccc) no-repeat center/cover fixed;
+    --background: linear-gradient(to right, #dd5e89, #f7bb97);
+}
+
+ion-toolbar {
+    --background: transparent;
+    --border-style: none;
+}
+
+.top {
+    height: 150px;
+    margin-inline-start: 12px;
+    margin-top: 16px;
+    margin-inline-end: 12px;
+    // background-color: #FEEBE5;
+    // --background: linear-gradient(0deg, #abdcff, #d396ff);
+    //background: linear-gradient(to right, #aa076b, #61045f);
+    //background: linear-gradient(to right, #c31432, #240b36);
+    //background: linear-gradient(180deg, #ff9966, #ff5e62);
+    background: linear-gradient(to right, #ff7e5f, #feb47b);
+    border-radius: 10px 10px 10px 10px;
+    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.19), 0 10px 6px rgba(0, 0, 0, 0.19);
+}
+
+.down {
+    height: 150px;
+    margin-inline-start: 12px;
+    margin-top: 16px;
+    margin-inline-end: 12px;
+    // background-color: #FEEBE5;
+    // --background: linear-gradient(0deg, #fff687, #f6416c);
+    //background: linear-gradient(to right, #ff0099, #493240);
+    // background: linear-gradient(to right, #333333, #dd1818);
+    //background: linear-gradient(to right, #c94b4b, #4b134f);
+    //background: linear-gradient(to right, #ffafbd, #ffc3a0);
+    //background: linear-gradient(to right, #de6262, #ffb88c);
+    //background: linear-gradient(to right, #ec6f66, #f3a183);
+    // background: linear-gradient(180deg, #ed4264, #ffedbc);
+    background: linear-gradient(to right, #ee9ca7, #ffdde1);
+    border-radius: 10px 10px 10px 10px;
+    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.19), 0 10px 6px rgba(0, 0, 0, 0.19);
+    //opacity: 0.5;
+}
+
+.motor {
+    font-size: small;
+    padding-left: 10px;
+    padding-top: 10px;
+    font-weight: bold;
+}
+
+h2 {
+    color: rgb(93, 199, 93);
+    text-align: center;
+}
+
+.buttons {
+    margin-left: 100px;
+    margin-top: 20px;
+}
+
+.round {
+    width: 60px;
+    height: 40px;
+    --border-radius: 50%;
+    --vertical-align: middle;
+    --padding-start: 10px;
+    --padding-end: 10px;
+}
+
+.start {
+    color: rgb(60, 180, 60);
+    text-align: center;
+}
+
+h5 {
+    color: red;
+    text-align: center;
+}

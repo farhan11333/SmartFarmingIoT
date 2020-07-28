@@ -1,0 +1,92 @@
+<ion-content>
+    <ion-card-content class="mycard">
+        <img src="assets/images/front.png" alt="logo">
+        <div class="myOverlay" padding>
+            <div class="card-title">Welcome <br>Back</div>
+
+        </div>
+    </ion-card-content>
+
+    <form class="form" [formGroup]="validations_form" (ngSubmit)="loginUser(validations_form.value) ">
+        <ion-grid>
+            <ion-row justify-content-centre>
+                <ion-col align-self-center>
+                    <div text-center>
+
+                    </div>
+                    <div padding>
+                        <ion-item class="email-box">
+                            <ion-input formControlName="email" name="email" type="email" placeholder="your@email.com" ngModel required> </ion-input>
+                        </ion-item>
+                        <div class="validation-errors">
+                            <ng-container *ngFor="let validation of validation_messages.email">
+                                <div class="error-message" *ngIf="validations_form.get('email').hasError(validation.type) && (validations_form.get('email').dirty || validations_form.get('email').touched)">
+                                    {{ validation.message }}
+                                </div>
+                            </ng-container>
+                        </div>
+
+                        <ion-item class="password-box">
+                            <ion-input formControlName="password" name="password" type="password" placeholder="Password" ngModel required></ion-input>
+                        </ion-item>
+                        <div class="validation-errors">
+                            <ng-container *ngFor="let validation of validation_messages.password">
+                                <div class="error-message" *ngIf="validations_form.get('password').hasError(validation.type) && (validations_form.get('password').dirty || validations_form.get('password').touched)">
+                                    {{ validation.message }}
+                                </div>
+                            </ng-container>
+                        </div>
+                    </div>
+                </ion-col>
+            </ion-row>
+            <ion-spinner name="circles" color="primary" *ngIf="show"></ion-spinner>
+            <br>
+            <br>
+            <ion-row>
+                <ion-col>
+
+                    <div><span class="txt-signin">Sign In</span></div>
+                </ion-col>
+
+                <ion-col>
+                    <div>
+                        <ion-button fill="clear" type="submit" class="submit-btn" [disabled]="!validations_form.valid">
+                            <!--<ion-icon src="/assets/forward.svg"></ion-icon>-->
+
+                            <ion-icon name="chevron-forward-outline"></ion-icon>
+                        </ion-button>
+
+                    </div>
+
+
+                </ion-col>
+                <br>
+                <div class="message"><label class="error-message">{{errorMessage}}</label></div>
+
+            </ion-row>
+
+            <ion-row>
+
+                <ion-col>
+                    <ion-button class="btn-signup" (click)="goToRegisterPage()" xpand="block" color="white">
+                        <span class="txt-signup">SignUp</span>
+                    </ion-button>
+                </ion-col>
+                <ion-col>
+                    <ion-button class="btn-fgtpass" (click)="gotoforgotpasswordPage()" expand="block" color="white">
+                        <span class="txt-fgtpass">Forget Password</span>
+                    </ion-button>
+                </ion-col>
+
+
+
+            </ion-row>
+
+
+
+        </ion-grid>
+    </form>
+
+
+
+</ion-content>

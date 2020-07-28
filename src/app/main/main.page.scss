@@ -1,0 +1,122 @@
+    ion-content {
+        //--background: url('/assets/background.png') no-repeat center/cover fixed;
+        --background: linear-gradient(35deg, #FFCC, #FFCCCC) no-repeat center/cover fixed;
+    }
+    
+    .top {
+        height: 133px;
+        margin-inline-start: 12px;
+        margin-top: 16px;
+        margin-inline-end: 12px;
+        //background-color: #FEEBE5;
+        //--background: linear-gradient(180deg, #f4bffac7, #FFCCCC);
+        // background: linear-gradient(to right, #8a2387, #e94057, #f27121);
+        // background: linear-gradient(360deg, #da4453, #89216b);
+        // background: linear-gradient(to right, #833ab4, #fd1d1d, #fcb045);
+        background: linear-gradient(to right, #f2709c, #ff9472);
+        border-radius: 20px 20px 5px 5px;
+        box-shadow: 0 15px 20px rgba(0, 0, 0, 0.19), 0 10px 6px rgba(0, 0, 0, 0.23);
+        // opacity: 0.5;
+    }
+    
+    ion-menu-button {
+        //font-size: 150px;
+        margin-left: 278px;
+        //margin-top: 11px;
+        display: inline;
+        // width: 80%;
+        position: absolute;
+    }
+    
+    .top .welcome {
+        color: #444351c7;
+        font-size: 28px;
+        margin-left: 20px;
+        margin-top: 30px;
+        line-height: 1.2;
+        width: max-content;
+    }
+    
+    .top .welcome {
+        Span {
+            font-size: 22px;
+        }
+    }
+    
+    .bottom {
+        position: relative;
+        height: 430px;
+        margin-inline-start: 12px;
+        margin-top: 60px;
+        margin-inline-end: 12px;
+        //background-color: #FFF8F2;
+        //background-color: #FEEBE5;
+        border-radius: 5px 5px 20px 20px;
+        // background: linear-gradient(to right, #da4453, #89216b);
+        background: linear-gradient(to right, #f2709c, #ff9472);
+        //opacity: 0.7;
+        //background: transparent;
+        //box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    }
+    
+    [cards] {
+        .grid-full ion-col {
+            flex: 0 0 50%;
+            max-width: 50%;
+            padding: 10px 0px;
+            h1 {
+                color: whitesmoke;
+                //margin-top: 100px;
+                text-align: center;
+                //vertical-align: bottom;
+                margin: 0;
+                display: block;
+                //padding-top: -5px;
+                font-family: sans-serif;
+                font-weight: lighter;
+                font-style: oblique;
+                font-size: medium;
+            }
+            h3 {
+                color: whitesmoke;
+                // margin-left: 50px;
+                margin-top: 92px;
+                text-align: center;
+                padding: 0px;
+            }
+            ion-icon {
+                font-size: 80px;
+                margin-left: 0;
+                position: absolute;
+            }
+            .temp {
+                background-color: #28E0AE;
+            }
+            .water {
+                background-color: #5D50FE;
+            }
+            .soil {
+                background-color: #0090FF;
+            }
+            .humidity {
+                background-color: #F88F59;
+            }
+        }
+        .row {
+            padding: 0 12px;
+        }
+        .col {
+            padding: 5px 0;
+        }
+        ion-card {
+            margin: 0px 5px;
+            margin-left: 20px;
+            margin-right: 20px;
+            margin-top: 20px;
+            width: calc(100% -10px);
+            padding: 14px;
+            box-shadow: 0 0px 20px rgba(0, 0, 0, 0.19), 0 10px 6px rgba(0, 0, 0, 0.23);
+            border-radius: 10px;
+            height: 171px;
+        }
+    }

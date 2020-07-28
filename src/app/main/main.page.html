@@ -1,0 +1,67 @@
+<ion-content padding class="bg">
+
+
+    <ion-card class="top">
+
+
+        <ion-menu-button (click)="popclick($event)">
+            <!-- <ion-icon src="/assets/forward.svg" alt="ion"></ion-icon> -->
+            <!--<ion-icon name="menu-sharp" slot="icon-only"></ion-icon>-->
+            <!--<ion-icon name="filter-outline" (click)="popclick($event)"></ion-icon>-->
+            <ion-buttons slot="end">
+                <ion-menu-button autoHide="true"></ion-menu-button>
+            </ion-buttons>
+
+        </ion-menu-button>
+
+        <ion-card-title class="welcome">
+            Welcome <br><span class="Span">{{userEmail}}</span>
+
+        </ion-card-title>
+
+    </ion-card>
+
+    <ion-card class="bottom">
+
+
+        <div cards>
+            <div class="grid-full">
+                <ion-row>
+                    <ion-col>
+                        <ion-card class="temp">
+                            <ion-icon src="/assets/temp1.svg"></ion-icon>
+                            <h3>45C</h3>
+                            <h1>Temp</h1>
+                        </ion-card>
+                    </ion-col>
+                    <ion-col>
+                        <ion-card class="water">
+                            <ion-icon src="/assets/water.svg"></ion-icon>
+                            <h3>25%</h3>
+                            <h1>Water</h1>
+
+                        </ion-card>
+                    </ion-col>
+                    <ion-col>
+                        <ion-card class="soil">
+                            <ion-icon src="/assets/soil.svg"></ion-icon>
+                            <h3>65%</h3>
+                            <h1>Soil</h1>
+
+                        </ion-card>
+                    </ion-col>
+                    <ion-col>
+                        <ion-card class="humidity">
+                            <ion-icon src="/assets/humidity.svg"></ion-icon>
+                            <h3>45%</h3>
+                            <h1>Humidity</h1>
+
+                        </ion-card>
+                    </ion-col>
+                </ion-row>
+            </div>
+
+        </div>
+    </ion-card>
+
+</ion-content>
