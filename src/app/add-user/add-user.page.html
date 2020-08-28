@@ -1,0 +1,43 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-back-button defaultHref="admin-view-users" slot='start'></ion-back-button>
+        <ion-title>Add User</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen="true">
+    <ion-card>
+        <form>
+            <ion-row justify-content-centre>
+                <ion-col align-self-center>
+                    <div text-center>
+
+                    </div>
+                    <div padding>
+                        <ion-item class="name-box">
+                            <ion-input name="username" type="text" placeholder="Username" ngModel required> </ion-input>
+                        </ion-item>
+                        <ion-item class="email-box">
+                            <ion-input name="email" type="email" placeholder="Email" ngModel required> </ion-input>
+                        </ion-item>
+
+
+
+                        <ion-item class="password-box">
+                            <ion-input name="password" type="password" placeholder="Password" ngModel required></ion-input>
+                        </ion-item>
+                        <ion-item class="Device-box">
+                            <ion-input name="device" type="text" placeholder="Device" ngModel required> </ion-input>
+                        </ion-item>
+
+                    </div>
+                </ion-col>
+            </ion-row>
+            <ion-row class="buttons">
+                <ion-button class="button" shape="round" expand="block">ADD</ion-button>
+                <ion-button class="button" shape="round" expand="block">UPDATE</ion-button>
+            </ion-row>
+        </form>
+    </ion-card>
+
+</ion-content>

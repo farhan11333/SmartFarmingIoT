@@ -1,0 +1,46 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-back-button defaultHref="admin-view-field" slot='start'></ion-back-button>
+        <ion-title>Add Field</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen="true">
+    <ion-card>
+        <form>
+            <ion-row justify-content-centre>
+                <ion-col align-self-center>
+                    <div text-center>
+
+                    </div>
+                    <div padding>
+                        <ion-item class="fieldname-box">
+                            <ion-input name="fieldname" type="text" placeholder="Field Name" ngModel required> </ion-input>
+                        </ion-item>
+                        <ion-item class="Area-box">
+                            <ion-input name="area" type="text" placeholder="Area" ngModel required> </ion-input>
+                        </ion-item>
+
+
+
+                        <ion-item class="location-box">
+                            <ion-input name="location" type="text" placeholder="Location" ngModel required></ion-input>
+                        </ion-item>
+                        <ion-item class="user-box">
+                            <ion-input name="user" type="text" placeholder="User" ngModel required> </ion-input>
+                        </ion-item>
+                        <ion-item class="Device-box">
+                            <ion-input name="device" type="text" placeholder="Device" ngModel required> </ion-input>
+                        </ion-item>
+
+                    </div>
+                </ion-col>
+            </ion-row>
+            <ion-row class="buttons">
+                <ion-button class="button" shape="round" expand="block">ADD</ion-button>
+                <ion-button class="button" shape="round" expand="block">UPDATE</ion-button>
+            </ion-row>
+        </form>
+    </ion-card>
+
+</ion-content>

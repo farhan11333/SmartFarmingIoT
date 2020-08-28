@@ -2,6 +2,9 @@
 // authentication.service.ts
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
+import * as firebase from 'firebase';
+import { first } from 'rxjs/operators';
+
 
 
 
@@ -13,6 +16,13 @@ export class AuthenticateService {
   constructor(
     private afAuth: AngularFireAuth
   ) { }
+
+  /*****************************************getUserID******************************/
+  async getUserIDAsync() {
+    const user = await this.afAuth.authState.pipe(first()).toPromise();
+    return user;
+   // console.log(user.uid, user.email);
+  }
 
   registerUser(value) {
    return new Promise<any>((resolve, reject) => {
@@ -53,5 +63,5 @@ export class AuthenticateService {
 
   userDetails() {
     return this.afAuth.user;
-  }
+  } 
 }

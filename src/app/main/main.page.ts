@@ -3,6 +3,15 @@ import { PopoverPage } from '../popover/popover.page';
 import { PopoverController } from '@ionic/angular';
 import { NavController } from '@ionic/angular';
 import { AuthenticateService } from '../services/authentication.service';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
+import { Observable, pipe, observable, Subscription } from 'rxjs';
+export interface Farm { temperature: string; soil: string; humidity: string; water_level: string; }
+export interface AppUser {
+  map(arg0: (a: any) => void): any;
+  // tslint:disable-next-line: member-ordering
+  deviceId: string; firstName: string; lastName: string;
+}
+
 
 @Component({
   selector: 'app-main',
@@ -11,10 +20,44 @@ import { AuthenticateService } from '../services/authentication.service';
 })
 export class MainPage implements OnInit {
  userEmail: string;
-  constructor(private popover: PopoverController, private navCtrl: NavController, private authService: AuthenticateService ) { }
+  constructor(private popover: PopoverController,
+              private navCtrl: NavController,
+              private aft: AuthenticateService ,
+              public afs: AngularFirestore) { }
 
-  ngOnInit() {
-    this.authService.userDetails().subscribe(res => {
+ private appUserDoc: AngularFirestoreDocument<AppUser>;
+  private farmDocument: AngularFirestoreDocument<Farm>;
+  farm: Observable<Farm>;
+  appUser: Observable<AppUser>;
+  userCollection: AngularFirestoreCollection<any>;
+  // tslint:disable-next-line: new-parens
+  collection;
+ message = 'stopped';
+  res;
+  uid;
+  usr;
+  userId;
+  public getUserSettings(userId) {
+    this.appUserDoc  =  this.afs.doc<AppUser>('users/' + userId );
+    return this.appUserDoc.valueChanges();
+   }
+
+ async ngOnInit() {
+
+   /*****************************************getuserIDfunctionCall**********************/
+
+   this.aft.getUserIDAsync().then((user) => {
+    this.appUser = this.getUserSettings(user.uid);
+    this.appUser.subscribe( (x) => {
+                                     this.farmDocument = this.afs.doc<Farm>('farms/' + x.deviceId);
+                                     this.farm = this.farmDocument.valueChanges();
+                },
+                  err => { console.error('something wrong occurred: ' + err); },
+                  () => { console.log('done'); }
+    ) ;
+  });
+
+   this.aft.userDetails().subscribe(res => {
       console.log('res', res);
       if (res !== null) {
         this.userEmail = res.email.substring(0, res.email.indexOf('@')).toUpperCase();
@@ -22,16 +65,16 @@ export class MainPage implements OnInit {
         this.navCtrl.navigateBack('');
       }
     }, err => {
+
       console.log('err', err);
     });
-
   }
 
   async popclick(event) {
-    const mypopover = await this.popover.create({
+    const myPopover = await this.popover.create({
       component: PopoverPage,
       event
     });
-    return await mypopover.present();
+    return await myPopover.present();
 }
 }

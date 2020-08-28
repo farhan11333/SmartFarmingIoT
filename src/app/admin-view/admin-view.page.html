@@ -1,0 +1,59 @@
+<!--<ion-header>
+
+
+    <ion-toolbar>
+        <ion-menu-button (click)="popclick($event)" slot="end">
+        </ion-menu-button>
+        <ion-title>
+            Administrator
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+-->
+<ion-content fullscreen="true">
+
+    <ion-card class="top">
+        <ion-menu-button (click)="popclick($event)">
+            <!-- <ion-icon src="/assets/forward.svg" alt="ion"></ion-icon> -->
+            <!--<ion-icon name="menu-sharp" slot="icon-only"></ion-icon>-->
+            <!--<ion-icon name="filter-outline" (click)="popclick($event)"></ion-icon>-->
+            <ion-buttons slot="end">
+                <ion-menu-button autoHide="true"></ion-menu-button>
+            </ion-buttons>
+
+        </ion-menu-button>
+        <img src="../../assets/owner.jpg" alt="">
+    </ion-card>
+    <div class="cards">
+        <ion-card class="user" routerLink="/admin-view-users">
+            <img src="../../assets/user.jpg" alt="">
+        </ion-card>
+
+
+
+        <ion-card class="device" routerLink="/admin-view-devices">
+            <img src="../../assets/field.png" alt="">
+
+        </ion-card>
+
+    </div>
+    <ion-label class="lbl-user">Users</ion-label>
+    <ion-label class="lbl-user">Fields</ion-label>
+
+    <div class="cards">
+        <ion-card class="history">
+
+            <img src="../../assets/log.png" alt="">
+        </ion-card>
+
+
+        <ion-card class="logout" (click)="logout()">
+            <img src="../../assets/logout.ico" alt=" ">
+
+        </ion-card>
+    </div>
+    <ion-label class="lbl-history">History</ion-label>
+    <ion-label class="lbl-history">Logout</ion-label>
+
+
+</ion-content>

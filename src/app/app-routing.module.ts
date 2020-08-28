@@ -27,6 +27,34 @@ const routes: Routes = [
     path: 'motorstatus',
     loadChildren: () => import('./motorstatus/motorstatus.module').then( m => m.MotorstatusPageModule)
   },
+  {
+    path: 'user-profile',
+    loadChildren: () => import('./user-profile/user-profile.module').then( m => m.UserProfilePageModule)
+  },
+  {
+    path: 'admin-view',
+    loadChildren: () => import('./admin-view/admin-view.module').then( m => m.AdminViewPageModule)
+  },
+  {
+    path: 'admin-popover',
+    loadChildren: () => import('./admin-popover/admin-popover.module').then( m => m.AdminPopoverPageModule)
+  },
+  {
+    path: 'admin-view-users',
+    loadChildren: () => import('./admin-view-users/admin-view-users.module').then( m => m.AdminViewUsersPageModule)
+  },
+  {
+    path: 'admin-view-devices',
+    loadChildren: () => import('./admin-view-devices/admin-view-devices.module').then( m => m.AdminViewDevicesPageModule)
+  },
+  {
+    path: 'add-user',
+    loadChildren: () => import('./add-user/add-user.module').then( m => m.AddUserPageModule)
+  },
+  {
+    path: 'add-field',
+    loadChildren: () => import('./add-field/add-field.module').then( m => m.AddFieldPageModule)
+  },
 ];
 
 @NgModule({

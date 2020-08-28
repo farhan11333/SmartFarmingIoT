@@ -1,0 +1,38 @@
+ion-content {
+    //--background: url('/assets/background.png') no-repeat center/cover fixed;
+    //--background: linear-gradient(90deg, rgb(255, 204, 204), #ffcccc) no-repeat center/cover fixed;
+    // --background: linear-gradient(to right, #dd5e89, #f7bb97);
+    //--background: linear-gradient(0deg, #abdcff, #d396ff);
+    --background: linear-gradient(0deg, #F45B54 35%, #f3615c);
+}
+
+ion-toolbar {
+    --background: transparent;
+    // --border-style: none;
+}
+
+.bg-transparent {
+    background: transparent;
+}
+
+.bg-transparent ion-label {
+    color: whitesmoke;
+    font-weight: bold;
+}
+
+.add {
+    margin-right: 10px;
+}
+
+ion-icon {
+    color: whitesmoke;
+}
+
+ion-item {
+    --border-color: whitesmoke;
+    --background: transparent;
+}
+
+ion-back-button {
+    color: whitesmoke;
+}

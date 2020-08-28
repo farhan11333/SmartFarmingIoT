@@ -1,0 +1,38 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-back-button defaultHref="admin-view" slot='start'></ion-back-button>
+
+        <ion-title>Users</ion-title>
+        <ion-buttons slot="end">
+
+            <img class="add" src="../../assets/add.png" routerLink='/add-user'>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen="true">
+    <ion-list class="bg-transparent">
+        <ion-item-sliding>
+            <ion-item lines="full" routerLink="/admin-view-devices">
+                <ion-label>farhan@123.com</ion-label>
+
+                <ion-icon name="checkmark-circle" slot="end"></ion-icon>
+
+            </ion-item>
+
+            <ion-item-options side="end">
+                <ion-item-option color="danger" expandable>
+
+                    Delete
+                </ion-item-option>
+                <ion-item-option color="warning" expandable>
+
+                    Disable
+                </ion-item-option>
+            </ion-item-options>
+        </ion-item-sliding>
+
+        <!-- Sliding item with expandable options on both sides -->
+
+    </ion-list>
+</ion-content>

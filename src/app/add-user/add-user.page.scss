@@ -1,0 +1,28 @@
+ion-content {
+    --background: linear-gradient(to bottom, #DEFBE6, #28E0AE);
+}
+
+ion-toolbar {
+    --background: transparent;
+    // --border-style: none;
+}
+
+ion-title {
+    margin-left: 70px;
+}
+
+.buttons {
+    padding-left: 70px;
+    padding-top: 20px;
+}
+
+ion-card {
+    border-radius: 10px;
+    --background: linear-gradient(to bottom, #0090FF, #28E0AE);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 10px 6px rgba(0, 0, 0, 0.23);
+    height: 48%;
+}
+
+ion-item {
+    --background: transparent;
+}

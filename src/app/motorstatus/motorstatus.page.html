@@ -19,28 +19,30 @@
             <!--class="Span">Running</span>-->
             Motor Status
         </ion-card-title>
-        <h2>Running</h2>
+        <h2 *ngIf="isChecked">Running</h2>
+        <h2 class="h2" *ngIf="!isChecked">Stopped</h2>
 
 
 
         <div class="buttons">
             <ion-buttons>
-                <ion-button class="round" fill="solid" color="success">ON</ion-button>
-                <ion-button class="round" size="large" fill="solid" color="danger">OFF</ion-button>
+                <ion-toggle class="toggle" (ngModelChange)="buttonMotor($event)" [ngModel]="motorstatus | async" [checked]='isChecked' mode="ios" class="all-custom"></ion-toggle>
+                <!--- <ion-button class="round " fill="solid " color="success " (click)="buttonMotor() ">ON</ion-button>
+                <ion-button class="round " size="large " fill="solid " color="danger ">OFF</ion-button> -->
             </ion-buttons>
         </div>
 
 
     </ion-card>
-    <ion-card class="down">
+    <ion-card class="down ">
 
 
 
-        <ion-card-title class="motor">
-            <!--class="Span">Running</span>-->
+        <ion-card-title class="motor ">
+            <!--class="Span ">Running</span>-->
             Time
         </ion-card-title>
-        <h5 class="start">Started Time:</h5><br>
+        <h5 class="start ">Started Time: {{(motorstatus|async)?.startedAt}}</h5><br>
         <h5>Stopped Time:</h5>
 
 

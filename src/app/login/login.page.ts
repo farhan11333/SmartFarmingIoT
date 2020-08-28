@@ -50,10 +50,18 @@ export class LoginPage implements OnInit {
     this.validations_form.reset();
     this.authService.loginUser(value)
     .then(res => {
-      console.log(res);
+      this.authService.getUserIDAsync().then((user) =>{
+        if (user.uid === '4rXJkp6KqlQok3PPuy7GXSKAqJN2')
+        {
+          this.navCtrl.navigateForward('/admin-view');
+        }
+        else {
+          this.navCtrl.navigateForward('/main');
+        }
+      });
       
       this.errorMessage = '';
-      this.navCtrl.navigateForward('/main');
+     // this.navCtrl.navigateForward('/main');
     }, err => {
       this.errorMessage = err.message;
       setTimeout(() => {
