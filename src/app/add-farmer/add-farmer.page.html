@@ -1,0 +1,47 @@
+<ion-header>
+    <ion-toolbar>
+
+        <ion-back-button defaultHref="view-farmers" slot='start'></ion-back-button>
+        <ion-title>Add Farmer</ion-title>
+
+    </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen="true">
+    <ion-card>
+        <form>
+            <ion-row justify-content-centre>
+                <ion-col align-self-center>
+                    <div text-center>
+
+                    </div>
+                    <div padding>
+                        <ion-item class="name-box">
+                            <ion-input name="username" type="text" placeholder="Username" ngModel required> </ion-input>
+                        </ion-item>
+                        <ion-item class="email-box">
+                            <ion-input name="email" type="email" placeholder="Email" ngModel required> </ion-input>
+                        </ion-item>
+
+
+
+                        <ion-item class="password-box">
+                            <ion-input name="password" type="password" placeholder="Password" ngModel required></ion-input>
+                        </ion-item>
+
+                        <ion-select placeholder=" Select Device">
+                            <ion-select-option value="">ABCH32</ion-select-option>
+                            <ion-select-option value="">ACF342</ion-select-option>
+                        </ion-select>
+
+                    </div>
+                </ion-col>
+            </ion-row>
+            <ion-row class="buttons">
+                <ion-button class="button" shape="round" expand="block">Attach</ion-button>
+
+            </ion-row>
+        </form>
+    </ion-card>
+
+</ion-content>

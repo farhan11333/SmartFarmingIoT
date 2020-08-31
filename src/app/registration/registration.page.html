@@ -29,25 +29,12 @@
                             </div>-->
                             <br>
 
+
                             <ion-label class="lbl">Email*</ion-label>
 
                             <ion-item class="itemform " lines="none">
 
-                                <ion-input formControlName="email" type="Email " placeholder="abc@gmail.com "></ion-input>
-                            </ion-item>
-                            <div class="validation-errors">
-                                <ng-container *ngFor="let validation of validation_messages.email">
-                                    <div class="error-message" *ngIf="validations_form.get('email').hasError(validation.type) && (validations_form.get('email').dirty || validations_form.get('email').touched)">
-                                        {{ validation.message }}
-                                    </div>
-                                </ng-container>
-                            </div>
-                            <br>
-                            <ion-label class="lbl">Password*</ion-label>
-
-                            <ion-item class="itemform " lines="none">
-
-                                <ion-input formControlName="password" type="password" placeholder=" Password" autocomplete="disabled"></ion-input>
+                                <ion-input formControlName="password" type="password" placeholder=" Password" autocomplete="disabled" disabled><label>fahrnali11333@gmail.com</label></ion-input>
 
                             </ion-item>
                             <div class="validation-errors">
@@ -66,7 +53,7 @@
                     <label class="error-message">{{errorMessage}}</label>
                     <label class="success-message">{{successMessage}}</label></div>
                 <ion-buttons>
-                    <ion-button class="btn-login" (click)="goLoginPage()" expand="block" color="medium" fill="outline"><span class="txt-login" item-left>Login?</span></ion-button>
+
 
 
                     <ion-button class="submit-btn" type="submit" [disabled]="!validations_form.valid" expand="block" color="secondary" fill="solid"><span class="txt-register">Register</span></ion-button>

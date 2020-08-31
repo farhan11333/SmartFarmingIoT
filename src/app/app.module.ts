@@ -22,6 +22,7 @@ import { AngularFirestoreModule, AngularFirestoreDocument } from '@angular/fire/
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AdminPopoverPageModule } from './admin-popover/admin-popover.module';
+import { AdministratorpopoverPageModule } from './administratorpopover/administratorpopover.module';
 
 
 
@@ -36,7 +37,7 @@ import { AdminPopoverPageModule } from './admin-popover/admin-popover.module';
     BrowserModule, IonicModule.forRoot(), AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase), AngularFireAuthModule, AngularFirestoreModule, 
     PopoverPageModule,
-    AdminPopoverPageModule
+    AdminPopoverPageModule, AdministratorpopoverPageModule,
   ],
 
   providers: [

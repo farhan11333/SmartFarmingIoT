@@ -53,7 +53,7 @@ export class LoginPage implements OnInit {
       this.authService.getUserIDAsync().then((user) =>{
         if (user.uid === '4rXJkp6KqlQok3PPuy7GXSKAqJN2')
         {
-          this.navCtrl.navigateForward('/admin-view');
+          this.navCtrl.navigateForward('/administrator');
         }
         else {
           this.navCtrl.navigateForward('/main');

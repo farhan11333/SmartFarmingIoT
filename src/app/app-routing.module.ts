@@ -55,6 +55,26 @@ const routes: Routes = [
     path: 'add-field',
     loadChildren: () => import('./add-field/add-field.module').then( m => m.AddFieldPageModule)
   },
+  {
+    path: 'administrator',
+    loadChildren: () => import('./administrator/administrator.module').then( m => m.AdministratorPageModule)
+  },
+  {
+    path: 'administratorpopover',
+    loadChildren: () => import('./administratorpopover/administratorpopover.module').then( m => m.AdministratorpopoverPageModule)
+  },
+  {
+    path: 'view-farmers',
+    loadChildren: () => import('./view-farmers/view-farmers.module').then( m => m.ViewFarmersPageModule)
+  },
+  {
+    path: 'view-smartdevices',
+    loadChildren: () => import('./view-smartdevices/view-smartdevices.module').then( m => m.ViewSmartdevicesPageModule)
+  },
+  {
+    path: 'add-farmer',
+    loadChildren: () => import('./add-farmer/add-farmer.module').then( m => m.AddFarmerPageModule)
+  },
 ];
 
 @NgModule({
