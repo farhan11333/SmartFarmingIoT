@@ -46,6 +46,7 @@ export class RegistrationPage implements OnInit {
 
   tryRegister(value) {
     this.authService.registerUser(value)
+      // tslint:disable-next-line: align
       .then(res => {
         console.log(res);
         this.errorMessage = '';

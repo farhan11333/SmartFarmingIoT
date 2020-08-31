@@ -1,7 +1,9 @@
+import { AngularFirestore,AngularFirestoreCollection } from '@angular/fire/firestore';
 
 // authentication.service.ts
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
+
 import * as firebase from 'firebase';
 import { first } from 'rxjs/operators';
 
@@ -14,7 +16,8 @@ import { first } from 'rxjs/operators';
 export class AuthenticateService {
 
   constructor(
-    private afAuth: AngularFireAuth
+    private afAuth: AngularFireAuth,
+    private afs: AngularFirestore
   ) { }
 
   /*****************************************getUserID******************************/
@@ -28,12 +31,21 @@ export class AuthenticateService {
    return new Promise<any>((resolve, reject) => {
 
       this.afAuth.auth.createUserWithEmailAndPassword(value.email, value.password)
-        .then(
-          res => resolve(res),
-          err => reject(err));
-    });
+        .then(res => {
+          return this.afs.collection('users').doc(res.user.uid).set({
+            email : value.email,
+            password: value.password
+          });
+        }).then ( res => resolve(res),
+        err => reject(err));
+        // err => reject(err)); )
+          // res => resolve(res);
+          // err => reject(err));
+      
+    // });
 
-  }
+  });
+}
 
   loginUser(value) {
     return new Promise<any>((resolve, reject) => {
