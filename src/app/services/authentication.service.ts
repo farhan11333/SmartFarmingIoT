@@ -32,7 +32,7 @@ export class AuthenticateService {
 
       this.afAuth.auth.createUserWithEmailAndPassword(value.email, value.password)
         .then(res => {
-          return this.afs.collection('users').doc(res.user.uid).set({
+          return this.afs.collection('farmers').doc('zexNOp3oynsYXMHQ0T4m').collection('users').doc(res.user.uid).set({
             email : value.email,
             password: value.password
           });
@@ -76,4 +76,25 @@ export class AuthenticateService {
   userDetails() {
     return this.afAuth.user;
   } 
+
+
+
+  registerworker(value){
+    return new Promise<any>((resolve, reject) =>{
+      this.afAuth.auth.createUserWithEmailAndPassword(value.email, value.password)
+      .then(res => {
+        return this.afs.collection('Farmers').doc('17CxmsbjAYMIOeGBKJTE').collection('users').doc(res.user.uid).set({
+          email : value.email,
+          password: value.password
+        });
+      }).then ( res => resolve(res),
+      err => reject(err));
+      // err => reject(err)); )
+        // res => resolve(res);
+        // err => reject(err));
+    
+  // });
+  
+  });
+  }
 }

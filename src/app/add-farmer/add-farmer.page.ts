@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddFarmerPage implements OnInit {
 
-  constructor() { }
+  constructor( ) { }
 
   ngOnInit() {
   }
