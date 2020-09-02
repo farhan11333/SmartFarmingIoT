@@ -7,7 +7,7 @@ import { AuthenticateService } from '../services/authentication.service';
 //import { firestore } from 'firebase';
 
 import { AngularFirestore,AngularFirestoreCollection } from '@angular/fire/firestore';
-//import { type } from 'os';
+// import { type } from 'os';
 
 
 @Component({
@@ -19,6 +19,7 @@ export class LoginPage implements OnInit {
   router: any;
   show = false;
 
+  // tslint:disable-next-line: max-line-length
   constructor(private navCtrl: NavController, private authService: AuthenticateService, private formBuilder: FormBuilder, private afs: AngularFirestore) {}
   errorMessage = '';
   // tslint:disable-next-line: variable-name
@@ -53,23 +54,24 @@ export class LoginPage implements OnInit {
       setTimeout(() => {
         this.show = false;
       }, 2000);
-       this.validations_form.reset();
+      this.validations_form.reset();
       this.authService.loginUser(value)
       .then(res => {
         this.authService.getUserIDAsync().then((user) =>{
-          this.afs.collection('users', ref => ref.where('email', "==",user.email)).valueChanges().subscribe(users=>{
-          
-             
+          this.afs.collection('users', ref => ref.where('email', "==",user.email)).valueChanges().subscribe(users => {
+
+            // tslint:disable-next-line: no-shadowed-variable
             const [user] = users;
-            
+
           //  console.log(user);
 
 
 
-          if (user.type == 'owner')   {
-            
+            // tslint:disable-next-line: triple-equals
+            if (user.type == 'owner')   {
+
               this.navCtrl.navigateForward('/admin-view');
-            
+
             }
 
             else {
@@ -87,7 +89,7 @@ export class LoginPage implements OnInit {
       
 
       });
-      this.errorMessage = '';
+        this.errorMessage = '';
      // this.navCtrl.navigateForward('/main');
     }, 
     err => {

@@ -1,5 +1,5 @@
 import { UserProfilePageRoutingModule } from './../user-profile/user-profile-routing.module';
-import { AngularFirestore,AngularFirestoreCollection } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 
 // authentication.service.ts
 import { Injectable } from '@angular/core';
@@ -74,29 +74,29 @@ export class AuthenticateService {
   userDetails() {
     return this.afAuth.user;
   } 
-  registerfarmer(value){
-     return new Promise<any>((resolve, reject) =>{
-      this.afAuth.auth.createUserWithEmailAndPassword(value.email, value.password)
-      .then(res => {
-        return this.afs.collection('Farmers').doc(res.user.uid).set({
-          email : value.email,
-          password: value.password,
-          username : value.username,
-          type : 'farmer'
+  // registerfarmer(value){
+  //    return new Promise<any>((resolve, reject) =>{
+  //     this.afAuth.auth.createUserWithEmailAndPassword(value.email, value.password)
+  //     .then(res => {
+  //       return this.afs.collection('Farmers').doc(res.user.uid).set({
+  //         email : value.email,
+  //         password: value.password,
+  //         username : value.username,
+  //         type : 'farmer'
           
           
-        });
-      }).then ( res => resolve(res),
-      err => reject(err));
-      // err => reject(err)); )
-        // res => resolve(res);
-        // err => reject(err));
+  //       });
+  //     }).then ( res => resolve(res),
+  //     err => reject(err));
+  //     // err => reject(err)); )
+  //       // res => resolve(res);
+  //       // err => reject(err));
     
-  // });
+  // // });
   
-  });
+  // });
 
-  }
+  // }
 
 
 
@@ -109,7 +109,13 @@ export class AuthenticateService {
           password: value.password,
           type: 'worker',
           username : value.username,
+<<<<<<< HEAD
           farmId : value.farmId         });
+=======
+          farmId : value.farmId
+          
+        });
+>>>>>>> 8b9c5396d7a16622a2d66c4bfc186b883ff30bcc
       }).then ( res => resolve(res),
       err => reject(err));
        });
