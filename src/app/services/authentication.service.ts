@@ -23,8 +23,9 @@ export class AuthenticateService {
   /*****************************************getUserID******************************/
   async getUserIDAsync() {
     const user = await this.afAuth.authState.pipe(first()).toPromise();    
+    //console.log(user.uid, user.email);
+    //debugger;
     return user;
-   // console.log(user.uid, user.email);
   }
 
   registerUser(value) {
@@ -85,7 +86,7 @@ export class AuthenticateService {
           password: value.password,
           type: 'worker',
           username : value.username,
-          deviceId : value.deviceId  
+          deviceId : value.deviceId
         });
       }).then ( res => resolve(res),
       err => reject(err));

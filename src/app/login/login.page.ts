@@ -77,8 +77,7 @@ export class LoginPage implements OnInit {
               this.navCtrl.navigateForward('/main');
             
             }
-
-
+            
             //console.log(user.type);
            // debugger;
           })
