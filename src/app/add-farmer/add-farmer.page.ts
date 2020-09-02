@@ -47,24 +47,24 @@ export class AddFarmerPage implements OnInit {
       
     });
   }
-  registerfarmer(value){
-    this.authService.registerfarmer(value)
-      // tslint:disable-next-line: align
-      .then(res => {
-        console.log(res);
-        this.errorMessage = '';
-        this.successMessage = 'Farmer Added Successfully.';
-        setTimeout(() => {
-          this.successMessage = '';
-                }, 4000);
-      }, err => {
-        console.log(err);
-        this.errorMessage = err.message;
-        this.successMessage = '';
-        setTimeout(() => {
-          this.errorMessage = '';
-        }, 4000);
-      });
-   }              
+  // registerfarmer(value){
+  //   this.authService.registerfarmer(value)
+  //     // tslint:disable-next-line: align
+  //     .then(res => {
+  //       console.log(res);
+  //       this.errorMessage = '';
+  //       this.successMessage = 'Farmer Added Successfully.';
+  //       setTimeout(() => {
+  //         this.successMessage = '';
+  //               }, 4000);
+  //     }, err => {
+  //       console.log(err);
+  //       this.errorMessage = err.message;
+  //       this.successMessage = '';
+  //       setTimeout(() => {
+  //         this.errorMessage = '';
+  //       }, 4000);
+  //     });
+  //  }              
 
 }

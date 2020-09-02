@@ -1,5 +1,5 @@
 import { UserProfilePageRoutingModule } from './../user-profile/user-profile-routing.module';
-import { AngularFirestore,AngularFirestoreCollection } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 
 // authentication.service.ts
 import { Injectable } from '@angular/core';
@@ -7,9 +7,8 @@ import { AngularFireAuth } from 'angularfire2/auth';
 
 import * as firebase from 'firebase';
 import { first } from 'rxjs/operators';
-
-
-
+import { type } from 'os';
+import { debugOutputAstAsTypeScript } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root'
@@ -18,12 +17,12 @@ export class AuthenticateService {
 
   constructor(
     private afAuth: AngularFireAuth,
-    private afs: AngularFirestore
+    private afs: AngularFirestore,
   ) { }
 
   /*****************************************getUserID******************************/
   async getUserIDAsync() {
-    const user = await this.afAuth.authState.pipe(first()).toPromise();
+    const user = await this.afAuth.authState.pipe(first()).toPromise();    
     return user;
    // console.log(user.uid, user.email);
   }
@@ -33,26 +32,23 @@ export class AuthenticateService {
 
       this.afAuth.auth.createUserWithEmailAndPassword(value.email, value.password)
         .then(res => {
-          return this.afs.collection('users').doc(res.user.uid).set({
+          return this.afs.collection('users').add({
             email : value.email,
-            password: value.password
+            password: value.password,
+            type: 'owner'
           });
         }).then ( res => resolve(res),
         err => reject(err));
-        // err => reject(err)); )
-          // res => resolve(res);
-          // err => reject(err));
-      
-    // });
-
-  });
+      });
 }
 
   loginUser(value) {
     return new Promise<any>((resolve, reject) => {
+//        console.log(this.afs.collection('users').doc('uid').get(value.type));
+//           debugger;
       this.afAuth.auth.signInWithEmailAndPassword(value.email, value.password)
         .then(
-          res => resolve(res),
+          res =>{console.log('res', res); resolve(res)},
           err => reject(err));
         });
   }
@@ -77,29 +73,29 @@ export class AuthenticateService {
   userDetails() {
     return this.afAuth.user;
   } 
-  registerfarmer(value){
-     return new Promise<any>((resolve, reject) =>{
-      this.afAuth.auth.createUserWithEmailAndPassword(value.email, value.password)
-      .then(res => {
-        return this.afs.collection('Farmers').doc(res.user.uid).set({
-          email : value.email,
-          password: value.password,
-          username : value.username,
-          type : 'farmer'
+  // registerfarmer(value){
+  //    return new Promise<any>((resolve, reject) =>{
+  //     this.afAuth.auth.createUserWithEmailAndPassword(value.email, value.password)
+  //     .then(res => {
+  //       return this.afs.collection('Farmers').doc(res.user.uid).set({
+  //         email : value.email,
+  //         password: value.password,
+  //         username : value.username,
+  //         type : 'farmer'
           
           
-        });
-      }).then ( res => resolve(res),
-      err => reject(err));
-      // err => reject(err)); )
-        // res => resolve(res);
-        // err => reject(err));
+  //       });
+  //     }).then ( res => resolve(res),
+  //     err => reject(err));
+  //     // err => reject(err)); )
+  //       // res => resolve(res);
+  //       // err => reject(err));
     
-  // });
+  // // });
   
-  });
+  // });
 
-  }
+  // }
 
 
 
@@ -107,21 +103,16 @@ export class AuthenticateService {
     return new Promise<any>((resolve, reject) =>{
       this.afAuth.auth.createUserWithEmailAndPassword(value.email, value.password)
       .then(res => {
-        return this.afs.collection('Farmers').doc('17CxmsbjAYMIOeGBKJTE').collection('users').doc(res.user.uid).set({
+        return this.afs.collection('users').add({
           email : value.email,
           password: value.password,
+          type: 'worker',
           username : value.username,
           farmId : value.farmId
           
         });
       }).then ( res => resolve(res),
       err => reject(err));
-      // err => reject(err)); )
-        // res => resolve(res);
-        // err => reject(err));
-    
-  // });
-  
-  });
+       });
   }
 }
