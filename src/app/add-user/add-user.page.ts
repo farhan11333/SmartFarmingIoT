@@ -24,7 +24,7 @@ export class AddUserPage implements OnInit {
    ],
    username : [ { type: 'required', message: 'Username is required.' } 
   ],
-   deviceId : [ { type: 'required', message: 'DeviceId is required.' } ]
+   farmId : [ { type: 'required', message: 'farmId is required.' } ]
    
  };
  constructor( private navCtrl: NavController,
@@ -44,7 +44,7 @@ export class AddUserPage implements OnInit {
      username : new FormControl ('', Validators.compose([
       Validators.required
      ])),
-     deviceId : new FormControl ('', Validators.compose([
+     farmId : new FormControl ('', Validators.compose([
       Validators.required
      ]))
      
