@@ -1,9 +1,13 @@
 import { IonIcon } from '@ionic/angular';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Query } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { NavController } from '@ionic/angular';
 import { AuthenticateService } from '../services/authentication.service';
+//import { firestore } from 'firebase';
+
+import { AngularFirestore,AngularFirestoreCollection } from '@angular/fire/firestore';
+//import { type } from 'os';
 
 
 @Component({
@@ -15,7 +19,7 @@ export class LoginPage implements OnInit {
   router: any;
   show = false;
 
-  constructor(private navCtrl: NavController, private authService: AuthenticateService, private formBuilder: FormBuilder) {}
+  constructor(private navCtrl: NavController, private authService: AuthenticateService, private formBuilder: FormBuilder, private afs: AngularFirestore) {}
   errorMessage = '';
   // tslint:disable-next-line: variable-name
   validations_form: FormGroup;
@@ -43,26 +47,51 @@ export class LoginPage implements OnInit {
     });
 }
     loginUser(value) {
-    this.show = true;
-    setTimeout(() => {
-    this.show = false;
-  }, 2000);
-    this.validations_form.reset();
-    this.authService.loginUser(value)
-    .then(res => {
-      this.authService.getUserIDAsync().then((user) =>{
-        if (user.uid === '4rXJkp6KqlQok3PPuy7GXSKAqJN2')
-        {
-          this.navCtrl.navigateForward('/administrator');
-        }
-        else {
-          this.navCtrl.navigateForward('/main');
-        }
-      });
+
       
+      this.show = true;
+      setTimeout(() => {
+        this.show = false;
+      }, 2000);
+       this.validations_form.reset();
+      this.authService.loginUser(value)
+      .then(res => {
+        this.authService.getUserIDAsync().then((user) =>{
+          this.afs.collection('users', ref => ref.where('email', "==",user.email)).valueChanges().subscribe(users=>{
+          
+             
+            const [user] = users;
+            
+          //  console.log(user);
+
+
+
+          if (user.type == 'owner')   {
+            
+              this.navCtrl.navigateForward('/admin-view');
+            
+            }
+
+            else {
+            
+              this.navCtrl.navigateForward('/main');
+            
+            }
+
+
+            //console.log(user.type);
+           // debugger;
+          })
+        
+
+         // console.log(user.type);
+      
+
+      });
       this.errorMessage = '';
      // this.navCtrl.navigateForward('/main');
-    }, err => {
+    }, 
+    err => {
       this.errorMessage = err.message;
       setTimeout(() => {
         this.errorMessage = '';
