@@ -9,7 +9,7 @@
 
 <ion-content fullscreen="true">
     <ion-card>
-        <form>
+        <form class="form" [formGroup]="validations_form" (ngSubmit)="registerfarmer(validations_form.value)">
             <ion-row justify-content-centre>
                 <ion-col align-self-center>
                     <div text-center>
@@ -17,28 +17,49 @@
                     </div>
                     <div padding>
                         <ion-item class="name-box">
-                            <ion-input name="username" type="text" placeholder="Username" ngModel required> </ion-input>
-                        </ion-item>
-                        <ion-item class="email-box">
-                            <ion-input name="email" type="email" placeholder="Email" ngModel required> </ion-input>
+                            <ion-input formControlName="username" type="text" placeholder="Username" ngModel required> </ion-input>
                         </ion-item>
 
+                        <ion-item class="email-box">
+                            <ion-input formControlName="email" type="email" placeholder="Email" ngModel required> </ion-input>
+                        </ion-item>
+                        <div class="validation-errors">
+                            <ng-container *ngFor="let validation of validation_messages.email">
+                                <div class="error-message" *ngIf="validations_form.get('email').hasError(validation.type) && (validations_form.get('email').dirty || validations_form.get('email').touched)">
+                                    {{ validation.message }}
+                                </div>
+                            </ng-container>
+                        </div>
+                        <br>
 
 
                         <ion-item class="password-box">
-                            <ion-input name="password" type="password" placeholder="Password" ngModel required></ion-input>
+                            <ion-input formControlName="password" type="password" placeholder="Password" ngModel required></ion-input>
                         </ion-item>
+                        <div class="validation-errors">
+                            <ng-container *ngFor="let validation of validation_messages.password">
+                                <div class="error-message" *ngIf="validations_form.get('password').hasError(validation.type) && (validations_form.get('password').dirty || validations_form.get('password').touched)">
+                                    {{ validation.message }}
+                                </div>
+                            </ng-container>
+                        </div>
 
-                        <ion-select placeholder=" Select Device">
+
+
+                        <!-- 
+                        <ion-select formControlName="deviceId" placeholder=" Select Device">
+                            <ion-select-option value="farm1">farm1</ion-select-option>
                             <ion-select-option value=""></ion-select-option>
-                            <ion-select-option value="">ACF342</ion-select-option>
-                        </ion-select>
-
+                        </ion-select> -->
                     </div>
+
                 </ion-col>
             </ion-row>
+            <div class="error">
+                <label class="error-message">{{errorMessage}}</label>
+                <label class="success-message">{{successMessage}}</label></div>
             <ion-row class="buttons">
-                <ion-button class="button" shape="round" expand="block">Attach</ion-button>
+                <ion-button type="submit" class="button" shape="round" expand="block">ADD</ion-button>
 
             </ion-row>
         </form>
