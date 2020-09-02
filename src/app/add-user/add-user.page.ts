@@ -21,7 +21,11 @@ export class AddUserPage implements OnInit {
    password: [
      { type: 'required', message: 'Password is required.' },
      { type: 'minlength', message: 'Password must be at least 6 characters long.' }
-   ]
+   ],
+   username : [ { type: 'required', message: 'Username is required.' } 
+  ],
+   deviceId : [ { type: 'required', message: 'DeviceId is required.' } ]
+   
  };
  constructor( private navCtrl: NavController,
               private authService: AuthenticateService,
@@ -37,6 +41,13 @@ export class AddUserPage implements OnInit {
        Validators.minLength(6),
        Validators.required
      ])),
+     username : new FormControl ('', Validators.compose([
+      Validators.required
+     ])),
+     deviceId : new FormControl ('', Validators.compose([
+      Validators.required
+     ]))
+     
    });
 }
 registerworker(value) {

@@ -1,3 +1,4 @@
+import { UserProfilePageRoutingModule } from './../user-profile/user-profile-routing.module';
 import { AngularFirestore,AngularFirestoreCollection } from '@angular/fire/firestore';
 
 // authentication.service.ts
@@ -85,7 +86,9 @@ export class AuthenticateService {
       .then(res => {
         return this.afs.collection('Farmers').doc('17CxmsbjAYMIOeGBKJTE').collection('users').doc(res.user.uid).set({
           email : value.email,
-          password: value.password
+          password: value.password,
+          username : value.username,
+          deviceId : value.deviceId
           
         });
       }).then ( res => resolve(res),
