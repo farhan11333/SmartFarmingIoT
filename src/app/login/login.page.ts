@@ -1,5 +1,5 @@
 import { IonIcon } from '@ionic/angular';
-import { Component, OnInit, Query } from '@angular/core';
+import { Component, OnInit, Query, Type } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { NavController } from '@ionic/angular';
@@ -68,17 +68,17 @@ export class LoginPage implements OnInit {
 
 
             // tslint:disable-next-line: triple-equals
-            // if (user.type == 'owner')   {
+            if (user.type == 'owner')   {
 
-            //   this.navCtrl.navigateForward('/admin-view');
+              this.navCtrl.navigateForward('/admin-view');
 
-            // }
+            }
 
-            // else {
+            else {
             
-            //   this.navCtrl.navigateForward('/main');
+              this.navCtrl.navigateForward('/main');
             
-            // }
+            }
 
 
             //console.log(user.type);
