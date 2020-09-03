@@ -6,6 +6,9 @@ import { NavController } from '@ionic/angular';
 import { AuthenticateService } from '../services/authentication.service';
 //import { firestore } from 'firebase';
 
+
+
+
 import { AngularFirestore,AngularFirestoreCollection } from '@angular/fire/firestore';
 // import { type } from 'os';
 
@@ -46,7 +49,14 @@ export class LoginPage implements OnInit {
         Validators.required
       ])),
     });
+
 }
+
+
+
+
+      
+
     loginUser(value) {
 
       
@@ -61,18 +71,13 @@ export class LoginPage implements OnInit {
           this.afs.collection('users', ref => ref.where('email', "==",user.email)).valueChanges().subscribe(users => {
 
             // tslint:disable-next-line: no-shadowed-variable
-            const [user] = users;
+            const userinfo :any = users[0];
 
-          //  console.log(user);
+          if (userinfo.type === 'owner')   {
+            
+            this.navCtrl.navigateForward('/admin-view'/*,{state:{userinfo}}*/);          
 
-
-
-            // tslint:disable-next-line: triple-equals
-            if (user.type == 'owner')   {
-
-              this.navCtrl.navigateForward('/admin-view');
-
-            }
+          }
 
             else {
             
@@ -80,14 +85,8 @@ export class LoginPage implements OnInit {
             
             }
             
-            //console.log(user.type);
-           // debugger;
           })
         
-
-         // console.log(user.type);
-      
-
       });
         this.errorMessage = '';
      // this.navCtrl.navigateForward('/main');

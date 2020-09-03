@@ -1,7 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { PopoverController, AlertController, NavController } from '@ionic/angular';
+import { PopoverController, AlertController, NavController, NavParams } from '@ionic/angular';
 import { AdminPopoverPage } from '../admin-popover/admin-popover.page';
 import { AuthenticateService } from '../services/authentication.service';
+
+//import { Router } from '@angular/router';
+
+
+//import { RouterModule } from '@angular/router';
+
 
 @Component({
   selector: 'app-admin-view',
@@ -10,10 +16,26 @@ import { AuthenticateService } from '../services/authentication.service';
 })
 export class AdminViewPage implements OnInit {
 
-  constructor(private popover: PopoverController, public navCtrl: NavController,public aft: AuthenticateService) { }
+//   userinfo;
+
+  constructor(private popover: PopoverController, public navCtrl: NavController,public aft: AuthenticateService /*, private router: Router, public navParams: NavParams*/) {
+
+  //  debugger;
+
+  // this.userinfo = navParams.get('userinfo');
+
+   }
+
+   
 
   ngOnInit() {
+    //console.log(this.navParams);    
+   //debugger;
+   //   this.router.NavParams.subscribe(NavParams => {
+   //   this.userinfo = NavParams('userinfo');
+   //  }
   }
+
   async popclick(event) {
     const mypopover = await this.popover.create({
       component: AdminPopoverPage,
@@ -21,7 +43,9 @@ export class AdminViewPage implements OnInit {
     });
     return await mypopover.present();
    
-}
+  }
+  
+
 logout() {
   this.aft.logoutUser()
   .then(res => {
