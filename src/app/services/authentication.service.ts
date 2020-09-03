@@ -44,6 +44,7 @@ export class AuthenticateService {
 
       this.afAuth.auth.createUserWithEmailAndPassword(value.email, value.password)
         .then(res => {
+          
           return this.afs.collection('users').add({
             email : value.email,
             password: value.password,
@@ -66,7 +67,7 @@ export class AuthenticateService {
           res =>{
             console.log('res', res); resolve(res)
 
-//        localStorage.setItem('email',res.user.email)
+        localStorage.setItem('email',res.user.email)
         
         
         },

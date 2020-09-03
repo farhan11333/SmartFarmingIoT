@@ -6,8 +6,6 @@ import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/fire
 
 
 
-
-
 @Component({
   selector: 'app-add-field',
   templateUrl: './add-field.page.html',
@@ -56,13 +54,16 @@ export class AddFieldPage implements OnInit {
 
    });
 }
-
-
-
 addfield(value){
 
+
+
+
   
-  this.afs.collection('fields').add({
+  
+this.afs.collection('fields').add({
+
+
     fieldname: value.fieldname,
     area : value.area,
     location: value.location,
