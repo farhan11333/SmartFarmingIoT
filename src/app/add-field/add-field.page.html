@@ -7,35 +7,43 @@
 
 <ion-content fullscreen="true">
     <ion-card>
-        <form>
+        <form class="form" [formGroup]="validations_form" (ngSubmit)="addfield(validations_form.value)">
             <ion-row justify-content-centre>
                 <ion-col align-self-center>
                     <div text-center>
 
                     </div>
                     <div padding>
+
+
+
+
                         <ion-item class="fieldname-box">
-                            <ion-input formControlname="fieldname" type="text" placeholder="Field Name" required> </ion-input>
+                            <ion-input formControlName="fieldname" type="text" placeholder="Field Name" required> </ion-input>
                         </ion-item>
+                        <div class="validation-errors">
+                            <ng-container *ngFor="let validation of validation_messages.fieldname">
+                                <div class="error-message" *ngIf="validations_form.get('fieldname').hasError(validation.type) && (validations_form.get('fieldname').dirty || validations_form.get('fieldname').touched)">
+                                    {{ validation.message }}
+                                </div>
+                            </ng-container>
+                        </div>
+
                         <ion-item class="Area-box">
-                            <ion-input formControlname="area" type="text" placeholder="Area" required> </ion-input>
+                            <ion-input formControlName="area" type="text" placeholder="Area" required> </ion-input>
                         </ion-item>
-
-
-
                         <ion-item class="location-box">
-                            <ion-input formControlname="location" type="text" placeholder="Location" required></ion-input>
+                            <ion-input formControlName="location" type="text" placeholder="Location" required> </ion-input>
                         </ion-item>
-
                         <ion-item class="Device-box">
-                            <ion-input formControlname="device" type="text" placeholder="Device" required> </ion-input>
+                            <ion-input formControlName="device" type="text" placeholder="Device" required> </ion-input>
                         </ion-item>
 
                     </div>
                 </ion-col>
             </ion-row>
             <ion-row class="buttons">
-                <ion-button class="button" shape="round" expand="block">ADD</ion-button>
+                <ion-button type="submit" class="button" shape="round" expand="block">ADD</ion-button>
 
             </ion-row>
         </form>

@@ -1,5 +1,5 @@
 import { IonIcon } from '@ionic/angular';
-import { Component, OnInit, Query } from '@angular/core';
+import { Component, OnInit, Query, Type } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { NavController } from '@ionic/angular';
