@@ -109,13 +109,8 @@ export class AuthenticateService {
           password: value.password,
           type: 'worker',
           username : value.username,
-<<<<<<< HEAD
-          farmId : value.farmId         });
-=======
-          farmId : value.farmId
-          
+          farmId : value.farmId          
         });
->>>>>>> 8b9c5396d7a16622a2d66c4bfc186b883ff30bcc
       }).then ( res => resolve(res),
       err => reject(err));
        });
