@@ -9,6 +9,7 @@ import * as firebase from 'firebase';
 import { first } from 'rxjs/operators';
 import { type } from 'os';
 import { debugOutputAstAsTypeScript } from '@angular/compiler';
+import { resolve } from 'url';
 
 @Injectable({
   providedIn: 'root'
