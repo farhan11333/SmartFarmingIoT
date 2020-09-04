@@ -87,6 +87,7 @@ export class AuthenticateService {
     });
   }
   resetPassword(email: string): Promise<void> {
+    console.log("reset password");
     return this.afAuth.auth.sendPasswordResetEmail(email);
   }
 

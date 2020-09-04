@@ -1,13 +1,13 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { NgModule } from "@angular/core";
+import { Routes, RouterModule } from "@angular/router";
 
-import { AdminViewDevicesPage } from './admin-view-devices.page';
+import { AdminViewDevicesPage } from "./admin-view-devices.page";
 
 const routes: Routes = [
   {
-    path: '',
-    component: AdminViewDevicesPage
-  }
+    path: "",
+    component: AdminViewDevicesPage,
+  },
 ];
 
 @NgModule({

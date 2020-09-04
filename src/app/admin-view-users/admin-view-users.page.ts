@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 
 import { AngularFirestore } from "@angular/fire/firestore";
+import { firestore } from "firebase";
 
 @Component({
   selector: "app-admin-view-users",
@@ -16,10 +17,22 @@ export class AdminViewUsersPage implements OnInit {
     const ownerEmail = localStorage.getItem("email");
     this.afs
       .collection("users", (ref) => ref.where("ownerEmail", "==", ownerEmail))
+
       .valueChanges()
       .subscribe((_users) => {
         this.users = _users;
         console.log(this.users);
       });
+  }
+
+  deleteUser(user) {
+    console.log("userDeleted");
+    //   this.afs
+    //     .collection("users", (ref) => ref.where("email", "==", user.email))
+    //     .delete();
+    //   // .valueChanges()
+    //   // .subscribe((users) => {
+    //   // debugger;
+    //   // });
   }
 }
