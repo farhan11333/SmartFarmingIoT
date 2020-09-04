@@ -1,0 +1,27 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-back-button defaultHref="view-smartdevices" slot='start'></ion-back-button>
+        <ion-title>Add Smart-Device</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen="true">
+    <form class="form" [formGroup]="validations_form" (ngSubmit)="addSmartdevice(validations_form.value)">
+        <ion-card>
+            <ion-item class="Device-box">
+                <ion-input formControlName="smartdevice" type="text" placeholder="Device" required> </ion-input>
+            </ion-item>
+            <div class="validation-errors">
+                <ng-container *ngFor="let validation of validation_messages.smartdevice">
+                    <div class="error-message" *ngIf="validations_form.get('smartdevice').hasError(validation.type) && (validations_form.get('smartdevice').dirty || validations_form.get('smartdevice').touched)">
+                        {{ validation.message }}
+                    </div>
+                </ng-container>
+            </div>
+            <div class="error">
+                <label class="error-message">{{errorMessage}}</label>
+                <label class="success-message">{{successMessage}}</label></div>
+        </ion-card>
+        <ion-button type="submit" class="button" shape="round" expand="block">ADD</ion-button>
+    </form>
+</ion-content>

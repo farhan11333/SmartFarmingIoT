@@ -1,0 +1,26 @@
+ion-content {
+    --background: linear-gradient(to bottom, #FCF766, #D1FE3B);
+}
+
+ion-toolbar {
+    --background: transparent;
+}
+
+ion-card {
+    height: 70px;
+}
+
+.error {
+    .error-message {
+        text-align: center;
+        color: var(--ion-color-danger);
+        font-size: small;
+        margin-left: 10px;
+    }
+    .success-message {
+        text-align: center;
+        color: var(--ion-color-success);
+        font-size: small;
+        margin-left: 10px;
+    }
+}

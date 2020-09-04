@@ -75,6 +75,10 @@ const routes: Routes = [
     path: 'add-farmer',
     loadChildren: () => import('./add-farmer/add-farmer.module').then( m => m.AddFarmerPageModule)
   },
+  {
+    path: 'add-smartdevices',
+    loadChildren: () => import('./add-smartdevices/add-smartdevices.module').then( m => m.AddSmartdevicesPageModule)
+  },
 ];
 
 @NgModule({

@@ -74,11 +74,20 @@ h2 {
 .start {
     color: rgb(60, 180, 60);
     text-align: center;
+    margin-inline-start: 112px;
+    font-size: 20px;
 }
 
-h5 {
+.start-time {
+    color: rgb(8, 6, 6);
+    text-align: center;
+}
+
+.stop {
     color: red;
     text-align: center;
+    margin-inline-start: 112px;
+    font-size: 20px;
 }
 
 .h2 {

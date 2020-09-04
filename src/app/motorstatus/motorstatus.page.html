@@ -26,7 +26,7 @@
 
         <div class="buttons">
             <ion-buttons>
-                <ion-toggle class="toggle" (ngModelChange)="buttonMotor($event)" [ngModel]="motorstatus | async" [checked]='isChecked' checked="false" mode="ios" class="all-custom"></ion-toggle>
+                <ion-toggle class="toggle" (ngModelChange)="buttonMotor($event)" [ngModel]="motorstatus | async" [checked]='isChecked' mode="ios" class="all-custom"></ion-toggle>
                 <!--- <ion-button class="round " fill="solid " color="success " (click)="buttonMotor() ">ON</ion-button>
                 <ion-button class="round " size="large " fill="solid " color="danger ">OFF</ion-button> -->
             </ion-buttons>
@@ -42,8 +42,10 @@
             <!--class="Span ">Running</span>-->
             Time
         </ion-card-title>
-        <h5 class="start ">Started Time: <br> {{(motorstatus |async)?.startedAt }} </h5><br>
-        <h5>Stopped Time:</h5>
+        <label class="start " *ngIf="isChecked">Started Time:</label> <br>
+        <h5 class="start-time" *ngIf="isChecked">{{currentDate| date:"MM/dd/yyyy 'at' h:mma"}}</h5>
+        <label class="stop" *ngIf="!isChecked">Stopped Time:</label>
+        <h5 class="start-time" *ngIf="!isChecked">{{currentDate | date:"MM/dd/yyyy 'at' h:mma"}}</h5>
 
 
 
@@ -57,11 +59,10 @@
 
         <ion-card-title class="motor ">
             <!--class="Span ">Running</span>-->
-            History
+            History {{(motorstatus |async)?.startedAt }}
         </ion-card-title>
-        <h5> Date:</h5>
-        <h5 class="start ">Started Time: {{(motorstatus|async)?.startedAt}}</h5><br>
-        <h5>Stopped Time:</h5>
+
+
 
 
 
