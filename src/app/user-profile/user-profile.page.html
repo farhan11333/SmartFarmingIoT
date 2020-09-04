@@ -1,40 +1,34 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-back-button
-      defaultHref="admin-view-users"
-      slot="start"
-    ></ion-back-button>
-    <ion-title> User Profile</ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-back-button defaultHref="admin-view-users" slot="start"></ion-back-button>
+        <ion-title> User Profile</ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content fullscreen="true" *ngFor="let user of users">
-  <ion-card>
-    <form>
-      <ion-row justify-content-centre>
-        <ion-col align-self-center>
-          <div text-center></div>
-          <div padding>
-            <ion-item class="name-box">
-              <ion-input type="text"> {{user.username}} </ion-input>
-            </ion-item>
-            <ion-item class="email-box">
-              <ion-input disabled> {{user.email}} </ion-input>
-            </ion-item>
-          </div>
-        </ion-col>
-      </ion-row>
-      <div class="error">
-        <!-- <label class="error-message">{{errorMessage}}</label>
+    <ion-card>
+        <form>
+            <ion-row justify-content-centre>
+                <ion-col align-self-center>
+                    <div text-center></div>
+                    <div padding>
+                        <ion-item class="name-box">
+                            <ion-input type="text"> {{user.username}} </ion-input>
+                        </ion-item>
+                        <ion-item class="email-box">
+                            <ion-input disabled> {{user.email}} </ion-input>
+                        </ion-item>
+                    </div>
+                </ion-col>
+            </ion-row>
+            <div class="error">
+                <!-- <label class="error-message">{{errorMessage}}</label>
                 <label class="success-message">{{successMessage}}</label>-->
-      </div>
+            </div>
 
-      <ion-button type="submit" class="button" shape="round" expand="full"
-        >Update</ion-button
-      >
-    </form>
-    <ion-button type="reset" class="button" shape="round" expand="full"
-      >Reset Password</ion-button
-    >
-  </ion-card>
+            <ion-button type="submit" class="button" shape="round" expand="full">Update</ion-button>
+
+        </form>
+        <ion-button (click)="resetPassword()" class="button" shape="round" expand="full">Reset Password</ion-button>
+    </ion-card>
 </ion-content>

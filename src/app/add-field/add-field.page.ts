@@ -51,6 +51,9 @@ export class AddFieldPage implements OnInit {
       location: value.location,
       device: value.device,
       ownerEmail,
-    });
+    }).then(()=>{
+      this.successMessage = 'Field has been Added Succesfully.';
+    })
+    this.validations_form.reset();
   }
 }

@@ -61,7 +61,7 @@ export class MainPage implements OnInit {
       this.appUser = this.getUserSettings(user.uid);
       this.appUser.subscribe(
         (x) => {
-          this.farmDocument = this.afs.doc<Farm>("farms/" + x.deviceId);
+          this.farmDocument = this.afs.doc<Farm>('devices/' + x.deviceId);
           this.farm = this.farmDocument.valueChanges();
         },
         (err) => {
