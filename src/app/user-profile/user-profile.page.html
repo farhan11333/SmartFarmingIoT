@@ -8,7 +8,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content fullscreen="true">
+<ion-content fullscreen="true" *ngFor="let user of users">
   <ion-card>
     <form>
       <ion-row justify-content-centre>
@@ -16,10 +16,10 @@
           <div text-center></div>
           <div padding>
             <ion-item class="name-box">
-              <ion-input type="text" placeholder="Username"> </ion-input>
+              <ion-input type="text"> {{user.username}} </ion-input>
             </ion-item>
             <ion-item class="email-box">
-              <ion-input disabled>farhan@gmail.com </ion-input>
+              <ion-input disabled> {{user.email}} </ion-input>
             </ion-item>
           </div>
         </ion-col>

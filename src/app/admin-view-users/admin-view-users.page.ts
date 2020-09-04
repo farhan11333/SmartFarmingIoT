@@ -1,9 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 
-import {
-  AngularFirestore,
-  AngularFirestoreCollection,
-} from "@angular/fire/firestore";
+import { AngularFirestore } from "@angular/fire/firestore";
 
 @Component({
   selector: "app-admin-view-users",
