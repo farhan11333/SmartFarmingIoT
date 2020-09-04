@@ -67,69 +67,6 @@ export class LoginPage implements OnInit {
         ])
       ),
     });
-<<<<<<< HEAD
-}
-    loginUser(value) {
-
-      
-      this.show = true;
-      setTimeout(() => {
-        this.show = false;
-      }, 2000);
-      this.validations_form.reset();
-      this.authService.loginUser(value)
-      .then(res => {
-        this.authService.getUserIDAsync().then((user) =>{
-          this.afs.collection('users', ref => ref.where('email', "==",user.email)).valueChanges().subscribe(users => {
-
-            // tslint:disable-next-line: no-shadowed-variable
-            const [user] = users;
-
-          //  console.log(user);
-
-
-
-            // tslint:disable-next-line: triple-equals
-            // if (user.type == 'owner')   {
-
-            //   this.navCtrl.navigateForward('/admin-view');
-
-            // }
-
-            // else {
-            
-            //   this.navCtrl.navigateForward('/main');
-            
-            // }
-
-
-            //console.log(user.type);
-           // debugger;
-          })
-        
-
-         // console.log(user.type);
-      
-
-      });
-        this.errorMessage = '';
-     // this.navCtrl.navigateForward('/main');
-    }, 
-    err => {
-      this.errorMessage = err.message;
-      setTimeout(() => {
-        this.errorMessage = '';
-              }, 4000);
-    });
-
-}
-goToRegisterPage() {
-  this.navCtrl.navigateForward('/registration');
-}
-gotoforgotpasswordPage() {
-  this.navCtrl.navigateForward('/forgot-password');
-}
-=======
   }
 
   loginUser(value) {
@@ -171,5 +108,4 @@ gotoforgotpasswordPage() {
   gotoforgotpasswordPage() {
     this.navCtrl.navigateForward("/forgot-password");
   }
->>>>>>> 2b17f616e6e12fb00e16071caf716e0d24641fcf
 }
