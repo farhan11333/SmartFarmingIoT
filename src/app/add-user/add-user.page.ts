@@ -3,6 +3,10 @@ import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
 import { AuthenticateService } from '../services/authentication.service';
 import { NavController } from '@ionic/angular';
 
+
+import { AngularFirestore,AngularFirestoreCollection } from '@angular/fire/firestore';
+import { userInfo } from 'os';
+
 @Component({
   selector: 'app-add-user',
   templateUrl: './add-user.page.html',
@@ -29,7 +33,8 @@ export class AddUserPage implements OnInit {
  };
  constructor( private navCtrl: NavController,
               private authService: AuthenticateService,
-              private formBuilder: FormBuilder) { }
+              private formBuilder: FormBuilder,
+              private afs: AngularFirestore) { }
 
  ngOnInit(): void {
    this.validations_form = this.formBuilder.group({
@@ -51,26 +56,27 @@ export class AddUserPage implements OnInit {
    });
 }
 registerworker(value) {
- this.authService.registerworker(value)
+
+
+  
+   this.authService.registerworker(value)
    // tslint:disable-next-line: align
    .then(res => {
      console.log(res);
-     this.errorMessage = '';
-     this.successMessage = 'User Added Successfully.';
-     setTimeout(() => {
-       this.successMessage = '';
-             }, 4000);
-   }, err => {
-     console.log(err);
-     this.errorMessage = err.message;
-     this.successMessage = '';
-     setTimeout(() => {
-       this.errorMessage = '';
-             }, 4000);
+      this.errorMessage = '';
+      this.successMessage = 'User Added Successfully.';
+      setTimeout(() => {
+        this.successMessage = '';
+               }, 4000);
+    }, err => {
+      console.log(err);
+      this.errorMessage = err.message;
+      this.successMessage = '';
+      setTimeout(() => {
+        this.errorMessage = '';
+              }, 4000); 
    });
-}
-
-
-
+    
+  }
 
 }
