@@ -26,3 +26,25 @@ ion-card {
 ion-item {
     --background: transparent;
 }
+
+.validation-errors {
+    //padding-left: 20px;
+    text-align: end;
+    color: var(--ion-color-danger);
+    font-size: small;
+}
+
+.error {
+    .error-message {
+        text-align: center;
+        color: var(--ion-color-danger);
+        font-size: small;
+        margin-left: 10px;
+    }
+    .success-message {
+        text-align: center;
+        color: var(yellow);
+        font-size: small;
+        margin-left: 10px;
+    }
+}

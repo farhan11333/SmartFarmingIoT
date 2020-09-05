@@ -28,10 +28,24 @@
                             <ion-input formControlName="area" type="number" placeholder="Area in Acre" required>
                             </ion-input>
                         </ion-item>
+                        <div class="validation-errors">
+                            <ng-container *ngFor="let validation of validation_messages.area">
+                                <div class="error-message" *ngIf="validations_form.get('area').hasError(validation.type) && (validations_form.get('area').dirty || validations_form.get('area').touched)">
+                                    {{ validation.message }}
+                                </div>
+                            </ng-container>
+                        </div>
                         <ion-item class="location-box">
                             <ion-input formControlName="location" type="text" placeholder="Location" required>
                             </ion-input>
                         </ion-item>
+                        <div class="validation-errors">
+                            <ng-container *ngFor="let validation of validation_messages.location">
+                                <div class="error-message" *ngIf="validations_form.get('location').hasError(validation.type) && (validations_form.get('location').dirty || validations_form.get('location').touched)">
+                                    {{ validation.message }}
+                                </div>
+                            </ng-container>
+                        </div>
                         <ion-item class="Device-box">
                             <ion-input formControlName="device" type="text" placeholder="Device" required>
                             </ion-input>

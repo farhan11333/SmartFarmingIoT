@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { AuthenticateService } from '../services/authentication.service';
-import { NavController } from '@ionic/angular';
+import { NavController, LoadingController } from '@ionic/angular';
 
 
 import { AngularFirestore,AngularFirestoreCollection } from '@angular/fire/firestore';
@@ -34,7 +34,7 @@ export class AddUserPage implements OnInit {
  constructor( private navCtrl: NavController,
               private authService: AuthenticateService,
               private formBuilder: FormBuilder,
-              private afs: AngularFirestore) { }
+              private afs: AngularFirestore,private loadingController: LoadingController) { }
 
  ngOnInit(): void {
    this.validations_form = this.formBuilder.group({
@@ -57,8 +57,14 @@ export class AddUserPage implements OnInit {
 }
 registerworker(value) {
 
-
-  
+  this.loadingController.create({
+    message: 'Adding User...',
+    duration: 3000,
+    spinner:'dots',
+    cssClass:'custom-loader-class'
+  }).then((res) => {
+    res.present();
+  });
    this.authService.registerworker(value)
    // tslint:disable-next-line: align
    .then(res => {
@@ -76,7 +82,7 @@ registerworker(value) {
         this.errorMessage = '';
               }, 4000); 
    });
-    
+   this.validations_form.reset();
   }
 
 }

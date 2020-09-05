@@ -6,7 +6,7 @@ import {
   FormControl,
 } from "@angular/forms";
 import { AuthenticateService } from "../services/authentication.service";
-import { NavController } from "@ionic/angular";
+import { NavController, LoadingController } from "@ionic/angular";
 import {
   AngularFirestore,
   AngularFirestoreCollection,
@@ -32,7 +32,7 @@ export class AddFieldPage implements OnInit {
     private navCtrl: NavController,
     private authService: AuthenticateService,
     private formBuilder: FormBuilder,
-    private afs: AngularFirestore
+    private afs: AngularFirestore,private loadingController: LoadingController
   ) {}
 
   ngOnInit(): void {
@@ -44,6 +44,14 @@ export class AddFieldPage implements OnInit {
     });
   }
   addfield(value) {
+    this.loadingController.create({
+      message: 'Adding Field...',
+      duration: 3000,
+      spinner:'dots',
+      cssClass:'custom-loader-class'
+    }).then((res) => {
+      res.present();
+    });
     const ownerEmail = localStorage.getItem("email");
     this.afs.collection("fields").add({
       fieldname: value.fieldname,

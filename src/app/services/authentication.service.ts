@@ -33,7 +33,7 @@ export class AuthenticateService {
   }
 
   registerUser(value) {
-    const username = value.username;
+    const username = value.ownername;
     return new Promise<any>((resolve, reject) => {
       this.afAuth.auth
         .createUserWithEmailAndPassword(value.email, value.password)

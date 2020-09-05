@@ -19,6 +19,45 @@
         // opacity: 0.5;
     }
     
+    .middle {
+        height: 50px;
+        margin-inline-start: 12px;
+        margin-top: 16px;
+        margin-inline-end: 12px;
+        background: linear-gradient(to right, #f8a0bd, #ffac93);
+        box-shadow: 0 15px 20px rgba(0, 0, 0, 0.19), 0 10px 6px rgba(0, 0, 0, 0.23);
+        padding-top: 10px;
+    }
+    
+    .middle .lbl-field {
+        color: #934c0d;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 22px;
+        margin-left: 119px;
+    }
+    
+    .handlestart {
+        width: 0px;
+        height: 17px;
+        background-color: #FCC;
+        margin-bottom: -15px;
+        margin-left: 48px;
+        margin-top: -10px;
+        border-style: dotted;
+        border-color: midnightblue;
+    }
+    
+    .handleEnd {
+        width: 0px;
+        height: 17px;
+        background-color: #FCC;
+        margin-bottom: -15px;
+        margin-left: 296px;
+        margin-top: -10px;
+        border-style: dotted;
+        border-color: midnightblue;
+    }
+    
     ion-menu-button {
         //font-size: 150px;
         margin-left: 278px;
@@ -47,7 +86,7 @@
         position: relative;
         height: 430px;
         margin-inline-start: 12px;
-        margin-top: 60px;
+        margin-top: 14px;
         margin-inline-end: 12px;
         //background-color: #FFF8F2;
         //background-color: #FEEBE5;

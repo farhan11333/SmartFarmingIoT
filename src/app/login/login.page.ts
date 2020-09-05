@@ -1,6 +1,7 @@
 import { IonIcon } from "@ionic/angular";
 import { Component, OnInit, Query, Type } from "@angular/core";
 import { Router } from "@angular/router";
+import { LoadingController } from '@ionic/angular';
 import {
   FormGroup,
   FormBuilder,
@@ -31,7 +32,8 @@ export class LoginPage implements OnInit {
     private navCtrl: NavController,
     private authService: AuthenticateService,
     private formBuilder: FormBuilder,
-    private afs: AngularFirestore
+    private afs: AngularFirestore,
+    private loadingController: LoadingController
   ) {}
   errorMessage = "";
   // tslint:disable-next-line: variable-name
@@ -71,10 +73,22 @@ export class LoginPage implements OnInit {
   }
 
   loginUser(value) {
-    this.show = true;
-    setTimeout(() => {
-      this.show = false;
-    }, 2000);
+    // this.show = true;
+    // setTimeout(() => {
+    //   this.show = false;
+    // }, 2000);
+    this.loadingController.create({
+      message: 'Loggin in...',
+      duration: 3000,
+      spinner:'dots',
+      cssClass:'custom-loader-class'
+    }).then((res) => {
+      res.present();
+
+      res.onDidDismiss().then((dis) => {
+        console.log('Loading dismissed! after 2 Seconds');
+      });
+    });
     this.validations_form.reset();
     this.authService.loginUser(value).then(
       (res) => {

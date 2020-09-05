@@ -15,8 +15,8 @@ export class RegistrationPage implements OnInit {
  
    // tslint:disable-next-line: variable-name
   validation_messages = {
-    username: [
-      { type: 'required', message: 'Username is required.' },
+    ownername: [
+      { type: 'required', message: 'owner name is required.' },
     ],
     email: [
       { type: 'required', message: 'Email is required.' },
@@ -36,7 +36,7 @@ export class RegistrationPage implements OnInit {
 
   ngOnInit(): void {
     this.validations_form = this.formBuilder.group({
-      username: new FormControl('', Validators.compose([
+      ownername: new FormControl('', Validators.compose([
         Validators.required
       ])),
 
