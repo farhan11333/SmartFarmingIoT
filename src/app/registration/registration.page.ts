@@ -15,6 +15,9 @@ export class RegistrationPage implements OnInit {
  
    // tslint:disable-next-line: variable-name
   validation_messages = {
+    username: [
+      { type: 'required', message: 'Username is required.' },
+    ],
     email: [
       { type: 'required', message: 'Email is required.' },
       { type: 'pattern', message: 'Enter a valid email.' }
@@ -33,6 +36,10 @@ export class RegistrationPage implements OnInit {
 
   ngOnInit(): void {
     this.validations_form = this.formBuilder.group({
+      username: new FormControl('', Validators.compose([
+        Validators.required
+      ])),
+
       email: new FormControl('', Validators.compose([
         Validators.required,
         Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
@@ -61,7 +68,9 @@ export class RegistrationPage implements OnInit {
         setTimeout(() => {
           this.errorMessage = '';
                 }, 4000);
+        
       });
+    this.validations_form.reset();
   }
 
   goLoginPage() {

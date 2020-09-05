@@ -130,6 +130,15 @@ ion-no-border {
     box-shadow: 0 15px 20px rgba(0, 0, 0, 0.19), 0 10px 6px rgba(0, 0, 0, 0.19);
 }
 
-ion-list .start-item {
-    border-radius: 10px, 10px, 0px, 0px;
+ion-list {
+    padding-top: -10px;
+    margin-top: 6px;
+    margin-bottom: -21px;
+    border-radius: 21px;
+    background: transparent;
+    padding-bottom: -10px;
+}
+
+ion-item {
+    --border-radius: 21px;
 }

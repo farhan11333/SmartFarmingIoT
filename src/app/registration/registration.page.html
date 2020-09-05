@@ -16,6 +16,19 @@
 
                         </div>
                         <div padding>
+                            <ion-label class="lbl">Username*</ion-label>
+                            <ion-item class="itemform" lines="none">
+
+                                <ion-input formControlName="username" type="text " placeholder="Username " ion></ion-input>
+                            </ion-item>
+                            <div class="validation-errors">
+                                <ng-container *ngFor="let validation of validation_messages.username">
+                                    <div class="error-message" *ngIf="validations_form.get('username').hasError(validation.type) && (validations_form.get('username').dirty || validations_form.get('username').touched)">
+                                        {{ validation.message }}
+                                    </div>
+                                </ng-container>
+                            </div>
+                            <br>
 
                             <ion-label class="lbl">Email*</ion-label>
                             <ion-item class="itemform" lines="none">

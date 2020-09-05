@@ -63,9 +63,9 @@ registerworker(value) {
    // tslint:disable-next-line: align
    .then(res => {
      console.log(res);
-      this.errorMessage = '';
-      this.successMessage = 'User Added Successfully.';
-      setTimeout(() => {
+     this.errorMessage = '';
+     this.successMessage = 'User Added Successfully.';
+     setTimeout(() => {
         this.successMessage = '';
                }, 4000);
     }, err => {
