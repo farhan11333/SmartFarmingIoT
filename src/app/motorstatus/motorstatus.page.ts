@@ -6,17 +6,16 @@ import { AngularFireDatabase } from '@angular/fire/database';
 import { Timestamp } from 'rxjs/internal/operators/timestamp';
 import * as firebase from 'firebase';
 import { map } from 'rxjs/operators';
-import { timeStamp } from 'console';
+import { timeStamp, time } from 'console';
 
 
 
+export interface Motor {
+  startedAt, motorIsrunning
+}
 
 
-export interface Motor {startedAt;
-   motorIsrunning;
-
-
- }
+export interface MotorStatus { status: string; time: string; }
 // tslint:disable-next-line: no-unused-expression
 
 @Component({
@@ -30,42 +29,41 @@ export class MotorstatusPage implements OnInit {
 
   constructor(public afs: AngularFirestore, private db: AngularFireDatabase) { }
     currentDate;
-  isChecked ;
-   motorStatusdoc: AngularFirestoreDocument<Motor>;
-  motorstatus: Observable<Motor>;
+  isChecker ;
+
+statusCollection: AngularFirestoreCollection<MotorStatus>;
+motorStatus: Observable<MotorStatus[]>;
+motorButton: Observable<Motor>;
+;
   ngOnInit() {
+this.statusCollection = this.afs.collection<MotorStatus>('devices/farm1/history', ref => ref.orderBy('time', 'desc'));
+this.motorStatus = this.statusCollection.valueChanges();
 
-
-
-
-      // this.motorStatusdoc = this.afs.doc<Motor>('farms/farm1');
-      // this.motorstatus = this.motorStatusdoc.valueChanges();
+this.motorButton = this.db.object<Motor>('farms/farm1').valueChanges();
+this.motorButton.subscribe(state => {
+  this.isChecker = state.motorIsrunning;
+  console.log('On value Observe:' + this.isChecker);
+})
 }
-  async buttonMotor(isChecked) {
+  async buttonMotor($event) {
     const name = this.db.database.ref('farms/farm1');
-    // .set({
-    //   history : {
-    //   status: isChecked,
-    //   time: firebase.database.ServerValue.TIMESTAMP
-    //   }
-    // })
+  
 
 
     try {
 
-      this.isChecked = !this.isChecked;
-
+      //this.isChecked = !this.isChecked;
+console.log('in buttonMotor:' + this.isChecker);
       this.currentDate = new Date();
       // var currentTime = new Date().getTime();
 
       // await this.motorStatusdoc.update({motor: {
       // isRunning: isChecked}, startedAt: firebase.firestore.FieldValue.serverTimestamp() });
       // await this.motorStatusdoc.update({motorIsrunning: isChecked, startedAt: firebase.firestore.FieldValue.serverTimestamp() });
-      await name.update({motorIsrunning: isChecked, startedAt: firebase.database.ServerValue.TIMESTAMP  });
+      await name.update({motorIsrunning: !this.isChecker, startedAt: firebase.database.ServerValue.TIMESTAMP  });
 
 
 
-     // this.currentDate =  firebase.database.ServerValue.TIMESTAMP * 1000;
 
 
 

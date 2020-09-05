@@ -1,42 +1,28 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-buttons class="icon-only" slot="end">
-      <ion-icon
-        name="add-circle-outline"
-        slot="end"
-        routerLink="/add-field"
-      ></ion-icon>
-    </ion-buttons>
-    <ion-back-button defaultHref="admin-view" slot="start"></ion-back-button>
-    <ion-title>Fields</ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-buttons class="icon-only" slot="end">
+            <ion-icon name="add-circle-outline" slot="end" routerLink="/add-field"></ion-icon>
+        </ion-buttons>
+        <ion-back-button defaultHref="admin-view" slot="start"></ion-back-button>
+        <ion-title>Fields</ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content fullscreen="true">
-  <!-- <ion-card>
-    <ion-card-header no padding>
-      <strong>Rice Field</strong>
-    </ion-card-header>
-    <h6>129.67, 24.89</h6>
-    <h6>2 Acre</h6>
-    <h6>Lahore Chak 2</h6>
-    <ion-row>
-      <ion-icon class="user" name="person-outline"></ion-icon> &nbsp;
-      <ion-label> Wali gul </ion-label>
-    </ion-row>
-  </ion-card> -->
-  <ng-container *ngFor="let field of fields">
-    <ion-card>
-      <ion-card-header no padding>
-        <strong>{{field.fieldname}}</strong>
-      </ion-card-header>
-      <h6>{{field.area}}</h6>
-      <h6>{{field.location}}</h6>
-      <!-- <h6>{{field.worker}}</h6> -->
-      <ion-row>
-        <ion-icon class="user" name="person-outline"></ion-icon> &nbsp;
-        <ion-label>{{field.ownerEmail}}</ion-label>
-      </ion-row>
-    </ion-card>
-  </ng-container>
+
+    <ng-container *ngFor="let field of fields">
+
+        <ion-card>
+            <ion-card-header no padding>
+                <h1>{{field.fieldname}}</h1>
+            </ion-card-header>
+            <h3>{{field.area}}</h3>
+            <h3>{{field.location}}</h3>
+            <!-- <h6>{{field.worker}}</h6>-->
+            <ion-row>
+                <ion-icon class="user" name="person-outline"></ion-icon> &nbsp;
+                <ion-label>{{field.ownerEmail}}</ion-label>
+            </ion-row>
+        </ion-card>
+    </ng-container>
 </ion-content>
