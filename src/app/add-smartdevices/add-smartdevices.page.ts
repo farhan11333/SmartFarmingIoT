@@ -80,7 +80,7 @@ export class AddSmartdevicesPage implements OnInit {
     ref
       .set({
         name: value.smartdevice,
-        attachedTo: "",
+        attachedTo: ownerid,
         soil: "0",
         humidity: "0",
         temperature: "0",
@@ -93,5 +93,6 @@ export class AddSmartdevicesPage implements OnInit {
         this.successMessage = "Device added successfully";
         this.validations_form.reset();
       });
+    debugger;
   }
 }
