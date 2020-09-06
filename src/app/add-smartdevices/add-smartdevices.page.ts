@@ -51,6 +51,17 @@ export class AddSmartdevicesPage implements OnInit {
       ownerid: new FormControl("", Validators.compose([Validators.required])),
     });
 
+    // const snapshotref = this.afs
+    //   .collection("users", (ref) => ref.where("type", "==", "owners"))
+    //   .snapshotChanges()
+    //   .subscribe((users) => {
+    //     this.users = users.map((user) => {
+    //       const id = user.payload.doc.id;
+    //       const data: any = user.payload.doc.data();
+    //       return { id, ...data };
+    //     });
+    //   });
+
     this.afs
       .collection("users", (ref) => ref.where("type", "==", "owner"))
       .valueChanges()
