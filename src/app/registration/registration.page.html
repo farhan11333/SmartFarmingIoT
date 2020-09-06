@@ -1,95 +1,118 @@
 <ion-content padding>
-    <ion-card-content class="mycard">
-        <img src="assets/images/front.png" alt="logo">
-        <div class="myOverlay" padding>
-            <div class="card-title">Sign Up <br>Here</div>
+  <ion-card-content class="mycard">
+    <img src="assets/images/front.png" alt="logo" />
+    <div class="myOverlay" padding>
+      <div class="card-title">Sign Up <br />Here</div>
+    </div>
+  </ion-card-content>
+
+  <form
+    class="form"
+    [formGroup]="validations_form"
+    (ngSubmit)="tryRegister(validations_form.value)"
+  >
+    <ion-grid>
+      <ion-list>
+        <ion-row justify-content-centre>
+          <ion-col align-self-center>
+            <div text-centre></div>
+            <div padding>
+              <ion-label class="lbl">Name*</ion-label>
+              <ion-item class="itemform" lines="none">
+                <ion-input
+                  formControlName="ownername"
+                  type="text "
+                  placeholder="Name "
+                  ion
+                ></ion-input>
+              </ion-item>
+              <div class="validation-errors">
+                <ng-container
+                  *ngFor="let validation of validation_messages.ownername"
+                >
+                  <div
+                    class="error-message"
+                    *ngIf="validations_form.get('username').hasError(validation.type) && (validations_form.get('username').dirty || validations_form.get('username').touched)"
+                  >
+                    {{ validation.message }}
+                  </div>
+                </ng-container>
+              </div>
+              <br />
+
+              <ion-label class="lbl">Email*</ion-label>
+              <ion-item class="itemform" lines="none">
+                <ion-input
+                  formControlName="email"
+                  type="text "
+                  placeholder="Email "
+                  ion
+                ></ion-input>
+              </ion-item>
+              <div class="validation-errors">
+                <ng-container
+                  *ngFor="let validation of validation_messages.email"
+                >
+                  <div
+                    class="error-message"
+                    *ngIf="validations_form.get('email').hasError(validation.type) && (validations_form.get('email').dirty || validations_form.get('email').touched)"
+                  >
+                    {{ validation.message }}
+                  </div>
+                </ng-container>
+              </div>
+              <br />
+
+              <ion-label class="lbl">Password*</ion-label>
+
+              <ion-item class="itemform" lines="none">
+                <ion-input
+                  formControlName="password"
+                  type="password"
+                  placeholder=" Password"
+                  autocomplete="disabled"
+                ></ion-input>
+              </ion-item>
+              <div class="validation-errors">
+                <ng-container
+                  *ngFor="let validation of validation_messages.password"
+                >
+                  <div
+                    class="error-message"
+                    *ngIf="validations_form.get('password').hasError(validation.type) && (validations_form.get('password').dirty || validations_form.get('password').touched)"
+                  >
+                    {{ validation.message }}
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+          </ion-col>
+        </ion-row>
+        <div class="error">
+          <label class="error-message">{{errorMessage}}</label>
+          <label class="success-message">{{successMessage}}</label>
         </div>
-    </ion-card-content>
+        <ion-buttons>
+          <ion-button
+            class="btn-login"
+            [routerLink]="['/login']"
+            expand="block"
+            color="white"
+            fill="outline"
+            ><span class="txt-login" item-left>Login?</span></ion-button
+          >
 
-    <form class="form" [formGroup]="validations_form" (ngSubmit)="tryRegister(validations_form.value)">
-        <ion-grid>
-            <ion-list>
-                <ion-row justify-content-centre>
-                    <ion-col align-self-center>
-
-                        <div text-centre>
-
-                        </div>
-                        <div padding>
-                            <ion-label class="lbl">Name*</ion-label>
-                            <ion-item class="itemform" lines="none">
-
-                                <ion-input formControlName="ownername" type="text " placeholder="Name " ion></ion-input>
-                            </ion-item>
-                            <div class="validation-errors">
-                                <ng-container *ngFor="let validation of validation_messages.ownername">
-                                    <div class="error-message" *ngIf="validations_form.get('username').hasError(validation.type) && (validations_form.get('username').dirty || validations_form.get('username').touched)">
-                                        {{ validation.message }}
-                                    </div>
-                                </ng-container>
-                            </div>
-                            <br>
-
-                            <ion-label class="lbl">Email*</ion-label>
-                            <ion-item class="itemform" lines="none">
-
-                                <ion-input formControlName="email" type="text " placeholder="Email " ion></ion-input>
-                            </ion-item>
-                            <div class="validation-errors">
-                                <ng-container *ngFor="let validation of validation_messages.email">
-                                    <div class="error-message" *ngIf="validations_form.get('email').hasError(validation.type) && (validations_form.get('email').dirty || validations_form.get('email').touched)">
-                                        {{ validation.message }}
-                                    </div>
-                                </ng-container>
-                            </div>
-                            <br>
-
-
-                            <ion-label class="lbl">Password*</ion-label>
-
-                            <ion-item class="itemform " lines="none">
-
-                                <ion-input formControlName="password" type="password" placeholder=" Password" autocomplete="disabled"></ion-input>
-
-                            </ion-item>
-                            <div class="validation-errors">
-                                <ng-container *ngFor="let validation of validation_messages.password">
-                                    <div class="error-message" *ngIf="validations_form.get('password').hasError(validation.type) && (validations_form.get('password').dirty || validations_form.get('password').touched)">
-                                        {{ validation.message }}
-                                    </div>
-                                </ng-container>
-                            </div>
-
-
-                        </div>
-                    </ion-col>
-                </ion-row>
-                <div class="error">
-                    <label class="error-message">{{errorMessage}}</label>
-                    <label class="success-message">{{successMessage}}</label></div>
-                <ion-buttons>
-
-
-
-                    <ion-button class="btn-login" [routerLink]="['/login']" expand="block" color="white" fill="outline"><span class="txt-login" item-left>Login?</span></ion-button>
-
-                    <ion-button class="submit-btn" type="submit" [disabled]="!validations_form.valid" expand="block" color="secondary" fill="solid"><span class="txt-register">Register</span></ion-button>
-                </ion-buttons>
-
-
-
-
-
-
-
-
-
-
-
-            </ion-list>
-        </ion-grid>
-
-    </form>
-
-
+          <ion-button
+            class="submit-btn"
+            type="submit"
+            [disabled]="!validations_form.valid"
+            expand="block"
+            color="secondary"
+            fill="solid"
+            ><span class="txt-register">Register</span></ion-button
+          >
+        </ion-buttons>
+      </ion-list>
+    </ion-grid>
+  </form>
 </ion-content>
