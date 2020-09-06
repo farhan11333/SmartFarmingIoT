@@ -17,7 +17,6 @@ export class AdminViewUsersPage implements OnInit {
     const ownerEmail = localStorage.getItem("email");
     this.afs
       .collection("users", (ref) => ref.where("ownerEmail", "==", ownerEmail))
-
       .valueChanges()
       .subscribe((_users) => {
         this.users = _users;

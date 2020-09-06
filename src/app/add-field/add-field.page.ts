@@ -32,7 +32,8 @@ export class AddFieldPage implements OnInit {
     private navCtrl: NavController,
     private authService: AuthenticateService,
     private formBuilder: FormBuilder,
-    private afs: AngularFirestore,private loadingController: LoadingController
+    private afs: AngularFirestore,
+    private loadingController: LoadingController
   ) {}
 
   ngOnInit(): void {
@@ -44,24 +45,40 @@ export class AddFieldPage implements OnInit {
     });
   }
   addfield(value) {
-    this.loadingController.create({
-      message: 'Adding Field...',
-      duration: 3000,
-      spinner:'dots',
-      cssClass:'custom-loader-class'
-    }).then((res) => {
-      res.present();
-    });
-    const ownerEmail = localStorage.getItem("email");
-    this.afs.collection("fields").add({
-      fieldname: value.fieldname,
-      area: value.area + "Acre",
-      location: value.location,
-      device: value.device,
-      ownerEmail,
-    }).then(()=>{
-      this.successMessage = 'Field has been Added Succesfully.';
-    })
-    this.validations_form.reset();
+    console.log(value);
+    // debugger;
+    this.loadingController
+      .create({
+        message: "Adding Field...",
+        duration: 3000,
+        spinner: "dots",
+        cssClass: "custom-loader-class",
+      })
+      .then((res) => {
+        res.present();
+      });
+
+    this.afs
+      .collection("devices", (ref) => ref.where("name", "==", value.device))
+      .valueChanges()
+      .subscribe((devices) => {
+        console.log(devices);
+        if (devices.length >= 1) {
+          const ownerEmail = localStorage.getItem("email");
+          this.afs
+            .collection("fields")
+            .add({
+              fieldname: value.fieldname,
+              area: value.area + "Acre",
+              location: value.location,
+              device: value.device,
+              ownerEmail,
+            })
+            .then(() => {
+              this.successMessage = "Field has been Added Succesfully.";
+            });
+          this.validations_form.reset();
+        }
+      });
   }
 }
