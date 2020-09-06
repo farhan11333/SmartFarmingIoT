@@ -13,6 +13,7 @@
 <ion-content fullscreen="true">
   <ion-card *ngFor="let field of fields">
     <ion-card-header no padding>
+      <ion-icon class="user" name="person-outline"></ion-icon> &nbsp;
       <strong> {{field.ownerName}} </strong>
       <ion-label>Attached</ion-label> {{field.device}}
     </ion-card-header>

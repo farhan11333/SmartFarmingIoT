@@ -101,7 +101,9 @@ export class LoginPage implements OnInit {
             .subscribe((users) => {
               // tslint:disable-next-line: no-shadowed-variable
               const userinfo: any = users[0];
-              if (userinfo.type === "owner") {
+              if (userinfo.type === "admin") {
+                this.navCtrl.navigateForward("/administrator");
+              } else if (userinfo.type === "owner") {
                 this.navCtrl.navigateForward("/admin-view");
               } else {
                 this.navCtrl.navigateForward("/main");
