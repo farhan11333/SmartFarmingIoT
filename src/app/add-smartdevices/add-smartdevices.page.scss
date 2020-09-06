@@ -7,7 +7,14 @@ ion-toolbar {
 }
 
 ion-card {
-    height: 70px;
+    height: 10%;
+}
+
+.validation-errors {
+    //padding-left: 20px;
+    text-align: end;
+    color: var(--ion-color-danger);
+    font-size: small;
 }
 
 .error {
