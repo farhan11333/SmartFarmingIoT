@@ -79,6 +79,10 @@ const routes: Routes = [
     path: 'add-smartdevices',
     loadChildren: () => import('./add-smartdevices/add-smartdevices.module').then( m => m.AddSmartdevicesPageModule)
   },
+  {
+    path: 'delete-popover',
+    loadChildren: () => import('./delete-popover/delete-popover.module').then( m => m.DeletePopoverPageModule)
+  },
 ];
 
 @NgModule({

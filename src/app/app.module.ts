@@ -1,3 +1,4 @@
+import { DeletePopoverPageModule } from './delete-popover/delete-popover.module';
 import { from } from 'rxjs';
 import { PopoverPageModule } from './popover/popover.module';
 import { environment } from './../environments/environment';
@@ -38,7 +39,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
     BrowserModule, IonicModule.forRoot(), AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase), AngularFireAuthModule, AngularFirestoreModule, 
     PopoverPageModule,
-    AdminPopoverPageModule, AdministratorpopoverPageModule, AngularFireDatabaseModule,
+    AdminPopoverPageModule, AdministratorpopoverPageModule, AngularFireDatabaseModule, DeletePopoverPageModule
   ],
 
   providers: [
