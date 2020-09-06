@@ -11,6 +11,8 @@ import {
   AngularFirestore,
   AngularFirestoreCollection,
 } from "@angular/fire/firestore";
+import { userInfo } from "os";
+import { AdminViewUsersPage } from "../admin-view-users/admin-view-users.page";
 
 @Component({
   selector: "app-add-field",
@@ -22,6 +24,7 @@ export class AddFieldPage implements OnInit {
   errorMessage: "";
   successMessage: string = "";
   devices: any = [];
+  users: any = [];
 
   validation_messages = {
     fieldname: [{ type: "required", message: "Field Name is required." }],
@@ -53,7 +56,15 @@ export class AddFieldPage implements OnInit {
      *    
      * *******************/
     this.afs
-      .collection("devices", (ref) => ref.where("attachTo", "==", "ownerName"))
+      .collection("users", (ref) => ref.where("type", "==", "owner"))
+      .valueChanges()
+      .subscribe((x) => {
+        this.users = x;
+        console.log(this.users);
+      });
+    /********************* */
+    this.afs
+      .collection("devices", (ref) => ref.where("attachTo", "==", this.users))
       .valueChanges()
       .subscribe((owner) => {
         this.devices = owner;
