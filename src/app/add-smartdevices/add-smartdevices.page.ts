@@ -54,8 +54,8 @@ export class AddSmartdevicesPage implements OnInit {
     this.afs
       .collection("users", (ref) => ref.where("type", "==", "owner"))
       .valueChanges()
-      .subscribe((user) => {
-        this.users = user;
+      .subscribe((owner) => {
+        this.users = owner;
         console.log(this.users);
       });
   }
