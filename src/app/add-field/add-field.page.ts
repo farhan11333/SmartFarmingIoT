@@ -21,6 +21,7 @@ export class AddFieldPage implements OnInit {
   validations_form: FormGroup;
   errorMessage: "";
   successMessage: string = "";
+  devices: any = [];
 
   validation_messages = {
     fieldname: [{ type: "required", message: "Field Name is required." }],
@@ -43,6 +44,21 @@ export class AddFieldPage implements OnInit {
       location: new FormControl("", Validators.compose([Validators.required])),
       device: new FormControl("", Validators.compose([Validators.required])),
     });
+
+    /*********************
+     * 
+     * 
+     Will be changed accordingly
+     parameters issues
+     *    
+     * *******************/
+    this.afs
+      .collection("devices", (ref) => ref.where("attachTo", "==", "ownerName"))
+      .valueChanges()
+      .subscribe((owner) => {
+        this.devices = owner;
+        console.log(this.devices);
+      });
   }
   addfield(value) {
     console.log(value);

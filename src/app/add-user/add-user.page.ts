@@ -84,7 +84,6 @@ export class AddUserPage implements OnInit {
       .valueChanges()
       .subscribe((fields) => {
         console.log(fields);
-        debugger;
         if (fields.length >= 1) {
           this.authService
             .registerworker(value)
