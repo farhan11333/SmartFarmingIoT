@@ -1,7 +1,7 @@
 import { IonIcon } from "@ionic/angular";
 import { Component, OnInit, Query, Type } from "@angular/core";
 import { Router } from "@angular/router";
-import { LoadingController } from '@ionic/angular';
+import { LoadingController } from "@ionic/angular";
 import {
   FormGroup,
   FormBuilder,
@@ -56,7 +56,7 @@ export class LoginPage implements OnInit {
     this.validations_form = this.formBuilder.group({
       email: new FormControl(
         "",
-        
+
         Validators.compose([
           Validators.required,
           Validators.pattern("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$"),
@@ -77,18 +77,20 @@ export class LoginPage implements OnInit {
     // setTimeout(() => {
     //   this.show = false;
     // }, 2000);
-    this.loadingController.create({
-      message: 'Loggin in...',
-      duration: 3000,
-      spinner:'dots',
-      cssClass:'custom-loader-class'
-    }).then((res) => {
-      res.present();
+    this.loadingController
+      .create({
+        message: "Loggin in...",
+        duration: 3000,
+        spinner: "dots",
+        cssClass: "custom-loader-class",
+      })
+      .then((res) => {
+        res.present();
 
-      res.onDidDismiss().then((dis) => {
-        console.log('Loading dismissed! after 2 Seconds');
+        res.onDidDismiss().then((dis) => {
+          console.log("Loading dismissed! after 2 Seconds");
+        });
       });
-    });
     this.validations_form.reset();
     this.authService.loginUser(value).then(
       (res) => {
@@ -99,7 +101,9 @@ export class LoginPage implements OnInit {
             .subscribe((users) => {
               // tslint:disable-next-line: no-shadowed-variable
               const userinfo: any = users[0];
-              if (userinfo.type === "owner") {
+              if (userinfo.type === "admin") {
+                this.navCtrl.navigateForward("/administrator");
+              } else if (userinfo.type === "owner") {
                 this.navCtrl.navigateForward("/admin-view");
               } else {
                 this.navCtrl.navigateForward("/main");

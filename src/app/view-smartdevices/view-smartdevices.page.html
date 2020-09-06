@@ -1,29 +1,24 @@
 <ion-header>
-    <ion-toolbar>
-        <ion-buttons class="icon-only" slot="end">
-            <div class="icon" routerLink='/add-smartdevices'>
-                <img src="../../assets/farmadd.png">
-            </div>
-        </ion-buttons>
-        <ion-back-button defaultHref="administrator" slot='start'></ion-back-button>
-        <ion-title>Smart Devices</ion-title>
-
-    </ion-toolbar>
+  <ion-toolbar>
+    <ion-buttons class="icon-only" slot="end">
+      <div class="icon" routerLink="/add-smartdevices">
+        <img src="../../assets/farmadd.png" />
+      </div>
+    </ion-buttons>
+    <ion-back-button defaultHref="administrator" slot="start"></ion-back-button>
+    <ion-title>Smart Devices</ion-title>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content fullscreen="true">
-    <ion-card>
-
-        <ion-card-header no padding>
-            <strong>Farhan ALI</strong>
-            <ion-label>Attached</ion-label> ABCG32
-        </ion-card-header>
-        <h6>Rice Field</h6>
-        <h6>2 Acre</h6>
-        <h6>Lahore Chak 2</h6>
-
-
-
-
-    </ion-card>
+  <ion-card *ngFor="let field of fields">
+    <ion-card-header no padding>
+      <ion-icon class="user" name="person-outline"></ion-icon> &nbsp;
+      <strong> {{field.ownerName}} </strong>
+      <ion-label>Attached</ion-label> {{field.device}}
+    </ion-card-header>
+    <h6>{{field.fieldname}}</h6>
+    <h6>{{field.area}}</h6>
+    <h6>{{field.location}}</h6>
+  </ion-card>
 </ion-content>

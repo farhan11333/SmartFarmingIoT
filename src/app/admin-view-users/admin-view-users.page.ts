@@ -15,18 +15,35 @@ export class AdminViewUsersPage implements OnInit {
 
   ngOnInit() {
     const ownerEmail = localStorage.getItem("email");
-    this.afs
-      .collection("users", (ref) => ref.where("ownerEmail", "==", ownerEmail))
 
-      .valueChanges()
-      .subscribe((_users) => {
-        this.users = _users;
-        console.log(this.users);
+    const snapshotref = this.afs
+      .collection("users", (ref) => ref.where("ownerEmail", "==", ownerEmail))
+      .snapshotChanges()
+      .subscribe((users) => {
+        this.users = users.map((user) => {
+          const id = user.payload.doc.id;
+          const data: any = user.payload.doc.data();
+          return { id, ...data };
+        });
       });
+
+    // .valueChanges();
+    // .subscribe((_users) => {
+    // debugger;
+    // this.users = _users;
+    // console.log(this.users);
+    // });
   }
 
   deleteUser(user) {
+    debugger;
     console.log("userDeleted");
+    this.afs.doc("users/" + user.id).delete();
+    // this.afs
+    //   .collection("users")
+    //   .doc("users" + user)
+    //   .delete();
+    debugger;
     //   this.afs
     //     .collection("users", (ref) => ref.where("email", "==", user.email))
     //     .delete();

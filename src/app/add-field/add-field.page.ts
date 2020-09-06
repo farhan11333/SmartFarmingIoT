@@ -11,6 +11,8 @@ import {
   AngularFirestore,
   AngularFirestoreCollection,
 } from "@angular/fire/firestore";
+import { userInfo } from "os";
+import { AdminViewUsersPage } from "../admin-view-users/admin-view-users.page";
 
 @Component({
   selector: "app-add-field",
@@ -21,6 +23,8 @@ export class AddFieldPage implements OnInit {
   validations_form: FormGroup;
   errorMessage: "";
   successMessage: string = "";
+  devices: any = [];
+  users: any = [];
 
   validation_messages = {
     fieldname: [{ type: "required", message: "Field Name is required." }],
@@ -32,7 +36,8 @@ export class AddFieldPage implements OnInit {
     private navCtrl: NavController,
     private authService: AuthenticateService,
     private formBuilder: FormBuilder,
-    private afs: AngularFirestore,private loadingController: LoadingController
+    private afs: AngularFirestore,
+    private loadingController: LoadingController
   ) {}
 
   ngOnInit(): void {
@@ -42,26 +47,65 @@ export class AddFieldPage implements OnInit {
       location: new FormControl("", Validators.compose([Validators.required])),
       device: new FormControl("", Validators.compose([Validators.required])),
     });
+
+    /*********************
+     * 
+     * 
+     Will be changed accordingly
+     parameters issues
+     *    
+     * *******************/
+    this.afs
+      .collection("users", (ref) => ref.where("type", "==", "owner"))
+      .valueChanges()
+      .subscribe((x) => {
+        this.users = x;
+        console.log(this.users);
+      });
+    /********************* */
+    this.afs
+      .collection("devices", (ref) => ref.where("attachTo", "==", this.users))
+      .valueChanges()
+      .subscribe((owner) => {
+        this.devices = owner;
+        console.log(this.devices);
+      });
   }
   addfield(value) {
-    this.loadingController.create({
-      message: 'Adding Field...',
-      duration: 3000,
-      spinner:'dots',
-      cssClass:'custom-loader-class'
-    }).then((res) => {
-      res.present();
-    });
-    const ownerEmail = localStorage.getItem("email");
-    this.afs.collection("fields").add({
-      fieldname: value.fieldname,
-      area: value.area + "Acre",
-      location: value.location,
-      device: value.device,
-      ownerEmail,
-    }).then(()=>{
-      this.successMessage = 'Field has been Added Succesfully.';
-    })
-    this.validations_form.reset();
+    console.log(value);
+    // debugger;
+    this.loadingController
+      .create({
+        message: "Adding Field...",
+        duration: 3000,
+        spinner: "dots",
+        cssClass: "custom-loader-class",
+      })
+      .then((res) => {
+        res.present();
+      });
+
+    this.afs
+      .collection("devices", (ref) => ref.where("name", "==", value.device))
+      .valueChanges()
+      .subscribe((devices) => {
+        console.log(devices);
+        if (devices.length >= 1) {
+          const ownerEmail = localStorage.getItem("email");
+          this.afs
+            .collection("fields")
+            .add({
+              fieldname: value.fieldname,
+              area: value.area + "Acre",
+              location: value.location,
+              device: value.device,
+              ownerEmail,
+            })
+            .then(() => {
+              this.successMessage = "Field has been Added Succesfully.";
+            });
+          this.validations_form.reset();
+        }
+      });
   }
 }

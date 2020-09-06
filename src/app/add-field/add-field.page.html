@@ -13,7 +13,7 @@
                     <div text-center></div>
                     <div padding>
                         <ion-item class="fieldname-box">
-                            <ion-input formControlName="fieldname" type="text" placeholder="Field Name" style='text-transform:uppercase' required>
+                            <ion-input formControlName="fieldname" type="text" placeholder="Field Name" required>
                             </ion-input>
                         </ion-item>
                         <div class="validation-errors">
@@ -36,7 +36,7 @@
                             </ng-container>
                         </div>
                         <ion-item class="location-box">
-                            <ion-input formControlName="location" type="text" placeholder="Location" style='text-transform:uppercase' required>
+                            <ion-input formControlName="location" type="text" placeholder="Location" required>
                             </ion-input>
                         </ion-item>
                         <div class="validation-errors">
@@ -52,9 +52,10 @@
                         </ion-item> -->
                         <ion-item>
                             <ion-label>Device</ion-label>
-                            <ion-select formControlName='device' placeholder="Select One" required>
-                                <ion-select-option value="f">Female</ion-select-option>
-                                <ion-select-option value="m">Male</ion-select-option>
+                            <ion-select formControlName="device" placeholder="Select One" required>
+                                <ion-select-option value="f" *ngFor="let device of devices">
+                                    {{device.attachTo}}
+                                </ion-select-option>
                             </ion-select>
                         </ion-item>
                     </div>
@@ -62,11 +63,11 @@
             </ion-row>
             <div class="error">
                 <label class="error-message">{{errorMessage}}</label>
-                <label class="success-message">{{successMessage}}</label></div>
+                <label class="success-message">{{successMessage}}</label>
+            </div>
             <ion-row class="buttons">
                 <ion-button type="submit" class="button" shape="round" expand="block" [disabled]="!validations_form.valid">ADD</ion-button>
             </ion-row>
         </form>
-
     </ion-card>
 </ion-content>
