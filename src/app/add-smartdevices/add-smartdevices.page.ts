@@ -19,7 +19,10 @@ export class AddSmartdevicesPage implements OnInit {
    smartdevice: [
      { type: 'required', message: 'Device Name is required.' },
     
-   ] };
+   ],
+  ownerid: [{
+    type: 'required', message: 'owner is required.'}
+  ] };
   constructor( private navCtrl: NavController,
     private authService: AuthenticateService,
     private formBuilder: FormBuilder, private afs: AngularFirestore,private loadingController: LoadingController) { }
@@ -31,6 +34,9 @@ export class AddSmartdevicesPage implements OnInit {
         Validators.required
        
       ])),
+      ownerid: new FormControl('',Validators.compose([
+        Validators.required
+      ]))
       
  
     });
@@ -49,16 +55,22 @@ export class AddSmartdevicesPage implements OnInit {
       });
     });
   const id = value.smartdevice;
-  const ref = this.afs.collection('devices').doc(id).set({
+  const ownerid = value.ownerid;
+  const ref = this.afs.collection('devices').doc(id);
+    ref.set({
         
        name: value.smartdevice,
+       attachedTo: "",
        soil: "0",
         humidity: "0",
         temperature: "0",
         motorIsrunning: false,
         startedAt: "0"
+       //} ) ref.collection('history').doc(id).set({
+      //   status:"",
+
       }).then(() => { 
-        this.successMessage ='Device added successfully';
+        this.successMessage = 'Device added successfully';
         this.validations_form.reset() ;
     
     }
