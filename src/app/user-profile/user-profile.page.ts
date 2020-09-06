@@ -5,7 +5,7 @@ import { AuthenticateService } from '../services/authentication.service';
 import { AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { FormGroup } from '@angular/forms';
-
+import {FormBuilder,Validators,FormControl } from "@angular/forms";
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.page.html',
@@ -13,18 +13,29 @@ import { FormGroup } from '@angular/forms';
 })
 export class UserProfilePage implements OnInit {
   users: any = [];
-  myform: FormGroup;
+
   userEmail: string;
+  
+  validations_form: FormGroup;
   // email = localStorage.getItem('email');
-  constructor(private afs: AngularFirestore,private authService: AuthenticateService,private alertCtrl: AlertController,private router: Router) {}
+  constructor(private afs: AngularFirestore,private authService: AuthenticateService,private alertCtrl: AlertController,private router: Router, private formBuilder: FormBuilder,) {}
 
   ngOnInit() {
+    this.validations_form = this.formBuilder.group({
+      username: new FormControl(
+        '',
+        
+        Validators.compose([
+          Validators.required,]))
+        });
    /* *****************get logged in user email*************************** */
     this.authService.userDetails().subscribe(
       (res) => {
+         
         console.log("res", res);
         if (res !== null) {
-          this.userEmail = res.email}});
+          this.userEmail = res.email;
+        }});
           /* *****************get logged in user email*************************** */
 
     const email = localStorage.getItem('email');
@@ -37,7 +48,14 @@ export class UserProfilePage implements OnInit {
         console.log(this.users);
       });
   }
-        resetPassword() {
+  updateuserName(value){
+    this.afs.collection('user').doc(this.users.uid).update({
+      username: value.username
+    }
+    );
+  }
+
+  resetPassword() {
         this.authService.resetPassword(this.userEmail).then(
       async () => {
         const alert = await this.alertCtrl.create({
