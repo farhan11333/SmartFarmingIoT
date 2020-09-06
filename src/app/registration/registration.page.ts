@@ -16,7 +16,7 @@ export class RegistrationPage implements OnInit {
    // tslint:disable-next-line: variable-name
   validation_messages = {
     ownername: [
-      { type: 'required', message: 'owner name is required.' },
+      { type: 'required', message: 'Name is required.' },
     ],
     email: [
       { type: 'required', message: 'Email is required.' },
@@ -55,6 +55,7 @@ export class RegistrationPage implements OnInit {
     this.authService.registerUser(value)
       // tslint:disable-next-line: align
       .then(res => {
+        
         console.log(res);
         this.errorMessage = '';
         this.successMessage = 'Your account has been created. Please log in.';

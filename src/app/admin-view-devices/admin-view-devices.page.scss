@@ -22,6 +22,10 @@ ion-icon {
 }
 
 h3 {
+    margin-top: -12px;
+    margin-bottom: 5px;
+    font-weight: 459;
+    line-height: 1.2;
     margin-left: 10px;
     color: whitesmoke;
 }
@@ -48,4 +52,14 @@ ion-fab-button {
     margin-top: 524px;
     margin-left: 288px;
     box-shadow: 10 10 10 10 rgba(#5a99d4, .3);
+}
+
+ion-card-header {
+    margin-top: -66px;
+}
+
+.icon-delete {
+    margin-left: 304px;
+    margin-top: 16px;
+    font-size: 24px;
 }
