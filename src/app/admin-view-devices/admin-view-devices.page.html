@@ -1,15 +1,19 @@
 <ion-header>
     <ion-toolbar>
         <ion-buttons class="icon-only" slot="end">
-            <ion-icon name="add-circle-outline" slot="end" routerLink="/add-field"></ion-icon>
+            <!-- <ion-icon name="add-circle-outline" slot="end" routerLink="/add-field"></ion-icon> -->
         </ion-buttons>
         <ion-back-button defaultHref="admin-view" slot="start"></ion-back-button>
         <ion-title>Fields</ion-title>
     </ion-toolbar>
 </ion-header>
 
-<ion-content fullscreen="true">
-
+<ion-content fullscreen="true" overflow-scroll="false">
+    <ion-fab slot="fixed">
+        <ion-fab-button size="small" type="add" href="add-field">
+            <ion-icon name="add-outline"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
     <ng-container *ngFor="let field of fields">
 
         <ion-card>

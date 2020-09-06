@@ -16,13 +16,13 @@
 
                         </div>
                         <div padding>
-                            <ion-label class="lbl">Owner Name*</ion-label>
+                            <ion-label class="lbl">Name*</ion-label>
                             <ion-item class="itemform" lines="none">
 
-                                <ion-input formControlName="ownername" type="text " placeholder="owner name " ion></ion-input>
+                                <ion-input formControlName="ownername" type="text " placeholder="Name " ion></ion-input>
                             </ion-item>
                             <div class="validation-errors">
-                                <ng-container *ngFor="let validation of validation_messages.username">
+                                <ng-container *ngFor="let validation of validation_messages.ownername">
                                     <div class="error-message" *ngIf="validations_form.get('username').hasError(validation.type) && (validations_form.get('username').dirty || validations_form.get('username').touched)">
                                         {{ validation.message }}
                                     </div>

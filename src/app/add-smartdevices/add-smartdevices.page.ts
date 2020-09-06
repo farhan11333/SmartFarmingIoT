@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { AuthenticateService } from '../services/authentication.service';
-import { NavController } from '@ionic/angular';
+import { NavController ,LoadingController} from '@ionic/angular';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 
 @Component({
@@ -22,7 +22,7 @@ export class AddSmartdevicesPage implements OnInit {
    ] };
   constructor( private navCtrl: NavController,
     private authService: AuthenticateService,
-    private formBuilder: FormBuilder, private afs: AngularFirestore,) { }
+    private formBuilder: FormBuilder, private afs: AngularFirestore,private loadingController: LoadingController) { }
 
   ngOnInit() {
    
@@ -36,6 +36,18 @@ export class AddSmartdevicesPage implements OnInit {
     });
   }
   addSmartdevice(value){
+    this.loadingController.create({
+      message: 'Adding Device...',
+      duration: 3000,
+      spinner:'dots',
+      cssClass:'custom-loader-class'
+    }).then((res) => {
+      res.present();
+
+      res.onDidDismiss().then((dis) => {
+        console.log('Loading dismissed! after 2 Seconds');
+      });
+    });
   const id = value.smartdevice;
   const ref = this.afs.collection('devices').doc(id).set({
         
