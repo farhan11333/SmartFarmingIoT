@@ -129,7 +129,7 @@ export class AddSmartdevicesPage implements OnInit {
         motorIsrunning: false,
         startedAt: "0",
         } );
-    ref.collection('history').doc().set({
+    ref.collection('history').add({
            status:'',
       })
       .then(() => {
