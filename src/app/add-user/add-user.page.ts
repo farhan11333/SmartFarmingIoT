@@ -74,8 +74,7 @@ export class AddUserPage implements OnInit {
         cssClass: "custom-loader-class",
       })
       .then((res) => {
-        res.present();
-      });
+        
 
     console.log(value);
 
@@ -106,8 +105,11 @@ export class AddUserPage implements OnInit {
                 }, 4000);
               }
             );
+            
           this.validations_form.reset();
         }
+        res.present();
+      });
       });
   }
 }

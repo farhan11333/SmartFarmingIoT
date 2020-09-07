@@ -36,14 +36,14 @@ export class AdminViewUsersPage implements OnInit {
   }
 
   deleteUser(user) {
-    debugger;
+    // debugger;
     console.log("userDeleted");
     this.afs.doc("users/" + user.id).delete();
     // this.afs
     //   .collection("users")
     //   .doc("users" + user)
     //   .delete();
-    debugger;
+    // debugger;
     //   this.afs
     //     .collection("users", (ref) => ref.where("email", "==", user.email))
     //     .delete();

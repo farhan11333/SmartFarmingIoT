@@ -85,12 +85,7 @@ export class LoginPage implements OnInit {
         cssClass: "custom-loader-class",
       })
       .then((res) => {
-        res.present();
-
-        res.onDidDismiss().then((dis) => {
-          console.log("Loading dismissed! after 2 Seconds");
-        });
-      });
+       
     this.validations_form.reset();
     this.authService.loginUser(value).then(
       (res) => {
@@ -110,6 +105,12 @@ export class LoginPage implements OnInit {
               }
             });
         });
+        res.present();
+
+        res.onDidDismiss().then((dis) => {
+          console.log("Loading dismissed! after 2 Seconds");
+        });
+      });
         this.errorMessage = "";
         // this.navCtrl.navigateForward('/main');
       },

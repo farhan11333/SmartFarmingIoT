@@ -4,6 +4,8 @@ import {
   AngularFirestore,
   AngularFirestoreCollection,
 } from "@angular/fire/firestore";
+import { PopoverController, NavController, LoadingController } from '@ionic/angular';
+import { DeletePopoverPage } from '../delete-popover/delete-popover.page';
 
 @Component({
   selector: "app-admin-view-devices",
@@ -12,9 +14,18 @@ import {
 })
 export class AdminViewDevicesPage implements OnInit {
   fields: any = [];
-  constructor(private afs: AngularFirestore) {}
+  constructor(private afs: AngularFirestore, private popover: PopoverController,
+    private navCtrl: NavController,private loadingController: LoadingController) {}
 
   ngOnInit() {
+    this.loadingController
+      .create({
+        message: "Loading..",
+        duration: 3500,
+        spinner: "circles",
+        cssClass: "custom-loader-class",
+      })
+      .then((res) => {
     const ownerEmail = localStorage.getItem("email");
     this.afs
       .collection("fields", (ref) => ref.where("ownerEmail", "==", ownerEmail))
@@ -23,5 +34,14 @@ export class AdminViewDevicesPage implements OnInit {
         this.fields = _fields;
         console.log(this.fields);
       });
+      res.present();
+    });
+  }
+  async delete(event) {
+    const myPopover =  this.popover.create({
+      component:  DeletePopoverPage,
+      event,
+    });
+    return (await myPopover).present();
   }
 }

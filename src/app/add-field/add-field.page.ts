@@ -82,8 +82,7 @@ export class AddFieldPage implements OnInit {
         cssClass: "custom-loader-class",
       })
       .then((res) => {
-        res.present();
-      });
+       
 
     this.afs
       .collection("devices", (ref) => ref.where("name", "==", value.device))
@@ -102,10 +101,14 @@ export class AddFieldPage implements OnInit {
               ownerEmail,
             })
             .then(() => {
-              this.successMessage = "Field has been Added Succesfully.";
+              this.successMessage = "Field has been Added Successfully.";
             });
+            
           this.validations_form.reset();
         }
       });
+      res.present();
+    });
+
   }
 }
