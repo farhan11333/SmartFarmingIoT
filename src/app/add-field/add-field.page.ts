@@ -81,50 +81,87 @@ export class AddFieldPage implements OnInit {
     //     console.log(this.users);
     //   });
     /********************* */
+    // // this.afs
+    // //   .collection("devices", (ref) => ref.where("attachTo", "==", this.users))
+    // //   .valueChanges()
+    // //   .subscribe((x) => {
+    // //     this.devices = x;
+    // //     console.log(this.devices);
+    // //   });
+    // // debugger;
+
+    /******************************************************************** */
+
+    this.afs
+      .collection("users", (ref) => ref.where("type", "==", "owner"))
+      .snapshotChanges()
+      .subscribe((owners) => {
+        const users = owners.map((owner) => {
+          const id = owner.payload.doc.id;
+          const data: any = owner.payload.doc.data();
+          return { id, ...data };
+        });
+        this.users = users;
+        // console.log(this.users);
+        debugger;
+      });
+
+    /**************************************************************** */
+
     // this.afs
     //   .collection("devices", (ref) => ref.where("attachTo", "==", this.users))
-    //   .valueChanges()
-    //   .subscribe((x) => {
-    //     this.devices = x;
-    //     console.log(this.devices);
+    //   .snapshotChanges()
+    //   .subscribe((owners) => {
+    //     const users = owners.map((owner) => {
+    //       const id = owner.payload.doc.id;
+    //       const data: any = owner.payload.doc.data();
+    //       return { id, ...data };
+    //     });
+    //     this.users = users;
+    //     // console.log(this.users);
+    //     debugger;
     //   });
-    // debugger;
+    /**************************************************** */
   }
+
+  /******************************************************************** */
+
+  /************************************************************** */
   addfield(value) {
     console.log(value);
-    // debugger;
-    this.loadingController
-      .create({
-        message: "Adding Field...",
-        duration: 3000,
-        spinner: "dots",
-        cssClass: "custom-loader-class",
-      })
-      .then((res) => {
-        this.afs
-          .collection("devices", (ref) => ref.where("name", "==", value.device))
-          .valueChanges()
-          .subscribe((devices) => {
-            console.log(devices);
-            if (devices.length >= 1) {
-              const ownerEmail = localStorage.getItem("email");
-              this.afs
-                .collection("fields")
-                .add({
-                  fieldname: value.fieldname,
-                  area: value.area + "Acre",
-                  location: value.location,
-                  device: value.device,
-                  ownerEmail,
-                })
-                .then(() => {
-                  this.successMessage = "Field has been Added Successfully.";
-                });
+    debugger;
+    //   this.loadingController
+    //     .create({
+    //       message: "Adding Field...",
+    //       duration: 3000,
+    //       spinner: "dots",
+    //       cssClass: "custom-loader-class",
+    //     })
+    //     .then((res) => {
+    //       this.afs
+    //         .collection("devices", (ref) => ref.where("name", "==", value.device))
+    //         .valueChanges()
+    //         .subscribe((devices) => {
+    //           console.log(devices);
+    //           if (devices.length >= 1) {
+    //             const ownerEmail = localStorage.getItem("email");
+    //             this.afs
+    //               .collection("fields")
+    //               .add({
+    //                 fieldname: value.fieldname,
+    //                 area: value.area + "Acre",
+    //                 location: value.location,
+    //                 device: value.device,
+    //                 ownerEmail,
+    //               })
+    //               .then(() => {
+    //                 this.successMessage = "Field has been Added Successfully.";
+    //               });
 
-              this.validations_form.reset();
-            }
-          });
-        res.present();
-      });
+    //             this.validations_form.reset();
+    //           }
+    //         });
+    //       res.present();
+    //     });
   }
 }

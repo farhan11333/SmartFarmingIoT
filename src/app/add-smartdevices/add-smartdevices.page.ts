@@ -116,11 +116,13 @@ export class AddSmartdevicesPage implements OnInit {
     // /************************** */
     const id = value.smartdevice;
     const ownerid = value.ownerid;
+    const owmerEmail = value.owmerEmail;
     const ref = this.afs.collection("devices").doc(id);
     ref
       .set({
         name: value.smartdevice,
         attachedTo: ownerid,
+        //        ownerEmail: value.ownerEmail,
         soil: "0",
         humidity: "0",
         temperature: "0",
