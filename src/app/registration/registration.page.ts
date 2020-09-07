@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { AuthenticateService } from '../services/authentication.service';
-import { NavController } from '@ionic/angular';
+import { NavController, LoadingController } from '@ionic/angular';
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.page.html',
@@ -31,7 +31,7 @@ export class RegistrationPage implements OnInit {
   constructor(
     private navCtrl: NavController,
     private authService: AuthenticateService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder, private loadingController: LoadingController
   ) { }
 
   ngOnInit(): void {
@@ -52,6 +52,14 @@ export class RegistrationPage implements OnInit {
   }
 
   tryRegister(value) {
+    this.loadingController
+    .create({
+      message: "Loggin in...",
+      duration: 3000,
+      spinner: "dots",
+      cssClass: "custom-loader-class",
+    })
+    .then((res) => {
     this.authService.registerUser(value)
       // tslint:disable-next-line: align
       .then(res => {
@@ -72,6 +80,7 @@ export class RegistrationPage implements OnInit {
         
       });
     this.validations_form.reset();
+    });
   }
 
   goLoginPage() {

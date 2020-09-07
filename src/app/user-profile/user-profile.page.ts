@@ -19,6 +19,8 @@ name :string;
   
   validations_form: FormGroup;
   UID: string;
+  errorMessage: "";
+  successMessage: string = "";
   // email = localStorage.getItem('email');
   constructor(private afs: AngularFirestore,private authService: AuthenticateService,private alertCtrl: AlertController,private router: Router, private formBuilder: FormBuilder,) {}
 
@@ -56,8 +58,9 @@ name :string;
     this.afs.collection('users').doc(this.UID).update({
       username: value.username,
     }
-    ).then ((res) => {
-        console.log(res);
+    ) .then(() => {
+      this.successMessage = "Username Updated successfully";
+      this.validations_form.reset();
     });
   }
 
