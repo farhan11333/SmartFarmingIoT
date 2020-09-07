@@ -85,9 +85,7 @@
             <ion-item>
               <ion-label>Device</ion-label>
               <ion-select formControlName="farmId" placeholder="Farms" required>
-                <ion-select-option value="field">
-                  {{field.fieldname}}
-                </ion-select-option>
+                <ion-select-option [value]="f"> Potato </ion-select-option>
               </ion-select>
             </ion-item>
             <!-- <ion-item class="Device-box">

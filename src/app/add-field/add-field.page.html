@@ -92,8 +92,12 @@
                 formControlName="device"
                 placeholder="Select One"
                 required
+                multiple="false"
               >
-                <ion-select-option value="field" *ngFor="let device of devices">
+                <ion-select-option
+                  [value]="farm"
+                  *ngFor="let device of devices"
+                >
                   {{device.name}}
                 </ion-select-option>
               </ion-select>
