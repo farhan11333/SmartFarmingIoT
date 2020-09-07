@@ -83,7 +83,7 @@ export class AddSmartdevicesPage implements OnInit {
     this.loadingController
       .create({
         message: "Adding Device...",
-        duration: 2500,
+        duration: 2000,
         spinner: "dots",
         cssClass: "custom-loader-class",
       })
@@ -128,11 +128,12 @@ export class AddSmartdevicesPage implements OnInit {
         temperature: "0",
         motorIsrunning: false,
         startedAt: "0",
-        //} ) ref.collection('history').doc(id).set({
-        //   status:"",
+        } );
+    ref.collection('history').doc().set({
+           status:'',
       })
       .then(() => {
-        this.successMessage = "Device added successfully";
+        this.successMessage = 'Device added successfully';
         this.validations_form.reset();
       });
     debugger;

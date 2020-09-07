@@ -19,10 +19,12 @@
                             <ion-input disabled> {{user.email}} </ion-input>
                         </ion-item>
                     </div>
+
                 </ion-col>
             </ion-row>
             <div class="error">
-
+                <label class="error-message">{{errorMessage}}</label>
+                <label class="success-message">{{successMessage}}</label>
             </div>
 
             <ion-button type="submit" class="button" shape="round" expand="full">Update</ion-button>
