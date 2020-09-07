@@ -63,17 +63,12 @@ export class AddSmartdevicesPage implements OnInit {
     this.loadingController
       .create({
         message: "Adding Device...",
-        duration: 3000,
+        duration: 2500,
         spinner: "dots",
         cssClass: "custom-loader-class",
       })
       .then((res) => {
-        res.present();
-
-        res.onDidDismiss().then((dis) => {
-          console.log("Loading dismissed! after 2 Seconds");
-        });
-      });
+      
     const id = value.smartdevice;
     const ownerid = value.ownerid;
     const ref = this.afs.collection("devices").doc(id);
@@ -88,11 +83,20 @@ export class AddSmartdevicesPage implements OnInit {
         startedAt: "0",
         //} ) ref.collection('history').doc(id).set({
         //   status:"",
+      });
+    ref.collection('history').add({
+        status:"",
+        time:"",
       })
+     
       .then(() => {
-        this.successMessage = "Device added successfully";
+        this.successMessage = 'Device added successfully';
         this.validations_form.reset();
       });
+    res.present();
+
+        
+    });
     debugger;
   }
 }
