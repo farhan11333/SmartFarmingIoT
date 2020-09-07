@@ -41,6 +41,7 @@ export class AdminViewDevicesPage implements OnInit {
     const myPopover =  this.popover.create({
       component:  DeletePopoverPage,
       event,
+      
     });
     return (await myPopover).present();
   }
