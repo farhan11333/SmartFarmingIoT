@@ -118,7 +118,7 @@ export class AddFieldPage implements OnInit {
           return { id, ...data };
         });
         this.devices = devices;
-        // console.log(this.users);
+        // console.log(this.devices);
         // debugger;
       });
     /**************************************************** */

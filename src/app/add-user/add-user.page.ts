@@ -21,6 +21,7 @@ import { debug } from "console";
   styleUrls: ["./add-user.page.scss"],
 })
 export class AddUserPage implements OnInit {
+  fields: any = [];
   validations_form: FormGroup;
   errorMessage: "";
   successMessage: string = "";
@@ -64,7 +65,23 @@ export class AddUserPage implements OnInit {
       username: new FormControl("", Validators.compose([Validators.required])),
       farmId: new FormControl("", Validators.compose([Validators.required])),
     });
+
+    this.afs
+      .collection("devices")
+      .snapshotChanges()
+      .subscribe((field) => {
+        const fields = field.map((field) => {
+          const id = field.payload.doc.id;
+          const data: any = field.payload.doc.data();
+          return { id, ...data };
+        });
+        this.fields = fields;
+        // console.log(this.fields);
+        debugger;
+      });
   }
+
+  /******************************************* */
   registerworker(value) {
     this.loadingController
       .create({
@@ -74,42 +91,42 @@ export class AddUserPage implements OnInit {
         cssClass: "custom-loader-class",
       })
       .then((res) => {
-        
+        console.log(value);
 
-    console.log(value);
+        this.afs
+          .collection("fields", (ref) =>
+            ref.where("device", "==", value.farmId)
+          )
+          .valueChanges()
+          .subscribe((fields) => {
+            console.log(fields);
+            if (fields.length >= 1) {
+              this.authService
+                .registerworker(value)
+                // tslint:disable-next-line: align
+                .then(
+                  (res) => {
+                    console.log(res);
+                    this.errorMessage = "";
+                    this.successMessage = "User Added Successfully.";
+                    setTimeout(() => {
+                      this.successMessage = "";
+                    }, 4000);
+                  },
+                  (err) => {
+                    console.log(err);
+                    this.errorMessage = err.message;
+                    this.successMessage = "";
+                    setTimeout(() => {
+                      this.errorMessage = "";
+                    }, 4000);
+                  }
+                );
 
-    this.afs
-      .collection("fields", (ref) => ref.where("device", "==", value.farmId))
-      .valueChanges()
-      .subscribe((fields) => {
-        console.log(fields);
-        if (fields.length >= 1) {
-          this.authService
-            .registerworker(value)
-            // tslint:disable-next-line: align
-            .then(
-              (res) => {
-                console.log(res);
-                this.errorMessage = "";
-                this.successMessage = "User Added Successfully.";
-                setTimeout(() => {
-                  this.successMessage = "";
-                }, 4000);
-              },
-              (err) => {
-                console.log(err);
-                this.errorMessage = err.message;
-                this.successMessage = "";
-                setTimeout(() => {
-                  this.errorMessage = "";
-                }, 4000);
-              }
-            );
-            
-          this.validations_form.reset();
-        }
-        res.present();
-      });
+              this.validations_form.reset();
+            }
+            res.present();
+          });
       });
   }
 }
