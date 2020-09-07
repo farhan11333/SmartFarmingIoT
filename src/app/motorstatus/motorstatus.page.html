@@ -50,7 +50,7 @@
             History:
         </ion-card-title>
         <ion-list *ngFor="let state of motorStatus | async" lines="none">
-            <ion-item>
+            <ion-item class="bg">
                 {{state.time |date:"medium"}} &nbsp;<span class="status">{{state.status}}</span>
                 <!-- <img src="../../assets/play.png" *ngIf=" motorStatus == state "> -->
             </ion-item>

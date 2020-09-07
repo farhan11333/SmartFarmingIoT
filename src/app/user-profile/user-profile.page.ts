@@ -1,3 +1,4 @@
+import { userInfo } from 'os';
 import { Component, OnInit } from '@angular/core';
 
 import { AngularFirestore } from '@angular/fire/firestore';
@@ -13,10 +14,11 @@ import {FormBuilder,Validators,FormControl } from "@angular/forms";
 })
 export class UserProfilePage implements OnInit {
   users: any = [];
-
+name :string;
   userEmail: string;
   
   validations_form: FormGroup;
+  UID: string;
   // email = localStorage.getItem('email');
   constructor(private afs: AngularFirestore,private authService: AuthenticateService,private alertCtrl: AlertController,private router: Router, private formBuilder: FormBuilder,) {}
 
@@ -35,6 +37,7 @@ export class UserProfilePage implements OnInit {
         console.log("res", res);
         if (res !== null) {
           this.userEmail = res.email;
+          this.UID = res.uid;
         }});
           /* *****************get logged in user email*************************** */
 
@@ -48,11 +51,14 @@ export class UserProfilePage implements OnInit {
         console.log(this.users);
       });
   }
-  updateuserName(value){
-    this.afs.collection('user').doc(this.users.uid).update({
-      username: value.username
+  updateuserName(value) {
+   
+    this.afs.collection('users').doc(this.UID).update({
+      username: value.username,
     }
-    );
+    ).then ((res) => {
+        console.log(res);
+    });
   }
 
   resetPassword() {
