@@ -66,8 +66,9 @@ export class AddUserPage implements OnInit {
       farmId: new FormControl("", Validators.compose([Validators.required])),
     });
 
+    const ownerEmail = localStorage.getItem("email");
     this.afs
-      .collection("devices")
+      .collection("fields", (ref) => ref.where("ownerEmail", "==", ownerEmail))
       .snapshotChanges()
       .subscribe((field) => {
         const fields = field.map((field) => {
