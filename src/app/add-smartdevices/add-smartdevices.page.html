@@ -39,10 +39,7 @@
       <ion-item>
         <ion-label>Owners</ion-label>
         <ion-select formControlName="ownerid" placeholder="Select " required>
-          <ion-select-option
-            value="{{user.username}}"
-            *ngFor="let user of users"
-          >
+          <ion-select-option value="{{user.id}}" *ngFor="let user of users">
             {{user.username}}
           </ion-select-option>
         </ion-select>

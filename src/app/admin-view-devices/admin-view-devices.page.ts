@@ -4,8 +4,12 @@ import {
   AngularFirestore,
   AngularFirestoreCollection,
 } from "@angular/fire/firestore";
-import { PopoverController, NavController, LoadingController } from '@ionic/angular';
-import { DeletePopoverPage } from '../delete-popover/delete-popover.page';
+import {
+  PopoverController,
+  NavController,
+  LoadingController,
+} from "@ionic/angular";
+import { DeletePopoverPage } from "../delete-popover/delete-popover.page";
 
 @Component({
   selector: "app-admin-view-devices",
@@ -14,8 +18,12 @@ import { DeletePopoverPage } from '../delete-popover/delete-popover.page';
 })
 export class AdminViewDevicesPage implements OnInit {
   fields: any = [];
-  constructor(private afs: AngularFirestore, private popover: PopoverController,
-    private navCtrl: NavController,private loadingController: LoadingController) {}
+  constructor(
+    private afs: AngularFirestore,
+    private popover: PopoverController,
+    private navCtrl: NavController,
+    private loadingController: LoadingController
+  ) {}
 
   ngOnInit() {
     this.loadingController
@@ -26,22 +34,23 @@ export class AdminViewDevicesPage implements OnInit {
         cssClass: "custom-loader-class",
       })
       .then((res) => {
-    const ownerEmail = localStorage.getItem("email");
-    this.afs
-      .collection("fields", (ref) => ref.where("ownerEmail", "==", ownerEmail))
-      .valueChanges()
-      .subscribe((_fields) => {
-        this.fields = _fields;
-        console.log(this.fields);
+        const ownerEmail = localStorage.getItem("email");
+        this.afs
+          .collection("fields", (ref) =>
+            ref.where("ownerEmail", "==", ownerEmail)
+          )
+          .valueChanges()
+          .subscribe((_fields) => {
+            this.fields = _fields;
+            console.log(this.fields);
+          });
+        res.present();
       });
-      res.present();
-    });
   }
   async delete(event) {
-    const myPopover =  this.popover.create({
-      component:  DeletePopoverPage,
+    const myPopover = this.popover.create({
+      component: DeletePopoverPage,
       event,
-      
     });
     return (await myPopover).present();
   }
