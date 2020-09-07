@@ -51,23 +51,25 @@ export class AddSmartdevicesPage implements OnInit {
       ownerid: new FormControl("", Validators.compose([Validators.required])),
     });
 
-    // const snapshotref = this.afs
-    //   .collection("users", (ref) => ref.where("type", "==", "owners"))
-    //   .snapshotChanges()
-    //   .subscribe((users) => {
-    //     this.users = users.map((user) => {
-    //       const id = user.payload.doc.id;
-    //       const data: any = user.payload.doc.data();
-    //       return { id, ...data };
-    //     });
-    //   });
+    const snapshotref = this.afs
+      .collection("users", (ref) => ref.where("type", "==", "owners"))
+      .snapshotChanges()
+      .subscribe((users) => {
+        this.users = users.map((user) => {
+          const id = user.payload.doc.id;
+          const data: any = user.payload.doc.data();
+          console.log(id);
+          console.log(data);
+          return { id, ...data };
+        });
+      });
 
     this.afs
       .collection("users", (ref) => ref.where("type", "==", "owner"))
       .valueChanges()
       .subscribe((owner) => {
         this.users = owner;
-        console.log(this.users);
+        //        console.log(this.users);
       });
   }
   addSmartdevice(value) {
@@ -85,25 +87,40 @@ export class AddSmartdevicesPage implements OnInit {
           console.log("Loading dismissed! after 2 Seconds");
         });
       });
-    const id = value.smartdevice;
-    const ownerid = value.ownerid;
-    const ref = this.afs.collection("devices").doc(id);
-    ref
-      .set({
-        name: value.smartdevice,
-        attachedTo: ownerid,
-        soil: "0",
-        humidity: "0",
-        temperature: "0",
-        motorIsrunning: false,
-        startedAt: "0",
-        //} ) ref.collection('history').doc(id).set({
-        //   status:"",
-      })
-      .then(() => {
-        this.successMessage = "Device added successfully";
-        this.validations_form.reset();
+
+    /********************************************************* */
+    const snapshotref = this.afs
+      .collection("users", (ref) => ref.where("type", "==", "owners"))
+      .snapshotChanges()
+      .subscribe((users) => {
+        this.users = users.map((user) => {
+          const id = user.payload.doc.id;
+          const data: any = user.payload.doc.data();
+          console.log(id);
+          console.log(data);
+          return { id, ...data };
+        });
       });
+    /************************** */
+    const id = value.smartdevice;
+    const ownerid = snapshotref;
+    const ref = this.afs.collection("devices").doc(id);
+    // ref
+    //   .set({
+    //     name: value.smartdevice,
+    //     attachedTo: ownerid,
+    //     soil: "0",
+    //     humidity: "0",
+    //     temperature: "0",
+    //     motorIsrunning: false,
+    //     startedAt: "0",
+    //     //} ) ref.collection('history').doc(id).set({
+    //     //   status:"",
+    //   })
+    //   .then(() => {
+    //     this.successMessage = "Device added successfully";
+    //     this.validations_form.reset();
+    //   });
     debugger;
   }
 }

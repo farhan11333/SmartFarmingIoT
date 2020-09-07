@@ -55,21 +55,40 @@ export class AddFieldPage implements OnInit {
      parameters issues
      *    
      * *******************/
-    this.afs
-      .collection("users", (ref) => ref.where("type", "==", "owner"))
-      .valueChanges()
-      .subscribe((x) => {
-        this.users = x;
-        console.log(this.users);
-      });
+
+    /******************************************************************************** */
+    // const ownerEmail = localStorage.getItem("email");
+
+    // const snapshotref = this.afs
+    //   .collection("devices", (ref) => ref.where("ownerEmail", "==", ownerEmail))
+    //   .snapshotChanges()
+    //   .subscribe((users) => {
+    //     this.users = users.map((user) => {
+    //       const id = user.payload.doc.id;
+    //       const data: any = user.payload.doc.data();
+    //       console.log(id, data);
+    //       return { id, ...data };
+    //     });
+    //     debugger;
+    //   });
+
+    /*********************************************************************************** */
+    // this.afs
+    //   .collection("users", (ref) => ref.where("type", "==", "worker"))
+    //   .valueChanges()
+    //   .subscribe((x) => {
+    //     this.users = x;
+    //     console.log(this.users);
+    //   });
     /********************* */
-    this.afs
-      .collection("devices", (ref) => ref.where("attachTo", "==", this.users))
-      .valueChanges()
-      .subscribe((owner) => {
-        this.devices = owner;
-        console.log(this.devices);
-      });
+    // this.afs
+    //   .collection("devices", (ref) => ref.where("attachTo", "==", this.users))
+    //   .valueChanges()
+    //   .subscribe((x) => {
+    //     this.devices = x;
+    //     console.log(this.devices);
+    //   });
+    // debugger;
   }
   addfield(value) {
     console.log(value);
@@ -82,33 +101,30 @@ export class AddFieldPage implements OnInit {
         cssClass: "custom-loader-class",
       })
       .then((res) => {
-       
+        this.afs
+          .collection("devices", (ref) => ref.where("name", "==", value.device))
+          .valueChanges()
+          .subscribe((devices) => {
+            console.log(devices);
+            if (devices.length >= 1) {
+              const ownerEmail = localStorage.getItem("email");
+              this.afs
+                .collection("fields")
+                .add({
+                  fieldname: value.fieldname,
+                  area: value.area + "Acre",
+                  location: value.location,
+                  device: value.device,
+                  ownerEmail,
+                })
+                .then(() => {
+                  this.successMessage = "Field has been Added Successfully.";
+                });
 
-    this.afs
-      .collection("devices", (ref) => ref.where("name", "==", value.device))
-      .valueChanges()
-      .subscribe((devices) => {
-        console.log(devices);
-        if (devices.length >= 1) {
-          const ownerEmail = localStorage.getItem("email");
-          this.afs
-            .collection("fields")
-            .add({
-              fieldname: value.fieldname,
-              area: value.area + "Acre",
-              location: value.location,
-              device: value.device,
-              ownerEmail,
-            })
-            .then(() => {
-              this.successMessage = "Field has been Added Successfully.";
-            });
-            
-          this.validations_form.reset();
-        }
+              this.validations_form.reset();
+            }
+          });
+        res.present();
       });
-      res.present();
-    });
-
   }
 }
