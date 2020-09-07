@@ -55,7 +55,7 @@ ion-fab-button {
 }
 
 ion-card-header {
-    margin-top: -66px;
+    margin-top: -20px;
 }
 
 .icon-delete {
@@ -67,4 +67,14 @@ ion-card-header {
 ion-button {
     width: 18px;
     margin-left: 302px;
+}
+
+.delete {
+    margin-left: 304px;
+}
+
+button {
+    margin-top: 13px;
+    background: none;
+    font-size: 22px;
 }

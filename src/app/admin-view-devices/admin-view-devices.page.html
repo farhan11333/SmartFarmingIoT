@@ -21,13 +21,18 @@
             <!-- <ion-button (click)="delete($event)" icon-only>
                 <ion-icon class="icon-delete" name="ellipsis-vertical-outline"></ion-icon>
             </ion-button> -->
-
+            <ion-fab class="delete" top right>
+                <button ion-fab (click)="delete($event)">
+                    <ion-icon  name="ellipsis-vertical-outline"></ion-icon>
+                </button>
+            </ion-fab>
             <ion-card-header no padding>
 
                 <h1>{{field.fieldname}}</h1>
 
 
             </ion-card-header>
+
             <h3>{{field.area}}</h3>
             <h3>{{field.location}}</h3>
             <!-- <h6>{{field.worker}}</h6>-->

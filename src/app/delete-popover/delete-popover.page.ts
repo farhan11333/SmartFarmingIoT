@@ -11,5 +11,7 @@ export class DeletePopoverPage implements OnInit {
 
   ngOnInit() {
   }
+Delete(){
 
+}
 }
