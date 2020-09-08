@@ -20,4 +20,7 @@ export class ViewSmartdevicesPage implements OnInit {
         console.log(this.fields);
       });
   }
+  deleteDevice(){
+    
+  }
 }

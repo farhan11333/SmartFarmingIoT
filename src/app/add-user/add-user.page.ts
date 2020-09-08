@@ -93,6 +93,7 @@ export class AddUserPage implements OnInit {
         cssClass: "custom-loader-class",
       })
       .then((res) => {
+<<<<<<< HEAD
         console.log(value);
         /*************************************************************************************************************** */
         // this.afs
@@ -123,6 +124,36 @@ export class AddUserPage implements OnInit {
               .then(
                 (res) => {
                   console.log(res);
+=======
+        
+
+    console.log(value);
+
+    this.afs
+      .collection("fields", (ref) => ref.where("device", "==", value.farmId))
+      .valueChanges()
+      .subscribe((fields) => {
+        console.log(fields);
+        if (fields.length >= 1) {
+          this.authService
+            .registerworker(value)
+            // tslint:disable-next-line: align
+            .then(
+              // tslint:disable-next-line: no-shadowed-variable
+              (res) => {
+                console.log(res);
+                this.errorMessage = "";
+                this.successMessage = "User Added Successfully.";
+                setTimeout(() => {
+                  this.successMessage = "";
+                }, 4000);
+              },
+              (err) => {
+                console.log(err);
+                this.errorMessage = err.message;
+                this.successMessage = "";
+                setTimeout(() => {
+>>>>>>> b1babc8fd03001133aac3a8cb4ba2a6f55e40e99
                   this.errorMessage = "";
                   this.successMessage = "User Added Successfully.";
                   setTimeout(() => {

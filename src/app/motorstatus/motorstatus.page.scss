@@ -1,11 +1,12 @@
 ion-content {
     //--background: url('/assets/background.png') no-repeat center/cover fixed;
     //--background: linear-gradient(90deg, rgb(255, 204, 204), #ffcccc) no-repeat center/cover fixed;
-    --background: linear-gradient(to right, #dd5e89, #f7bb97);
+    // --background: linear-gradient(to right, #dd5e89, #f7bb97);
+    --background: linear-gradient(315deg, #adb2d3 54%, #ff6b6c 45%);
 }
 
 ion-toolbar {
-    --background: #dd5e89;
+    --background: #ff6b6c;
     --border-style: none;
 }
 
@@ -19,16 +20,21 @@ ion-toolbar {
     //background: linear-gradient(to right, #aa076b, #61045f);
     //background: linear-gradient(to right, #c31432, #240b36);
     //background: linear-gradient(180deg, #ff9966, #ff5e62);
-    background: linear-gradient(to right, #ff7e5f4f, #f481c7);
+    // background: linear-gradient(to right, #ff7e5f4f, #f481c7);
+    background: transparent;
     border-radius: 10px 10px 10px 10px;
-    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.19), 0 10px 6px rgba(0, 0, 0, 0.19);
+    //box-shadow: 0px 0px 1px 6px rgba(0, 0, 0, 0.19), 0 10px 6px rgba(0, 0, 0, 0.19);
+    // box-shadow: 0 15px 20px rgba(0, 0, 0, 0.19), 0 10px 6px rgba(0, 0, 0, 0.19);
+    box-shadow: 0px 0px 1px 6px rgba(0, 0, 0, 0.19), 0 10px 6px rgba(0, 0, 0, 0.19);
 }
 
 .down {
+    background: transparent;
     height: 150px;
     margin-inline-start: 12px;
     margin-top: 16px;
     margin-inline-end: 12px;
+    // background: transparent;
     // background-color: #FEEBE5;
     // --background: linear-gradient(0deg, #fff687, #f6416c);
     //background: linear-gradient(to right, #ff0099, #493240);
@@ -38,9 +44,10 @@ ion-toolbar {
     //background: linear-gradient(to right, #de6262, #ffb88c);
     //background: linear-gradient(to right, #ec6f66, #f3a183);
     // background: linear-gradient(180deg, #ed4264, #ffedbc);
-    background: linear-gradient(to right, #ee9ca7, #ffdde1);
+    // background: linear-gradient(to right, #ee9ca7, #ffdde1);
     border-radius: 10px 10px 10px 10px;
-    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.19), 0 10px 6px rgba(0, 0, 0, 0.19);
+    // box-shadow: 0 15px 20px rgba(0, 0, 0, 0.19), 0 10px 6px rgba(0, 0, 0, 0.19);
+    box-shadow: 0px 0px 1px 6px rgba(0, 0, 0, 0.19), 0 10px 6px rgba(0, 0, 0, 0.19);
     //opacity: 0.5;
 }
 
@@ -116,9 +123,11 @@ ion-no-border {
     margin-inline-start: 12px;
     margin-top: 16px;
     margin-inline-end: 12px;
-    background: linear-gradient(to right, #ee9ca7, #ffdde1);
+    //  background: linear-gradient(to right, #ee9ca7, #ffdde1);
+    background: transparent;
     border-radius: 10px 10px 10px 10px;
-    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.19), 0 10px 6px rgba(0, 0, 0, 0.19);
+    // box-shadow: 0 15px 20px rgba(0, 0, 0, 0.19), 0 10px 6px rgba(0, 0, 0, 0.19);
+    box-shadow: 0px 0px 1px 6px rgba(0, 0, 0, 0.19), 0 10px 6px rgba(0, 0, 0, 0.19);
     // height: 8%;
 }
 

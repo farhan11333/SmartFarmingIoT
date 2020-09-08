@@ -3,7 +3,8 @@ ion-content {
     //--background: linear-gradient(90deg, rgb(255, 204, 204), #ffcccc) no-repeat center/cover fixed;
     // --background: linear-gradient(to right, #dd5e89, #f7bb97);
     //--background: linear-gradient(0deg, #abdcff, #d396ff);
-    --background: linear-gradient(0deg, #F45B54 35%, #f3615c);
+    //--background: linear-gradient(0deg, #F45B54 35%, #f3615c);
+    --background: linear-gradient(315deg, #3ee577 19%, #42fcdb 100%);
 }
 
 ion-toolbar {
@@ -25,7 +26,11 @@ ion-toolbar {
 }
 
 ion-icon {
-    color: whitesmoke;
+    color: white;
+    .add-user {
+        --margin-left: 1px;
+        --width: 88%;
+    }
 }
 
 ion-item {
@@ -35,4 +40,11 @@ ion-item {
 
 ion-back-button {
     color: whitesmoke;
+}
+
+ion-fab-button {
+    --background: #3ee577;
+    margin-bottom: 27px;
+    margin-right: 22px;
+    box-shadow: 10 10 10 10 rgba(#5a99d4, .3);
 }

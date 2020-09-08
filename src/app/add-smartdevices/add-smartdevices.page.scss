@@ -1,5 +1,6 @@
 ion-content {
-    --background: linear-gradient(to bottom, #FCF766, #D1FE3B);
+    // --background: linear-gradient(to bottom, #FCF766, #D1FE3B);
+    --background: linear-gradient(319deg, #dbf26e 52%, #61fa74 50%, #1cfdd6 100%)
 }
 
 ion-toolbar {
@@ -8,6 +9,7 @@ ion-toolbar {
 
 ion-card {
     height: 10%;
+    background: transparent;
 }
 
 .validation-errors {
@@ -30,4 +32,9 @@ ion-card {
         font-size: small;
         margin-left: 10px;
     }
+}
+
+ion-button {
+    --background: #dbf26e 100%;
+    color: black;
 }

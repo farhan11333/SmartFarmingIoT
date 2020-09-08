@@ -1,5 +1,6 @@
 ion-content {
-    --background: linear-gradient(to bottom, #DEFBE6, #28E0AE);
+    // --background: linear-gradient(to bottom, #DEFBE6, #28E0AE);
+    --background: linear-gradient(286deg, #03e5b7 57%, #037ade 217%);
 }
 
 ion-toolbar {
@@ -17,10 +18,10 @@ ion-title {
 }
 
 ion-card {
-    border-radius: 10px;
-    --background: linear-gradient(to bottom, #0090FF, #28E0AE);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 10px 6px rgba(0, 0, 0, 0.23);
-    height: 52%;
+    border-radius: 6px;
+    --background: linear-gradient(657deg, #0090FF 50%, #28E0AE 42%);
+    box-shadow: 0px 1px 17px 2px darkseagreen;
+    height: 58%;
 }
 
 ion-item {
@@ -47,4 +48,8 @@ ion-item {
         font-size: small;
         margin-left: 10px;
     }
+}
+
+ion-input {
+    --color: whitesmoke;
 }

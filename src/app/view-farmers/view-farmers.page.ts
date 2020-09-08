@@ -20,4 +20,7 @@ export class ViewFarmersPage implements OnInit {
         console.log(this.fields);
       });
   }
+  deleteFarmer(){
+    
+  }
 }

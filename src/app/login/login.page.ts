@@ -77,14 +77,7 @@ export class LoginPage implements OnInit {
     // setTimeout(() => {
     //   this.show = false;
     // }, 2000);
-    this.loadingController
-      .create({
-        message: "Loggin in...",
-        duration: 3000,
-        spinner: "dots",
-        cssClass: "custom-loader-class",
-      })
-      .then((res) => {
+    
        
     this.validations_form.reset();
     this.authService.loginUser(value).then(
@@ -105,12 +98,6 @@ export class LoginPage implements OnInit {
               }
             });
         });
-        res.present();
-
-        res.onDidDismiss().then((dis) => {
-          console.log("Loading dismissed! after 2 Seconds");
-        });
-      });
         this.errorMessage = "";
         // this.navCtrl.navigateForward('/main');
       },

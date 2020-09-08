@@ -1,6 +1,5 @@
     ion-content {
-        //--background: url('/assets/background.png') no-repeat center/cover fixed;
-        --background: linear-gradient(35deg, #FFCC, #FFCCCC) no-repeat center/cover fixed;
+        --background: linear-gradient(315deg, #adb2d3 54%, #ff6b6c 45%);
     }
     
     .top {
@@ -8,14 +7,10 @@
         margin-inline-start: 12px;
         margin-top: 16px;
         margin-inline-end: 12px;
-        //background-color: #FEEBE5;
-        //--background: linear-gradient(180deg, #f4bffac7, #FFCCCC);
-        // background: linear-gradient(to right, #8a2387, #e94057, #f27121);
-        // background: linear-gradient(360deg, #da4453, #89216b);
-        // background: linear-gradient(to right, #833ab4, #fd1d1d, #fcb045);
         background: linear-gradient(to right, #f2709c, #ff9472);
         border-radius: 20px 20px 5px 5px;
-        box-shadow: 0 15px 20px rgba(0, 0, 0, 0.19), 0 10px 6px rgba(0, 0, 0, 0.23);
+        // box-shadow: 0 15px 20px rgba(0, 0, 0, 0.19), 0 10px 6px rgba(0, 0, 0, 0.23);
+        box-shadow: 0px 0px 8px 6px rgba(0, 0, 0, 0.19), 0 10px 6px rgba(0, 0, 0, 0.23);
         // opacity: 0.5;
     }
     
@@ -92,10 +87,13 @@
         //background-color: #FEEBE5;
         border-radius: 5px 5px 20px 20px;
         // background: linear-gradient(to right, #da4453, #89216b);
-        background: linear-gradient(to right, #f2709c, #ff9472);
+        //background: linear-gradient(to right, #f2709c, #ff9472);
         //opacity: 0.7;
         //background: transparent;
         //box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+        background: transparent;
+        box-shadow: 0 -2px 11px 13px rgba(0, 0, 0, 0.19), 0 10px 6px rgba(0, 0, 0, 0.23);
+        // box-shadow: 0 15px 20px rgba(0, 0, 0, 0.19), 0 10px 6px rgba(0, 0, 0, 0.23);
     }
     
     [cards] {
@@ -149,7 +147,7 @@
         }
         ion-card {
             margin: 0px 5px;
-            margin-left: 20px;
+            margin-left: 14px;
             margin-right: 20px;
             margin-top: 20px;
             width: calc(100% -10px);
@@ -157,5 +155,6 @@
             box-shadow: 0 0px 20px rgba(0, 0, 0, 0.19), 0 10px 6px rgba(0, 0, 0, 0.23);
             border-radius: 10px;
             height: 171px;
+            width: 85%;
         }
     }
