@@ -29,6 +29,7 @@ export interface AppUser {
   styleUrls: ["./main.page.scss"],
 })
 export class MainPage implements OnInit {
+  users: any = [];
   userEmail: string;
   constructor(
     private popover: PopoverController,
@@ -55,13 +56,30 @@ export class MainPage implements OnInit {
   }
 
   async ngOnInit() {
+    /***************************************************************** */
+    const email = localStorage.getItem("email");
+    console.log(email);
+    this.afs
+      .collection("users", (ref) => ref.where("email", "==", email))
+      .snapshotChanges()
+      .subscribe((user) => {
+        const users = user.map((user) => {
+          const id = user.payload.doc.id;
+          const data: any = user.payload.doc.data();
+          return { id, ...data };
+        });
+        this.users = users;
+        console.log(this.users);
+        debugger;
+      });
+
     /*****************************************getuserIDfunctionCall**********************/
 
     this.aft.getUserIDAsync().then((user) => {
       this.appUser = this.getUserSettings(user.uid);
       this.appUser.subscribe(
         (x) => {
-          this.farmDocument = this.afs.doc<Farm>('devices/' + x.deviceId);
+          this.farmDocument = this.afs.doc<Farm>("devices/" + x.deviceId);
           this.farm = this.farmDocument.valueChanges();
         },
         (err) => {

@@ -118,24 +118,25 @@ export class AddSmartdevicesPage implements OnInit {
     const ownerid = value.ownerid;
     const owmerEmail = value.owmerEmail;
     const ref = this.afs.collection("devices").doc(id);
+    ref.set({
+      name: value.smartdevice,
+      attachedTo: ownerid,
+      //        ownerEmail: value.ownerEmail,
+      soil: "0",
+      humidity: "0",
+      temperature: "0",
+      motorIsrunning: false,
+      startedAt: "0",
+    });
     ref
-      .set({
-        name: value.smartdevice,
-        attachedTo: ownerid,
-        //        ownerEmail: value.ownerEmail,
-        soil: "0",
-        humidity: "0",
-        temperature: "0",
-        motorIsrunning: false,
-        startedAt: "0",
-        } );
-    ref.collection('history').add({
-           status:'',
+      .collection("history")
+      .add({
+        status: "",
       })
       .then(() => {
-        this.successMessage = 'Device added successfully';
+        this.successMessage = "Device added successfully";
         this.validations_form.reset();
       });
-    debugger;
+    // debugger;
   }
 }

@@ -49,7 +49,6 @@ export class AuthenticateService {
         .then(
           (res) => resolve(res),
           (err) => reject(err)
-         
         );
     });
   }
@@ -129,7 +128,23 @@ export class AuthenticateService {
         .createUserWithEmailAndPassword(value.email, value.password)
         .then((res) => {
           const ownerEmail = localStorage.getItem("email");
+          /******************************************************************************************************** */
 
+          // this.afs
+          //   .collection("fields", (ref) =>
+          //     ref.where("device", "==", value.farmId)
+          //   )
+          //   .doc()
+          //   .set(
+          //     {
+          //       worker: value.email,
+          //     },
+          //     { merge: true }
+          //   );
+          // console.log(value.email);
+          // debugger;
+
+          /******************************************************************************* */
           return this.afs.collection("users").doc(res.user.uid).set({
             email: value.email,
             password: value.password,

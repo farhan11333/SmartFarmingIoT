@@ -14,6 +14,7 @@ import {
 } from "@angular/fire/firestore";
 import { userInfo } from "os";
 import { debug } from "console";
+import { merge } from "rxjs";
 
 @Component({
   selector: "app-add-user",
@@ -93,7 +94,21 @@ export class AddUserPage implements OnInit {
       })
       .then((res) => {
         console.log(value);
-
+        /*************************************************************************************************************** */
+        // this.afs
+        //   .collection("fields", (ref) =>
+        //     ref.where("device", "==", value.farmId)
+        //   )
+        //   .doc()
+        //   .set(
+        //     {
+        //       worker: value.email,
+        //     },
+        //     { merge: true }
+        //   );
+        // console.log(value.email);
+        // debugger;
+        /**************************************************************************************************************** */
         this.afs
           .collection("fields", (ref) =>
             ref.where("device", "==", value.farmId)
@@ -101,31 +116,31 @@ export class AddUserPage implements OnInit {
           .valueChanges()
           .subscribe((fields) => {
             console.log(fields);
-            if (fields.length >= 1) {
-              this.authService
-                .registerworker(value)
-                // tslint:disable-next-line: align
-                .then(
-                  (res) => {
-                    console.log(res);
-                    this.errorMessage = "";
-                    this.successMessage = "User Added Successfully.";
-                    setTimeout(() => {
-                      this.successMessage = "";
-                    }, 4000);
-                  },
-                  (err) => {
-                    console.log(err);
-                    this.errorMessage = err.message;
+            // if (fields.length >= 1) {
+            this.authService
+              .registerworker(value)
+              // tslint:disable-next-line: align
+              .then(
+                (res) => {
+                  console.log(res);
+                  this.errorMessage = "";
+                  this.successMessage = "User Added Successfully.";
+                  setTimeout(() => {
                     this.successMessage = "";
-                    setTimeout(() => {
-                      this.errorMessage = "";
-                    }, 4000);
-                  }
-                );
+                  }, 4000);
+                },
+                (err) => {
+                  console.log(err);
+                  this.errorMessage = err.message;
+                  this.successMessage = "";
+                  setTimeout(() => {
+                    this.errorMessage = "";
+                  }, 4000);
+                }
+              );
 
-              this.validations_form.reset();
-            }
+            this.validations_form.reset();
+            // }
             res.present();
           });
       });
