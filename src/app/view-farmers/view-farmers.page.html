@@ -1,28 +1,28 @@
 <ion-header>
-    <ion-toolbar>
-        <ion-buttons class="icon-only" slot="end">
-            <div class="icon" routerLink="/add-farmer">
-                <img src="../../assets/farmadd.png" />
-            </div>
-        </ion-buttons>
-        <ion-back-button defaultHref="administrator" slot="start"></ion-back-button>
-        <ion-title>Farmers</ion-title>
-    </ion-toolbar>
+  <ion-toolbar>
+    <!-- <ion-buttons class="icon-only" slot="end">
+      <div class="icon" routerLink="/add-farmer">
+        <img src="../../assets/farmadd.png" />
+      </div>
+    </ion-buttons> -->
+    <ion-back-button defaultHref="administrator" slot="start"></ion-back-button>
+    <ion-title>Farmers</ion-title>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content fullscreen="true">
-    <ion-card *ngFor="let field of fields">
-        <ion-fab class="delete" top right>
-            <button ion-fab (click)='deleteFarmer()'>
+  <ion-card *ngFor="let user of users">
+    <ion-fab class="delete" top right>
+      <button ion-fab (click)="deleteFarmer()">
         <ion-icon name="close-circle-outline"></ion-icon>
       </button>
-        </ion-fab>
-        <ion-card-header no padding>
-            <ion-icon class="user" name="person-outline"></ion-icon> &nbsp;
-            <strong> {{field.ownerEmail}} </strong>
-        </ion-card-header>
-        <h6>{{field.fieldname}}</h6>
-        <h6>{{field.area}}</h6>
-        <h6>{{field.location}}</h6>
-    </ion-card>
+    </ion-fab>
+    <ion-card-header no padding>
+      <ion-icon class="user" name="person-outline"></ion-icon> &nbsp;
+      <strong> {{user.username}} </strong>
+    </ion-card-header>
+    <h6>{{user.email}}</h6>
+    <!-- <h6>{{field.area}}</h6>
+    <h6>{{field.location}}</h6> -->
+  </ion-card>
 </ion-content>
