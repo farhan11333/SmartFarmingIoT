@@ -88,6 +88,7 @@ export class AddUserPage implements OnInit {
             .registerworker(value)
             // tslint:disable-next-line: align
             .then(
+              // tslint:disable-next-line: no-shadowed-variable
               (res) => {
                 console.log(res);
                 this.errorMessage = "";

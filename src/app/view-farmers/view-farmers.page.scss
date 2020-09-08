@@ -1,5 +1,7 @@
     ion-content {
-        --background: linear-gradient(to bottom, #FCF766, #D1FE3B);
+        // --background: linear-gradient(to bottom, #FCF766, #D1FE3B);
+        // background-color: #f5f186;
+        --background: linear-gradient(426deg, #f5f186 53%, #9dfbc8 94%);
     }
     
     ion-toolbar {
@@ -25,7 +27,7 @@
     }
     
     ion-card-header {
-        color: black;
+        color: #32bd0b;
     }
     
     ion-title {
@@ -33,13 +35,15 @@
     }
     
     ion-icon {
-        padding-right: 10px;
-        color: white;
+        padding-right: 0px;
+        color: #19db92;
     }
     
     h6 {
-        margin-left: 10px;
-        color: black;
+        margin-top: 0px;
+        margin-left: 17px;
+        color: #068a71;
+        font-weight: bold;
     }
     
     ion-card {
@@ -48,7 +52,7 @@
     }
     
     .user {
-        margin-left: 10px;
+        margin-left: 0px;
         align-content: flex-start;
     }
     
@@ -58,4 +62,11 @@
     
     ion-label {
         font-weight: bolder;
+    }
+    
+    button {
+        margin-left: 300px;
+        margin-top: 9px;
+        font-size: 22px;
+        background: transparent;
     }

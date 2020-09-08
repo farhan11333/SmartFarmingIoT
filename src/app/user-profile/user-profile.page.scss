@@ -1,6 +1,14 @@
+ion-content {
+    --background: linear-gradient(315deg, #d5adc8 0%, #ff8489 76%);
+}
+
 .buttons {
     padding-left: 120px;
     padding-top: 20px;
+}
+
+ion-toolbar {
+    --background: transparent;
 }
 
 ion-title {
@@ -27,4 +35,8 @@ ion-title {
         font-size: small;
         margin-left: 10px;
     }
+}
+
+ion-button {
+    --background: #ff8489;
 }

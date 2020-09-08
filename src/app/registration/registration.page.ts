@@ -52,19 +52,19 @@ export class RegistrationPage implements OnInit {
   }
 
   tryRegister(value) {
-    this.loadingController
-    .create({
-      message: "Loggin in...",
-      duration: 3000,
-      spinner: "dots",
-      cssClass: "custom-loader-class",
-    })
-    .then((res) => {
+    // this.loadingController
+    // .create({
+    //   message: "Signing Up.....",
+    //   duration: 2500,
+    //   spinner: "dots",
+    //   cssClass: "custom-loader-class",
+    // })
+    // .then((res) => {
     this.authService.registerUser(value)
       // tslint:disable-next-line: align
       .then(res => {
         
-        console.log(res);
+        //console.log(res);
         this.errorMessage = '';
         this.successMessage = 'Your account has been created. Please log in.';
         setTimeout(() => {
@@ -79,8 +79,9 @@ export class RegistrationPage implements OnInit {
                 }, 4000);
         
       });
+     // res.present();
     this.validations_form.reset();
-    });
+  //  });
   }
 
   goLoginPage() {
