@@ -13,7 +13,7 @@
 <ion-content fullscreen="true">
   <ion-card *ngFor="let user of users">
     <ion-fab class="delete" top right>
-      <button ion-fab (click)="deleteFarmer()">
+      <button ion-fab (click)="deleteFarmer(user)">
         <ion-icon name="close-circle-outline"></ion-icon>
       </button>
     </ion-fab>

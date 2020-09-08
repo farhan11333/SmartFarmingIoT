@@ -31,13 +31,15 @@ export class ViewFarmersPage implements OnInit {
           return { id, ...data };
         });
         console.log(this.users);
-        debugger;
+        // debugger;
       });
     /********************************************************************************************* */
   }
   deleteFarmer(user) {
-    //  this.afs.doc("users/" + user.id).delete();
+    console.log(user.id);
+    console.log("user deleted");
+    this.afs.doc("users/" + user.id).delete();
     //  console.log("userdeleted");
-    debugger;
+    // debugger;
   }
 }
