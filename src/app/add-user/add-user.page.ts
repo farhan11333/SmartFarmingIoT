@@ -78,7 +78,7 @@ export class AddUserPage implements OnInit {
         });
         this.fields = fields;
         // console.log(this.fields);
-        debugger;
+        // debugger;
       });
   }
 
