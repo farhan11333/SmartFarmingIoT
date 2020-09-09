@@ -17,8 +17,7 @@ import { DeletePopoverPage } from "../delete-popover/delete-popover.page";
   styleUrls: ["./admin-view-devices.page.scss"],
 })
 export class AdminViewDevicesPage implements OnInit {
-  // fields: any = [];
-  users: any = [];
+  fields: any = [];
   constructor(
     private afs: AngularFirestore,
     private popover: PopoverController,
@@ -35,18 +34,18 @@ export class AdminViewDevicesPage implements OnInit {
         cssClass: "custom-loader-class",
       })
       .then((res) => {
+        const ownerEmail = localStorage.getItem("email");
+        this.afs
+          .collection("fields", (ref) =>
+            ref.where("ownerEmail", "==", ownerEmail)
+          )
+          .valueChanges()
+          .subscribe((_fields) => {
+            this.fields = _fields;
+            console.log(this.fields);
+          });
         res.present();
       });
-
-    const ownerEmail = localStorage.getItem("email");
-    this.afs
-      .collection("users", (ref) => ref.where("ownerEmail", "==", ownerEmail))
-      .valueChanges()
-      .subscribe((users) => {
-        this.users = users;
-        console.log(this.users);
-      });
-    // debugger;
   }
   async delete(event) {
     const myPopover = this.popover.create({

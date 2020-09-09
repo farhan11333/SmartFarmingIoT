@@ -15,8 +15,8 @@
     </ion-fab-button>
   </ion-fab>
 
-  <ng-container>
-    <ion-card *ngFor="let user of users">
+  <ng-container *ngFor="let field of fields">
+    <ion-card>
       <!-- <ion-button (click)="delete($event)" icon-only>
                 <ion-icon class="icon-delete" name="ellipsis-vertical-outline"></ion-icon>
             </ion-button> -->
@@ -25,21 +25,17 @@
           <ion-icon name="ellipsis-vertical-outline"></ion-icon>
         </button>
       </ion-fab>
-      <!-- <ion-section> -->
       <ion-card-header no padding>
-        <h1>{{user.farmId.fieldname}}</h1>
+        <h1>{{field.fieldname}}</h1>
       </ion-card-header>
 
-      <h3>{{user.farmId.area}}</h3>
-      <h3>{{user.farmId.location}}</h3>
-
-      <h3>{{user.farmId.device}}</h3>
+      <h3>{{field.area}}</h3>
+      <h3>{{field.location}}</h3>
       <!-- <h6>{{field.worker}}</h6>-->
       <ion-row>
         <ion-icon class="user" name="person-outline"></ion-icon> &nbsp;
-        <ion-label>{{user.username}}</ion-label>
+        <ion-label>{{field.ownerEmail}}</ion-label>
       </ion-row>
-      <!-- </ion-section> -->
     </ion-card>
   </ng-container>
 </ion-content>
