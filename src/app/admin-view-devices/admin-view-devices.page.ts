@@ -55,8 +55,10 @@ export class AdminViewDevicesPage implements OnInit {
     console.log(field);
     const myPopover = this.popover.create({
       component: DeletePopoverPage,
+      cssClass: 'popover-top-right',
+      
       componentProps: { field: field },
     });
-    return (await myPopover).present();
+    return  (await myPopover).present();
   }
 }

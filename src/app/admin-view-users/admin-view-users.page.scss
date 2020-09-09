@@ -19,7 +19,7 @@ ion-toolbar {
 .bg-transparent ion-label {
     color: whitesmoke;
     font-weight: bold;
-    margin-top: -26px;
+    margin-top: -64px;
 }
 
 .add {
@@ -52,21 +52,32 @@ ion-fab-button {
 
 .bg-transparent .lbl-field {
     // padding-left: 1px;
-    margin-top: 54px;
-    margin-left: 0px;
+    margin-top: 2px;
+    margin-left: -59px;
     color: grey;
 }
 
 .bg-transparent .icon-field {
-    margin-top: 38px;
-    margin-left: -291px;
-    padding-right: 6px;
+    margin-top: -16px;
+    margin-left: -208px;
+    padding-right: 65px;
 }
 
 .bg-transparent .user {
-    margin-top: -41px;
+    margin-top: -82px;
 }
 
 .bg-transparent .check {
     color: #185718c4;
+}
+
+.bg-transparent .lbl-device {
+    margin-top: 73px;
+    margin-right: 80px;
+    margin-left: 8px;
+}
+
+.bg-transparent .icon-device {
+    margin-top: 56px;
+    margin-left: -209px;
 }

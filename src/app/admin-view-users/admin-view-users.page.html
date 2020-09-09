@@ -1,39 +1,42 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-back-button defaultHref="admin-view" slot="start"></ion-back-button>
+    <ion-toolbar>
+        <ion-back-button defaultHref="admin-view" slot="start"></ion-back-button>
 
-    <ion-title>Users</ion-title>
-  </ion-toolbar>
+        <ion-title>Users</ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content fullscreen="true">
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button size="medium" type="add" href="add-user">
-      <ion-icon class="add-user" name="person-add"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
-  <ion-list class="bg-transparent" *ngFor="let user of users">
-    <ion-item-sliding>
-      <ion-item lines="full">
-        <ion-icon class="user" name="person"></ion-icon> &nbsp;
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button size="medium" type="add" href="add-user">
+            <ion-icon class="add-user" name="person-add"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+    <ion-list class="bg-transparent" *ngFor="let user of users">
+        <ion-item-sliding>
+            <ion-item lines="full">
+                <ion-icon class="user" name="person"></ion-icon> &nbsp;
 
-        <ion-label>{{user.username}}</ion-label> <br />
-        <ion-icon class="icon-field" name="home"></ion-icon>
+                <ion-label>{{user.username}}</ion-label> <br />
+                <ion-icon class="icon-field" name="home"></ion-icon>
 
-        <ion-label class="lbl-field">{{user.farmId.fieldname}} </ion-label>
-        <br />
-        <ion-label class="lbl-field">{{user.farmId.device}} </ion-label>
+                <ion-label class="lbl-field">{{user.farmId.fieldname}} </ion-label> <br>
 
-        <ion-icon class="check" name="checkmark-circle" slot="end"></ion-icon>
-      </ion-item>
+                <ion-icon class="icon-device" name="attach-outline"></ion-icon>
+                <br/>
+                <ion-label class="lbl-device">{{user.farmId.device}} </ion-label>
 
-      <ion-item-options side="end">
-        <ion-item-option (click)="deleteUser(user)" color="danger" expandable>
-          Delete
-        </ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
+                <ion-icon class="check" name="checkmark-circle" slot="end"></ion-icon>
 
-    <!-- Sliding item with expandable options on both sides -->
-  </ion-list>
+            </ion-item>
+
+            <ion-item-options side="end">
+                <ion-item-option (click)="deleteUser(user)" color="danger" expandable>
+                    Delete
+                </ion-item-option>
+            </ion-item-options>
+        </ion-item-sliding>
+
+        <!-- Sliding item with expandable options on both sides -->
+    </ion-list>
 </ion-content>

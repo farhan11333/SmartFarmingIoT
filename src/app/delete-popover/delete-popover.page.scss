@@ -1,9 +1,12 @@
 ion-list {
     width: 86px;
+    background: transparent;
+    padding: 0px;
 }
 
 ion-item {
     width: 100%;
+    margin-top: -3px;
 }
 
 ion-item {
@@ -12,4 +15,5 @@ ion-item {
     cursor: pointer;
     padding-top: 0px;
     padding-bottom: 0px;
+    --background: transparent;
 }
