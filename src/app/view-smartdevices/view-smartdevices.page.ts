@@ -49,11 +49,11 @@ export class ViewSmartdevicesPage implements OnInit {
     /******************************************************************************************/
   }
   deleteDevice(device) {
+    this.afs.doc("devices/" + device.id).delete();
     console.log("device deleted");
     // console.log(this.device);
     // console.log(device);
-    // this.afs.doc("users/" + device.id).delete();
-    //    console.log("devices/" + device.id);
+    // console.log("devices/" + device.id);
     debugger;
   }
 }

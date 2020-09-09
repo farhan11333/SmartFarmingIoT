@@ -64,8 +64,11 @@ export class AuthenticateService {
         .signInWithEmailAndPassword(value.email, value.password)
         .then(
           (res) => {
+            // debugger;
             console.log("res", res);
+            const uid = res.user.uid;
             resolve(res);
+            localStorage.setItem("uid", uid);
 
             localStorage.setItem("email", res.user.email);
           },
