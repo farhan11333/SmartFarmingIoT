@@ -91,7 +91,8 @@ export class AddFieldPage implements OnInit {
     // // debugger;
 
     /******************************************************************** */
-
+    // const ownerEmail = localStorage.getItem("email");
+    /********************************************************** */
     // this.afs
     //   .collection("users", (ref) => ref.where("type", "==", "owner"))
     //   .snapshotChanges()
