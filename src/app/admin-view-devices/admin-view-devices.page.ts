@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 
+
 import {
   AngularFirestore,
   AngularFirestoreCollection,
@@ -51,10 +52,11 @@ export class AdminViewDevicesPage implements OnInit {
         res.present();
       });
   }
-  async delete(field) {
-    console.log(field);
-    const myPopover = this.popover.create({
+  async delete(field: any) {
+  //  console.log(field);
+    const myPopover =  await this.popover.create({
       component: DeletePopoverPage,
+     event: field,
       cssClass: 'popover-top-right',
       
       componentProps: { field: field },
