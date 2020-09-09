@@ -19,6 +19,7 @@ ion-toolbar {
 .bg-transparent ion-label {
     color: whitesmoke;
     font-weight: bold;
+    margin-top: -26px;
 }
 
 .add {
@@ -47,4 +48,25 @@ ion-fab-button {
     margin-bottom: 27px;
     margin-right: 22px;
     box-shadow: 10 10 10 10 rgba(#5a99d4, .3);
+}
+
+.bg-transparent .lbl-field {
+    // padding-left: 1px;
+    margin-top: 54px;
+    margin-left: 0px;
+    color: grey;
+}
+
+.bg-transparent .icon-field {
+    margin-top: 38px;
+    margin-left: -291px;
+    padding-right: 6px;
+}
+
+.bg-transparent .user {
+    margin-top: -41px;
+}
+
+.bg-transparent .check {
+    color: #185718c4;
 }
