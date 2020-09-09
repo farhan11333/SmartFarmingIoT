@@ -85,7 +85,7 @@ export class MainPage implements OnInit {
         this.user = user;
         // console.log(this.user);
         const device = this.user.farmId.device;
-        localStorage.setItem("deviceId", device);
+        localStorage.setItem("deviceId", device.trim());
         // debugger;
         this.fetchDeviceInfo(device.trim());
       });

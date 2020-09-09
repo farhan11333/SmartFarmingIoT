@@ -1,62 +1,46 @@
 <ion-header class="ion-no-border">
-    <ion-toolbar>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="grey" defaultHref="main"></ion-back-button>
+    </ion-buttons>
 
-        <ion-buttons slot="start">
-            <ion-back-button color="grey" defaultHref="main"></ion-back-button>
-
-
-        </ion-buttons>
-
-        <ion-title>Motor</ion-title>
-    </ion-toolbar>
+    <ion-title>Motor</ion-title>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content fullscreen="true">
-    <ion-card class="top">
+  <ion-card class="top">
+    <ion-card-title class="motor">
+      <!--class="Span">Running</span>-->
+      Motor Status
+    </ion-card-title>
 
+    <h2 class="h2">{{isChecker?"Running":"Stopped"}}</h2>
 
-
-        <ion-card-title class="motor">
-            <!--class="Span">Running</span>-->
-            Motor Status
-        </ion-card-title>
-
-        <h2 class="h2">{{isChecker?"Running":"Stopped"}}</h2>
-
-
-
-        <div class="buttons">
-            <ion-buttons>
-                <ion-toggle class="toggle" (click)="buttonMotor($event)" [checked]='isChecker' mode="ios" class="all-custom"></ion-toggle>
-                <!--- <ion-button class="round " fill="solid " color="success " (click)="buttonMotor() ">ON</ion-button>
+    <div class="buttons">
+      <ion-buttons>
+        <ion-toggle
+          class="toggle"
+          (click)="buttonMotor($event)"
+          [checked]="isChecker"
+          mode="ios"
+          class="all-custom"
+        ></ion-toggle>
+        <!--- <ion-button class="round " fill="solid " color="success " (click)="buttonMotor() ">ON</ion-button>
                 <ion-button class="round " size="large " fill="solid " color="danger ">OFF</ion-button> -->
-            </ion-buttons>
-        </div>
+      </ion-buttons>
+    </div>
+  </ion-card>
 
-
-    </ion-card>
-
-
-
-
-
-
-    <ion-card class="history ">
-
-
-
-        <ion-card-title class="motor ">
-
-            History:
-        </ion-card-title>
-        <ion-list *ngFor="let state of motorStatus | async" lines="none">
-            <ion-item class="bg">
-                {{state.time |date:"medium"}} &nbsp;<span class="status">{{state.status}}</span>
-                <!-- <img src="../../assets/play.png" *ngIf=" motorStatus == state "> -->
-            </ion-item>
-        </ion-list>
-
-
-    </ion-card>
-
+  <ion-card class="history">
+    <ion-card-title class="motor"> History: </ion-card-title>
+    <ion-list *ngFor="let state of history" lines="none">
+      <ion-item class="bg">
+        {{state.time |date:"medium"}} &nbsp;<span class="status"
+          >{{state.status}}</span
+        >
+        <!-- <img src="../../assets/play.png" *ngIf=" motorStatus == state "> -->
+      </ion-item>
+    </ion-list>
+  </ion-card>
 </ion-content>
