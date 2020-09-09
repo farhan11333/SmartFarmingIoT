@@ -39,6 +39,7 @@ export class AdminViewPage implements OnInit {
   async popclick(event) {
     const mypopover = await this.popover.create({
       component: AdminPopoverPage,
+      cssClass: 'popover',
       event
     });
     return await mypopover.present();

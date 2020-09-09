@@ -127,6 +127,7 @@ export class AddSmartdevicesPage implements OnInit {
       temperature: "0",
       motorIsrunning: false,
       startedAt: "0",
+      water_level:"0",
     });
     ref
       .collection("history")

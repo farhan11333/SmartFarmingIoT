@@ -32,10 +32,10 @@ export class DeletePopoverPage implements OnInit {
     /************************************************************** */
   }
   Delete(field) {
-    console.log("userDeleted", field.id);
+    console.log('userDeleted', field.id);
     // console.log("fields/" + this.field);
     // debugger;
-    this.afs.doc("fields/" + field.id).delete();
+    this.afs.doc('fields/' + field.id).delete();
     // debugger;
   }
 }

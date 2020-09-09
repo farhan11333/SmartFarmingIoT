@@ -129,6 +129,7 @@ export class MainPage implements OnInit {
   async popclick(event) {
     const myPopover = await this.popover.create({
       component: PopoverPage,
+      cssClass: 'popover-main',
       event,
     });
     return await myPopover.present();

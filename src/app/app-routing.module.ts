@@ -83,6 +83,10 @@ const routes: Routes = [
     path: 'delete-popover',
     loadChildren: () => import('./delete-popover/delete-popover.module').then( m => m.DeletePopoverPageModule)
   },
+  {
+    path: 'owner-profile',
+    loadChildren: () => import('./owner-profile/owner-profile.module').then( m => m.OwnerProfilePageModule)
+  },
 ];
 
 @NgModule({

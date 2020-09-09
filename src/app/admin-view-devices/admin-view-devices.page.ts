@@ -52,14 +52,14 @@ export class AdminViewDevicesPage implements OnInit {
         res.present();
       });
   }
-  async delete(field: any) {
+  async delete(field) {
   //  console.log(field);
     const myPopover =  await this.popover.create({
       component: DeletePopoverPage,
-     event: field,
+     
       cssClass: 'popover-top-right',
       
-      componentProps: { field: field },
+      componentProps: { field },
     });
     return  (await myPopover).present();
   }

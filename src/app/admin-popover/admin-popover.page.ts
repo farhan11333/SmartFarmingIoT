@@ -21,6 +21,10 @@ export class AdminPopoverPage implements OnInit {
     this.navCtrl.navigateForward('/admin-view-devices');
     this.popover.dismiss();
   }
+  ownerProfile() {
+    this.navCtrl.navigateForward('/owner-profile');
+    this.popover.dismiss();
+  }
   logout() {
     this.aft.logoutUser()
       .then(res => {
