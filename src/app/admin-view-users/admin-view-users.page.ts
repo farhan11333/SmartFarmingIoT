@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 
 import { AngularFirestore } from "@angular/fire/firestore";
 import { firestore } from "firebase";
+import * as firebase from 'firebase';
 
 @Component({
   selector: "app-admin-view-users",
@@ -37,6 +38,11 @@ export class AdminViewUsersPage implements OnInit {
 
   deleteUser(user) {
     // debugger;
+    firebase.auth().signInWithEmailAndPassword(user.email, user.password)
+    .then(function (info) {
+       var user = firebase.auth().currentUser;
+       user.delete();
+    });
     console.log("userDeleted");
     this.afs.doc("users/" + user.id).delete();
     // this.afs
