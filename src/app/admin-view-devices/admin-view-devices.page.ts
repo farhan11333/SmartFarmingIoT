@@ -39,18 +39,23 @@ export class AdminViewDevicesPage implements OnInit {
           .collection("fields", (ref) =>
             ref.where("ownerEmail", "==", ownerEmail)
           )
-          .valueChanges()
+          .snapshotChanges()
           .subscribe((_fields) => {
-            this.fields = _fields;
+            this.fields = _fields.map((field) => {
+              const id = field.payload.doc.id;
+              const data: any = field.payload.doc.data();
+              return { id, ...data };
+            });
             console.log(this.fields);
           });
         res.present();
       });
   }
-  async delete(event) {
+  async delete(field) {
+    console.log(field);
     const myPopover = this.popover.create({
       component: DeletePopoverPage,
-      event,
+      componentProps: { field: field },
     });
     return (await myPopover).present();
   }
