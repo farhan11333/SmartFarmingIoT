@@ -76,7 +76,7 @@ export class MainPage implements OnInit {
     /**************************************************************************** */
     // this.afs
     //   .collection("devices", (ref) =>
-    //     ref.where("name", "==", this.users.device)
+    //     ref.where("name", "==", user.farmId.device)
     //   )
     //   .snapshotChanges()
     //   .subscribe((field) => {
@@ -87,7 +87,7 @@ export class MainPage implements OnInit {
     //     });
     //     this.fields = fields;
     //     console.log(this.fields);
-    //     // debugger;
+    //     debugger;
     //   });
 
     /*****************************************getuserIDfunctionCall**********************/
