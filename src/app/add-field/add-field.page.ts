@@ -91,7 +91,8 @@ export class AddFieldPage implements OnInit {
     // // debugger;
 
     /******************************************************************** */
-    // const ownerEmail = localStorage.getItem("email");
+    const ownerEmail = localStorage.getItem("email");
+    const uid = localStorage.getItem("uid");
     /********************************************************** */
     // this.afs
     //   .collection("users", (ref) => ref.where("type", "==", "owner"))
@@ -110,7 +111,7 @@ export class AddFieldPage implements OnInit {
     /**************************************************************** */
 
     this.afs
-      .collection("devices")
+      .collection("devices", (ref) => ref.where("attachedTo", "==", uid))
       .snapshotChanges()
       .subscribe((device) => {
         const devices = device.map((device) => {
@@ -119,7 +120,7 @@ export class AddFieldPage implements OnInit {
           return { id, ...data };
         });
         this.devices = devices;
-        // console.log(this.devices);
+        console.log(this.devices);
         // debugger;
       });
     /**************************************************** */
