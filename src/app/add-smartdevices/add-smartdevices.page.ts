@@ -132,6 +132,7 @@ export class AddSmartdevicesPage implements OnInit {
       .collection("history")
       .add({
         status: "",
+        time:'',
       })
       .then(() => {
         this.successMessage = "Device added successfully";

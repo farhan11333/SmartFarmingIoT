@@ -36,17 +36,17 @@ motorStatus: Observable<MotorStatus[]>;
 motorButton: Observable<Motor>;
 ;
   ngOnInit() {
-this.statusCollection = this.afs.collection<MotorStatus>('devices/farm1/history', ref => ref.orderBy('time', 'desc'));
+this.statusCollection = this.afs.collection<MotorStatus>('devices/farmEST17a/history', ref => ref.orderBy('time', 'desc'));
 this.motorStatus = this.statusCollection.valueChanges();
 
-this.motorButton = this.db.object<Motor>('farms/farm1').valueChanges();
+this.motorButton = this.db.object<Motor>('farms/farmEST17a').valueChanges();
 this.motorButton.subscribe(state => {
   this.isChecker = state.motorIsrunning;
   console.log('On value Observe:' + this.isChecker);
 })
 }
   async buttonMotor($event) {
-    const name = this.db.database.ref('farms/farm1');
+    const name = this.db.database.ref('farms/farmEST17a');
   
 
 

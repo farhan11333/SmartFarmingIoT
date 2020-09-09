@@ -46,7 +46,7 @@ export class AdminViewDevicesPage implements OnInit {
               const data: any = field.payload.doc.data();
               return { id, ...data };
             });
-            console.log(this.fields);
+           // console.log(this.fields);
           });
         res.present();
       });
