@@ -11,7 +11,7 @@
 </ion-header>
 
 <ion-content fullscreen="true">
-  <ion-card *ngFor="let field of fields">
+  <ion-card *ngFor="let device of devices">
     <ion-fab class="delete" top right>
       <button ion-fab (click)="deleteDevice(device)">
         <ion-icon name="close-circle-outline"></ion-icon>
@@ -19,11 +19,11 @@
     </ion-fab>
     <ion-card-header no padding>
       <ion-icon class="user" name="person-outline"></ion-icon> &nbsp;
-      <strong> {{field.ownerName}} </strong>
-      <ion-label>Attached</ion-label> {{field.device}}
+      <strong> {{device.ownerName}} </strong>
+      <ion-label>Attached</ion-label> {{device.name}}
     </ion-card-header>
-    <h6>{{field.fieldname}}</h6>
+    <!-- <h6>{{field.fieldname}}</h6>
     <h6>{{field.area}}</h6>
-    <h6>{{field.location}}</h6>
+    <h6>{{field.location}}</h6> -->
   </ion-card>
 </ion-content>
