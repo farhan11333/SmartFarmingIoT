@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { AngularFirestore } from "@angular/fire/firestore";
+import * as firebase from 'firebase';
 
 @Component({
   selector: "app-view-farmers",
@@ -36,6 +37,11 @@ export class ViewFarmersPage implements OnInit {
     /********************************************************************************************* */
   }
   deleteFarmer(user) {
+    firebase.auth().signInWithEmailAndPassword(user.email, user.password)
+    .then(function (info) {
+       var user = firebase.auth().currentUser;
+       user.delete();
+    });
     console.log(user.id);
     console.log("user deleted");
     this.afs.doc("users/" + user.id).delete();
