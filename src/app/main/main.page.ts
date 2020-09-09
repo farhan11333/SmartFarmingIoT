@@ -30,6 +30,7 @@ export interface AppUser {
 })
 export class MainPage implements OnInit {
   users: any = [];
+  // fields: any = [];
   userEmail: string;
   constructor(
     private popover: PopoverController,
@@ -70,8 +71,24 @@ export class MainPage implements OnInit {
         });
         this.users = users;
         console.log(this.users);
-        debugger;
+        // debugger;
       });
+    /**************************************************************************** */
+    // this.afs
+    //   .collection("devices", (ref) =>
+    //     ref.where("name", "==", this.users.device)
+    //   )
+    //   .snapshotChanges()
+    //   .subscribe((field) => {
+    //     const fields = field.map((field) => {
+    //       const id = field.payload.doc.id;
+    //       const data: any = field.payload.doc.data();
+    //       return { id, ...data };
+    //     });
+    //     this.fields = fields;
+    //     console.log(this.fields);
+    //     // debugger;
+    //   });
 
     /*****************************************getuserIDfunctionCall**********************/
 
