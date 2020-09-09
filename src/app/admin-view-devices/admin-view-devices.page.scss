@@ -26,7 +26,8 @@ h3 {
     padding-bottom: 3px;
     margin-top: -12px;
     margin-bottom: 5px;
-    font-weight: 459;
+    //  font-weight: 459;
+    font-size: 18px;
     line-height: 1.2;
     margin-left: 10px;
     color: #167129;
@@ -53,7 +54,7 @@ ion-label {
 
 ion-fab-button {
     --background: #98fcbd;
-    margin-bottom: 53px;
+    margin-bottom: 28px;
     margin-right: 22px;
     box-shadow: 10 10 10 10 rgba(#5a99d4, .3);
 }
@@ -90,6 +91,7 @@ button {
 
 .h3 {
     margin-left: 6px;
+    font-size: 18px;
 }
 
 .icon-location {
@@ -106,6 +108,7 @@ h4 {
     font-size: 20px;
     margin-top: -5px;
     margin-left: 10px;
+    color: #c46b6b;
 }
 
 .icon-device {
