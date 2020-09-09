@@ -1,18 +1,17 @@
 <ion-content padding class="bg">
-    <ion-card class="top">
-        <ion-menu-button (click)="popclick($event)">
-            <ion-buttons slot="end">
-                <ion-menu-button autoHide="true"></ion-menu-button>
-            </ion-buttons>
-        </ion-menu-button>
+  <ion-card class="top">
+    <ion-menu-button (click)="popclick($event)">
+      <ion-buttons slot="end">
+        <ion-menu-button autoHide="true"></ion-menu-button>
+      </ion-buttons>
+    </ion-menu-button>
 
-        <ion-card-title class="welcome" *ngFor="let user of users">
-            Welcome <br /><span class="Span">{{user.username}}</span>
-        </ion-card-title>
-    </ion-card>
-    <ion-card class="middle">
-        <label class="lbl-field" *ngFor="let user of users">{{user.farmId.fieldname}}</label
-    >
+    <ion-card-title class="welcome">
+      Welcome <br /><span class="Span">{{user.username}}</span>
+    </ion-card-title>
+  </ion-card>
+  <ion-card class="middle">
+    <label class="lbl-field">{{user.farmId.fieldname}}</label>
   </ion-card>
   <div class="handlestart"></div>
   <div class="handleEnd"></div>
@@ -24,28 +23,28 @@
           <ion-col>
             <ion-card class="temp">
               <ion-icon src="/assets/temp1.svg"></ion-icon>
-              <h3>{{(farm |async)?.temperature }}°C</h3>
+              <h3>{{device.temperature }}°C</h3>
               <h1>Temp</h1>
             </ion-card>
           </ion-col>
           <ion-col>
             <ion-card class="water">
               <ion-icon src="/assets/water.svg"></ion-icon>
-              <h3>{{(farm |async)?.water_level }}%</h3>
+              <h3>{{device.water_level }}%</h3>
               <h1>Water</h1>
             </ion-card>
           </ion-col>
           <ion-col>
             <ion-card class="soil">
               <ion-icon src="/assets/soil.svg"></ion-icon>
-              <h3>{{(farm |async)?.soil }}%</h3>
+              <h3>{{device.soil }}%</h3>
               <h1>Soil</h1>
             </ion-card>
           </ion-col>
           <ion-col>
             <ion-card class="humidity">
               <ion-icon src="/assets/humidity.svg"></ion-icon>
-              <h3>{{(farm |async)?.humidity }}%</h3>
+              <h3>{{device.humidity }}%</h3>
               <h1>Humidity</h1>
             </ion-card>
           </ion-col>

@@ -29,7 +29,8 @@ export interface AppUser {
   styleUrls: ["./main.page.scss"],
 })
 export class MainPage implements OnInit {
-  users: any = [];
+  user: any = { farmId: {} };
+  device: any = {};
   // fields: any = [];
   userEmail: string;
   constructor(
@@ -56,73 +57,72 @@ export class MainPage implements OnInit {
     return this.appUserDoc.valueChanges();
   }
 
+  async fetchDeviceInfo(deviceId) {
+    console.log({ deviceId });
+    // debugger;
+    this.afs
+      .collection("devices")
+      .doc(deviceId)
+      .valueChanges()
+      .subscribe((device) => {
+        this.device = device;
+      });
+  }
   async ngOnInit() {
     /***************************************************************** */
+
     const email = localStorage.getItem("email");
     console.log(email);
     this.afs
       .collection("users", (ref) => ref.where("email", "==", email))
       .snapshotChanges()
-      .subscribe((user) => {
-        const users = user.map((user) => {
+      .subscribe((users) => {
+        const [user] = users.map((user) => {
           const id = user.payload.doc.id;
           const data: any = user.payload.doc.data();
           return { id, ...data };
         });
-        this.users = users;
-        console.log(this.users);
+        this.user = user;
+        // console.log(this.user);
+        const device = this.user.farmId.device;
         // debugger;
+        this.fetchDeviceInfo(device.trim());
       });
     /**************************************************************************** */
-    // this.afs
-    //   .collection("devices", (ref) =>
-    //     ref.where("name", "==", user.farmId.device)
-    //   )
-    //   .snapshotChanges()
-    //   .subscribe((field) => {
-    //     const fields = field.map((field) => {
-    //       const id = field.payload.doc.id;
-    //       const data: any = field.payload.doc.data();
-    //       return { id, ...data };
-    //     });
-    //     this.fields = fields;
-    //     console.log(this.fields);
-    //     debugger;
-    //   });
 
     /*****************************************getuserIDfunctionCall**********************/
 
-    this.aft.getUserIDAsync().then((user) => {
-      this.appUser = this.getUserSettings(user.uid);
-      this.appUser.subscribe(
-        (x) => {
-          this.farmDocument = this.afs.doc<Farm>("devices/" + x.deviceId);
-          this.farm = this.farmDocument.valueChanges();
-        },
-        (err) => {
-          console.error("something wrong occurred: " + err);
-        },
-        () => {
-          console.log("done");
-        }
-      );
-    });
+    // this.aft.getUserIDAsync().then((user) => {
+    //   this.appUser = this.getUserSettings(user.uid);
+    //   this.appUser.subscribe(
+    //     (x) => {
+    //       this.farmDocument = this.afs.doc<Farm>("devices/" + x.deviceId);
+    //       this.farm = this.farmDocument.valueChanges();
+    //     },
+    //     (err) => {
+    //       console.error("something wrong occurred: " + err);
+    //     },
+    //     () => {
+    //       console.log("done");
+    //     }
+    //   );
+    // });
 
-    this.aft.userDetails().subscribe(
-      (res) => {
-        console.log("res", res);
-        if (res !== null) {
-          this.userEmail = res.email
-            .substring(0, res.email.indexOf("@"))
-            .toUpperCase();
-        } else {
-          this.navCtrl.navigateBack("");
-        }
-      },
-      (err) => {
-        console.log("err", err);
-      }
-    );
+    // this.aft.userDetails().subscribe(
+    //   (res) => {
+    //     console.log("res", res);
+    //     if (res !== null) {
+    //       this.userEmail = res.email
+    //         .substring(0, res.email.indexOf("@"))
+    //         .toUpperCase();
+    //     } else {
+    //       this.navCtrl.navigateBack("");
+    //     }
+    //   },
+    //   (err) => {
+    //     console.log("err", err);
+    //   }
+    // );
   }
 
   async popclick(event) {
