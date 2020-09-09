@@ -1,18 +1,17 @@
 <ion-content padding class="bg">
-  <ion-card class="top">
-    <ion-menu-button (click)="popclick($event)">
-      <ion-buttons slot="end">
-        <ion-menu-button autoHide="true"></ion-menu-button>
-      </ion-buttons>
-    </ion-menu-button>
+    <ion-card class="top">
+        <ion-menu-button (click)="popclick($event)">
+            <ion-buttons slot="end">
+                <ion-menu-button autoHide="true"></ion-menu-button>
+            </ion-buttons>
+        </ion-menu-button>
 
-    <ion-card-title class="welcome" *ngFor="let user of users">
-      Welcome <br /><span class="Span">{{user.username}}</span>
-    </ion-card-title>
-  </ion-card>
-  <ion-card class="middle">
-    <label class="lbl-field" *ngFor="let user of users"
-      >{{user.farmId.fieldname}}</label
+        <ion-card-title class="welcome" *ngFor="let user of users">
+            Welcome <br /><span class="Span">{{user.username}}</span>
+        </ion-card-title>
+    </ion-card>
+    <ion-card class="middle">
+        <label class="lbl-field" *ngFor="let user of users">{{user.farmId.fieldname}}</label
     >
   </ion-card>
   <div class="handlestart"></div>
