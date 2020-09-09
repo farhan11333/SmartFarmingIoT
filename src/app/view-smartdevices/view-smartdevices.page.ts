@@ -7,8 +7,9 @@ import { AngularFirestore } from "@angular/fire/firestore";
   styleUrls: ["./view-smartdevices.page.scss"],
 })
 export class ViewSmartdevicesPage implements OnInit {
+  //  users: any = [];
   fields: any = [];
-
+  devices: any = [];
   constructor(private afs: AngularFirestore) {}
 
   ngOnInit() {
@@ -19,8 +20,38 @@ export class ViewSmartdevicesPage implements OnInit {
         this.fields = fields;
         console.log(this.fields);
       });
+
+    /****************************************************************************************/
+    // this.afs
+    //   .collection("users")
+    //   .valueChanges()
+    //   .subscribe((users) => {
+    //     this.users = users;
+    //     console.log(this.users);
+    //     debugger;
+    //   });
+    /****************************************************************************************/
+    /******************************************************************************************/
+
+    const snapshotref = this.afs
+      .collection("devices")
+      .snapshotChanges()
+      .subscribe((devices) => {
+        this.devices = devices.map((device) => {
+          const id = device.payload.doc.id;
+          const data: any = device.payload.doc.data();
+          return { id, ...data };
+        });
+        console.log(this.devices);
+        // debugger;
+      });
+    /******************************************************************************************/
   }
-  deleteDevice(){
-    
+  deleteDevice(device) {
+    console.log("device deleted");
+    // console.log(device);
+    // this.afs.doc("users/" + device.id).delete();
+    //    console.log("devices/" + device.id);
+    debugger;
   }
 }
