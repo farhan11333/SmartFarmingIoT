@@ -86,7 +86,7 @@ export class MainPage implements OnInit {
           console.error("something wrong occurred: " + err);
         },
         () => {
-          console.log("done");
+          console.log('done');
         }
       );
     });
