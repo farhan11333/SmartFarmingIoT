@@ -36,7 +36,7 @@
     
     ion-icon {
         padding-right: 0px;
-        color: #19db92;
+        color: #ff010d;
     }
     
     h6 {
@@ -65,8 +65,13 @@
     }
     
     button {
-        margin-left: 300px;
-        margin-top: 9px;
         font-size: 22px;
         background: transparent;
+    }
+    
+    .delete {
+        background: transparent;
+        margin-top: 9px;
+        //   font-size: 22px;
+        margin-left: 89%;
     }

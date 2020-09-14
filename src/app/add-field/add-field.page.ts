@@ -1,36 +1,36 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit } from '@angular/core';
 import {
   FormGroup,
   FormBuilder,
   Validators,
   FormControl,
-} from "@angular/forms";
-import { AuthenticateService } from "../services/authentication.service";
-import { NavController, LoadingController } from "@ionic/angular";
+} from '@angular/forms';
+import { AuthenticateService } from '../services/authentication.service';
+import { NavController, LoadingController } from '@ionic/angular';
 import {
   AngularFirestore,
   AngularFirestoreCollection,
-} from "@angular/fire/firestore";
-import { userInfo } from "os";
-import { AdminViewUsersPage } from "../admin-view-users/admin-view-users.page";
+} from '@angular/fire/firestore';
+import { userInfo } from 'os';
+import { AdminViewUsersPage } from '../admin-view-users/admin-view-users.page';
 
 @Component({
-  selector: "app-add-field",
-  templateUrl: "./add-field.page.html",
-  styleUrls: ["./add-field.page.scss"],
+  selector: 'app-add-field',
+  templateUrl: './add-field.page.html',
+  styleUrls: ['./add-field.page.scss'],
 })
 export class AddFieldPage implements OnInit {
   validations_form: FormGroup;
-  errorMessage: "";
-  successMessage: string = "";
+  errorMessage: '';
+  successMessage = '';
   devices: any = [];
   users: any = [];
 
   validation_messages = {
-    fieldname: [{ type: "required", message: "Field Name is required." }],
-    area: [{ type: "required", message: "Area is required." }],
-    location: [{ type: "required", message: "location  is required." }],
-    device: [{ type: "required", message: "Device ID is required." }],
+    fieldname: [{ type: 'required', message: 'Field Name is required.' }],
+    area: [{ type: 'required', message: 'Area is required.' }],
+    location: [{ type: 'required', message: 'location  is required.' }],
+    device: [{ type: 'required', message: 'Device ID is required.' }],
   };
   constructor(
     private navCtrl: NavController,
@@ -42,18 +42,19 @@ export class AddFieldPage implements OnInit {
 
   ngOnInit(): void {
     this.validations_form = this.formBuilder.group({
-      fieldname: new FormControl("", Validators.compose([Validators.required])),
-      area: new FormControl("", Validators.compose([Validators.required])),
-      location: new FormControl("", Validators.compose([Validators.required])),
-      device: new FormControl("", Validators.compose([Validators.required])),
+      fieldname: new FormControl('', Validators.compose([Validators.required])),
+      area: new FormControl('', Validators.compose([Validators.required,
+        Validators.pattern('[0-9]*')])),
+      location: new FormControl('', Validators.compose([Validators.required])),
+      device: new FormControl('', Validators.compose([Validators.required])),
     });
 
     /*********************
-     * 
-     * 
+     *
+     *
      Will be changed accordingly
      parameters issues
-     *    
+     *
      * *******************/
 
     /******************************************************************************** */
@@ -91,8 +92,8 @@ export class AddFieldPage implements OnInit {
     // // debugger;
 
     /******************************************************************** */
-    const ownerEmail = localStorage.getItem("email");
-    const uid = localStorage.getItem("uid");
+    const ownerEmail = localStorage.getItem('email');
+    const uid = localStorage.getItem('uid');
     /********************************************************** */
     // this.afs
     //   .collection("users", (ref) => ref.where("type", "==", "owner"))
@@ -111,7 +112,7 @@ export class AddFieldPage implements OnInit {
     /**************************************************************** */
 
     this.afs
-      .collection("devices", (ref) => ref.where("attachedTo", "==", uid))
+      .collection('devices', (ref) => ref.where('attachedTo', '==', uid))
       .snapshotChanges()
       .subscribe((device) => {
         const devices = device.map((device) => {
@@ -129,42 +130,50 @@ export class AddFieldPage implements OnInit {
   /******************************************************************** */
 
   /************************************************************** */
-  addfield(value) {
-    console.log(value);
-    // debugger;
-    // debugger;
-    this.loadingController
-      .create({
-        message: "Adding Field...",
-        duration: 3000,
-        spinner: "dots",
-        cssClass: "custom-loader-class",
-      })
-      .then((res) => {
-        this.afs
-          .collection("devices", (ref) => ref.where("name", "==", value.device))
+ async addfield(value) {
+    // console.log(value);
+    // // debugger;
+    // // debugger;
+    // this.loadingController
+    //   .create({
+    //     message: "Adding Field...",
+    //     duration: 3000,
+    //     spinner: "dots",
+    //     cssClass: "custom-loader-class",
+    //   })
+    //   .then((res) => {
+      const loading = await this.loadingController.create({
+        message: 'Adding Field...',
+        duration: 2200,
+         translucent: true
+      });
+      await loading.present();
+
+      this.afs
+          .collection('devices', (ref) => ref.where('name', '==', value.device))
           .valueChanges()
-          .subscribe((devices) => {
+          .subscribe(async (devices) => {
             console.log(devices);
             // if (devices.length >= 1) {
-            const ownerEmail = localStorage.getItem("email");
+            const ownerEmail = localStorage.getItem('email');
             this.afs
-              .collection("fields")
+              .collection('fields')
               .add({
                 fieldname: value.fieldname,
-                area: value.area + "Acre",
+                area: value.area + 'Acre',
                 location: value.location,
                 device: value.device,
                 ownerEmail,
               })
               .then(() => {
-                this.successMessage = "Field has been Added Successfully.";
+                this.successMessage = 'Field has been Added Successfully.';
               });
 
             this.validations_form.reset();
             // }
+            return await loading.onDidDismiss();
           });
-        res.present();
-      });
+     
+      
   }
 }

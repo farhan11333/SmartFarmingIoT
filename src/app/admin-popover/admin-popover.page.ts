@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController, PopoverController } from '@ionic/angular';
+import { NavController, PopoverController, LoadingController } from '@ionic/angular';
 import { AuthenticateService } from '../services/authentication.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-popover',
@@ -9,7 +10,9 @@ import { AuthenticateService } from '../services/authentication.service';
 })
 export class AdminPopoverPage implements OnInit {
 
-  constructor(private navCtrl: NavController, private popover: PopoverController, public aft: AuthenticateService) { }
+
+  constructor(private navCtrl: NavController, private popover: PopoverController, public aft: AuthenticateService,
+              private loadingController: LoadingController, private router: Router) { }
 
   ngOnInit() {
   }
@@ -25,11 +28,20 @@ export class AdminPopoverPage implements OnInit {
     this.navCtrl.navigateForward('/owner-profile');
     this.popover.dismiss();
   }
-  logout() {
+  async logout() {
+    const loading = await this.loadingController.create({
+      message: 'Signing Out...',
+      duration: 2000,
+       translucent: true
+    });
+    await loading.present();
     this.aft.logoutUser()
-      .then(res => {
+      .then(async (res) => {
         console.log(res);
-        this.navCtrl.navigateBack('/login');
+        // this.navCtrl.navigateBack('/login').then(async () => {
+        this.router.navigate(['login']).then(async () => {
+          return await loading.onDidDismiss();
+        });
       })
       .catch(error => {
         console.log(error);

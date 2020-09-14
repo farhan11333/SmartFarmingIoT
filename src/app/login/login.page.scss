@@ -1,8 +1,17 @@
 img {
     width: 100%;
-    height: auto;
+    height: 100%;
     position: relative;
     display: flex;
+    margin-top: -27px;
+}
+
+.mycard {
+    padding-inline-start: 0px;
+    padding-inline-end: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    height: 50%;
 }
 
 .myOverlay {
@@ -48,7 +57,7 @@ img {
     width: 80px;
     height: 40px;
     //margin-bottom: ;
-    margin-top: 50px;
+    margin-top: 32px;
     margin-left: 20pt;
 }
 
@@ -63,7 +72,7 @@ img {
     width: 150px;
     height: 40px;
     //margin-bottom: ;
-    margin-top: 50px;
+    margin-top: 32px;
     //padding-left: 20px;
     margin-left: 0pt;
 }
@@ -82,11 +91,11 @@ ion-icon {
 }
 
 .email-box {
-    width: 90%;
+    width: 100%;
 }
 
 .password-box {
-    width: 90%;
+    width: 100%;
 }
 
 .validation-errors {

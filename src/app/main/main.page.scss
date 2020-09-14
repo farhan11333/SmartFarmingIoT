@@ -3,23 +3,25 @@
     }
     
     .top {
-        height: 133px;
-        margin-inline-start: 12px;
-        margin-top: 16px;
-        margin-inline-end: 12px;
-        background: linear-gradient(to right, #f2709c, #ff9472);
-        border-radius: 20px 20px 5px 5px;
+        height: 100%;
+        margin-inline-start: -6px;
+        margin-top: 0%;
+        margin-inline-end: -6px;
+        //  background: linear-gradient(to right, #f2709c, #ff9472);
+        background: transparent;
+        border-radius: 12px 12px 5px 5px;
         // box-shadow: 0 15px 20px rgba(0, 0, 0, 0.19), 0 10px 6px rgba(0, 0, 0, 0.23);
-        box-shadow: 0px 0px 8px 6px rgba(0, 0, 0, 0.19), 0 10px 6px rgba(0, 0, 0, 0.23);
+        // box-shadow: 0px 0px 8px 6px rgba(0, 0, 0, 0.19), 0 10px 6px rgba(0, 0, 0, 0.23);
+        box-shadow: 0px 0px 1px 6px rgba(0, 0, 0, 0.19), 0 10px 6px rgba(0, 0, 0, 0.19);
         // opacity: 0.5;
     }
     
     .middle {
         height: 50px;
-        margin-inline-start: 12px;
-        margin-top: 16px;
-        margin-inline-end: 12px;
-        background: linear-gradient(to right, #f8a0bd, #ffac93);
+        margin-inline-start: 3px;
+        margin-top: 0px;
+        margin-inline-end: 3px;
+        background: linear-gradient(to right, #f8a0bd, #ff6565);
         box-shadow: 0 15px 20px rgba(0, 0, 0, 0.19), 0 10px 6px rgba(0, 0, 0, 0.23);
         padding-top: 10px;
     }
@@ -28,13 +30,13 @@
         color: #934c0d;
         font-family: Arial, Helvetica, sans-serif;
         font-size: 22px;
-        margin-left: 119px;
+        margin-left: 44%;
         text-align: center;
     }
     
     .handlestart {
         width: 0px;
-        height: 17px;
+        height: 12px;
         background-color: #FCC;
         margin-bottom: -15px;
         margin-left: 48px;
@@ -45,7 +47,7 @@
     
     .handleEnd {
         width: 0px;
-        height: 17px;
+        height: 20px;
         background-color: #FCC;
         margin-bottom: -15px;
         margin-left: 296px;
@@ -56,34 +58,36 @@
     
     ion-menu-button {
         //font-size: 150px;
-        margin-left: 278px;
+        margin-left: 85%;
         //margin-top: 11px;
         display: inline;
         // width: 80%;
         position: absolute;
+        color: ghostwhite;
     }
     
     .top .welcome {
-        color: #444351c7;
-        font-size: 28px;
+        color: ghostwhite;
+        font-size: 34px;
         margin-left: 20px;
         margin-top: 30px;
         line-height: 1.2;
+        font-family: 'Lobster', cursive;
         width: max-content;
     }
     
     .top .welcome {
         Span {
-            font-size: 22px;
+            font-size: 28px;
         }
     }
     
     .bottom {
         position: relative;
-        height: 430px;
-        margin-inline-start: 12px;
-        margin-top: 14px;
-        margin-inline-end: 12px;
+        height: 410px;
+        margin-inline-start: -4px;
+        margin-top: 0%;
+        margin-inline-end: -4px;
         //background-color: #FFF8F2;
         //background-color: #FEEBE5;
         border-radius: 5px 5px 20px 20px;
@@ -93,7 +97,7 @@
         //background: transparent;
         //box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
         background: transparent;
-        box-shadow: 0 -2px 11px 13px rgba(0, 0, 0, 0.19), 0 10px 6px rgba(0, 0, 0, 0.23);
+        box-shadow: 0 0px 1px 5px rgba(0, 0, 0, 0.19), 0 10px 6px rgba(0, 0, 0, 0.23);
         // box-shadow: 0 15px 20px rgba(0, 0, 0, 0.19), 0 10px 6px rgba(0, 0, 0, 0.23);
     }
     
@@ -102,18 +106,20 @@
             flex: 0 0 50%;
             max-width: 50%;
             padding: 0px 0px;
+            margin-top: -9px;
             h1 {
                 color: whitesmoke;
                 //margin-top: 100px;
                 text-align: center;
                 //vertical-align: bottom;
-                margin: 0;
+                margin: 0px;
                 display: block;
                 //padding-top: -5px;
-                font-family: sans-serif;
-                font-weight: lighter;
-                font-style: oblique;
-                font-size: medium;
+                //  font-family: sans-serif;
+                font-family: 'Comfortaa', cursive;
+                font-weight: revert;
+                font-style: normal;
+                font-size: 22px;
             }
             h3 {
                 color: whitesmoke;
@@ -150,12 +156,12 @@
             margin: 0px 5px;
             margin-left: 14px;
             margin-right: 20px;
-            margin-top: 20px;
+            margin-top: 16px;
             width: calc(100% -10px);
             padding: 14px;
             box-shadow: 0 0px 20px rgba(0, 0, 0, 0.19), 0 10px 6px rgba(0, 0, 0, 0.23);
             border-radius: 10px;
-            height: 171px;
+            // height: 88%;
             width: 85%;
         }
     }

@@ -30,8 +30,8 @@ export class AdminViewDevicesPage implements OnInit {
     this.loadingController
       .create({
         message: "Loading..",
-        duration: 3500,
-        spinner: "circles",
+        duration: 2000,
+        spinner: "dots",
         cssClass: "custom-loader-class",
       })
       .then((res) => {
@@ -62,5 +62,9 @@ export class AdminViewDevicesPage implements OnInit {
       componentProps: { field },
     });
     return  (await myPopover).present();
+    
+  }
+  addField(){
+    this.navCtrl.navigateForward('/add-field');
   }
 }

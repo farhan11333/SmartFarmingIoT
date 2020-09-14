@@ -10,21 +10,20 @@
 
 <ion-content fullscreen="true" overflow-scroll="false">
     <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-        <ion-fab-button type="add" href="add-field">
+        <ion-fab-button type="add" (click)="addField()">
             <ion-icon name="add-outline"></ion-icon>
         </ion-fab-button>
     </ion-fab>
 
     <ng-container *ngFor="let field of fields">
         <ion-card>
-            <!-- <ion-button (click)="delete($event)" icon-only>
-                <ion-icon class="icon-delete" name="ellipsis-vertical-outline"></ion-icon>
-            </ion-button> -->
-            <ion-fab class="delete" top right>
-                <button ion-fab (click)="delete(field)">
+            <ion-row>
+                <ion-fab class="delete" top right>
+                    <button ion-fab (click)="delete(field)">
           <ion-icon name="ellipsis-vertical-outline"></ion-icon>
         </button>
-            </ion-fab>
+                </ion-fab>
+            </ion-row>
             <ion-card-header no padding>
                 <h1>{{field.fieldname}}</h1>
             </ion-card-header>
