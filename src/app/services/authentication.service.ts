@@ -64,7 +64,7 @@ export class AuthenticateService {
         .signInWithEmailAndPassword(value.email, value.password)
         .then(
           (res) => {
-            debugger;
+            // debugger;
             console.log("res", res);
             const uid = res.user.uid;
             resolve(res);
