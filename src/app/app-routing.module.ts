@@ -87,6 +87,10 @@ const routes: Routes = [
     path: 'owner-profile',
     loadChildren: () => import('./owner-profile/owner-profile.module').then( m => m.OwnerProfilePageModule)
   },
+  {
+    path: 'motor-setting',
+    loadChildren: () => import('./motor-setting/motor-setting.module').then( m => m.MotorSettingPageModule)
+  },
 ];
 
 @NgModule({
