@@ -11,38 +11,54 @@
 </ion-header>
 -->
 <ion-content fullscreen="true">
-    <ion-card class="top">
-        <ion-menu-button (click)="popclick($event)">
-            <!-- <ion-icon src="/assets/forward.svg" alt="ion"></ion-icon> -->
-            <!--<ion-icon name="menu-sharp" slot="icon-only"></ion-icon>-->
-            <!--<ion-icon name="filter-outline" (click)="popclick($event)"></ion-icon>-->
-            <ion-buttons slot="end">
-                <ion-menu-button autoHide="true"></ion-menu-button>
-            </ion-buttons>
-        </ion-menu-button>
-        <img src="../../assets/owner.jpg" alt="" />
-    </ion-card>
-    <div class="cards">
-        <ion-card class="user" routerLink="/admin-view-users">
-            <img src="../../assets/user.jpg" alt="" />
-        </ion-card>
+    <ion-grid>
+        <ion-row justify-content-centre>
+            <ion-col align-self-center>
+                <ion-card class="top">
+                    <ion-menu-button (click)="popclick($event)">
+                        <!-- <ion-icon src="/assets/forward.svg" alt="ion"></ion-icon> -->
+                        <!--<ion-icon name="menu-sharp" slot="icon-only"></ion-icon>-->
+                        <!--<ion-icon name="filter-outline" (click)="popclick($event)"></ion-icon>-->
+                        <ion-buttons slot="end">
+                            <ion-menu-button autoHide="true"></ion-menu-button>
+                        </ion-buttons>
+                    </ion-menu-button>
+                    <img class="top-img" src="../../assets/owner.jpg" alt="" />
+                </ion-card>
+            </ion-col>
+        </ion-row>
+        <ion-row justify-content-centre>
+            <ion-col align-self-center>
 
-        <ion-card class="device" routerLink="/admin-view-devices">
-            <img class="img-device" src="../../assets/farms.png" alt="" />
-        </ion-card>
-    </div>
-    <ion-label class="lbl-user">Users</ion-label>
-    <ion-label class="lbl-user">Fields</ion-label>
+                <div class="cards">
+                    <ion-card class="user" routerLink="/admin-view-users">
+                        <img class="img-user" src="../../assets/user.jpg" alt="" />
+                    </ion-card>
+                </div>
+                <ion-label class="lbl-user">Users</ion-label>
+            </ion-col>
+            <ion-col>
+                <ion-card class="device" routerLink="/admin-view-devices">
+                    <img class="img-device" src="../../assets/farms.png" alt="" />
+                </ion-card>
 
-    <div class="cards">
-        <ion-card class="history">
+
+                <!-- <ion-label class="lbl-user">Users</ion-label> -->
+                <ion-label class="lbl-user">Fields</ion-label>
+            </ion-col>
+
+        </ion-row>
+        <div class="cards">
+            <!-- <ion-card class="history">
             <img src="../../assets/log.png" alt="" />
-        </ion-card>
+        </ion-card>  -->
 
-        <ion-card class="logout" (click)="logout()">
-            <img class="img-logout" src="../../assets/logout-128.ico" alt=" " />
-        </ion-card>
-    </div>
-    <ion-label class="lbl-history">History</ion-label>
-    <ion-label class="lbl-history">Logout</ion-label>
+            <ion-card class="logout" (click)="logout()">
+                <img class="img-logout" src="../../assets/logout-128.ico" alt=" " />
+            </ion-card>
+        </div>
+        <!-- <ion-label class="lbl-history">History</ion-label> -->
+        <ion-label class="lbl-history">Logout</ion-label>
+
+    </ion-grid>
 </ion-content>

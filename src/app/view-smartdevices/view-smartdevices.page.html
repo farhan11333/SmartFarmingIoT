@@ -1,29 +1,29 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-buttons class="icon-only" slot="end">
-      <div class="icon" routerLink="/add-smartdevices">
-        <img src="../../assets/farmadd.png" />
-      </div>
-    </ion-buttons>
-    <ion-back-button defaultHref="administrator" slot="start"></ion-back-button>
-    <ion-title>Smart Devices</ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-buttons class="icon-only" slot="end">
+            <div class="icon" routerLink="/add-smartdevices">
+                <img src="../../assets/farmadd.png" />
+            </div>
+        </ion-buttons>
+        <ion-back-button defaultHref="administrator" slot="start"></ion-back-button>
+        <ion-title>Smart Devices</ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content fullscreen="true">
-  <ion-card *ngFor="let device of devices">
-    <ion-fab class="delete" top right>
-      <button ion-fab (click)="deleteDevice(device)">
+    <ion-card *ngFor="let device of devices">
+        <ion-fab class="delete" top right>
+            <button ion-fab (click)="deleteDevice(device)">
         <ion-icon name="close-circle-outline"></ion-icon>
       </button>
-    </ion-fab>
-    <ion-card-header no padding>
-      <ion-icon class="user" name="person-outline"></ion-icon> &nbsp;
-      <strong> {{device.ownerName}} </strong>
-      <ion-label>Attached</ion-label> {{device.name}}
-    </ion-card-header>
-    <!-- <h6>{{field.fieldname}}</h6>
+        </ion-fab>
+        <ion-card-header no padding>
+            <!-- <ion-icon class="user" name="person-outline"></ion-icon> &nbsp; -->
+            <!-- <strong> {{device.ownerName}} </strong> -->
+            <ion-label>Attached</ion-label> {{device.name}}
+        </ion-card-header>
+        <!-- <h6>{{field.fieldname}}</h6>
     <h6>{{field.area}}</h6>
     <h6>{{field.location}}</h6> -->
-  </ion-card>
+    </ion-card>
 </ion-content>

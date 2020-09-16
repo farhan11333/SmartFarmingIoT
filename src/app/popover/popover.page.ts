@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { NavController, PopoverController } from "@ionic/angular";
+import { NavController, PopoverController, LoadingController } from "@ionic/angular";
 import { AuthenticateService } from "../services/authentication.service";
 
 @Component({
@@ -12,21 +12,34 @@ export class PopoverPage implements OnInit {
   constructor(
     private navCtrl: NavController,
     private authService: AuthenticateService,
-    private popover: PopoverController
+    private popover: PopoverController,
+    private loadingController: LoadingController
   ) {}
 
   ngOnInit() {}
-  logout() {
+  async logout() {
+
+    const loading = await this.loadingController.create({
+      message: 'Signing Out...',
+      duration: 2000,
+       translucent: true
+    });
+    await loading.present();
+
     this.authService
       .logoutUser()
-      .then((res) => {
+      .then(async (res) => {
         console.log(res);
-        this.navCtrl.navigateBack("");
+      
+        this.navCtrl.navigateBack('').then(async () => {
+          return await loading.onDidDismiss();
+        });
+        
       })
       .catch((error) => {
         console.log(error);
       });
-
+     
     this.popover.dismiss();
   }
   motorStatus() {

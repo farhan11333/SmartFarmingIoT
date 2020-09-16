@@ -51,15 +51,14 @@ export class RegistrationPage implements OnInit {
     });
   }
 
-  tryRegister(value) {
-    // this.loadingController
-    // .create({
-    //   message: "Signing Up.....",
-    //   duration: 2500,
-    //   spinner: "dots",
-    //   cssClass: "custom-loader-class",
-    // })
-    // .then((res) => {
+ async tryRegister(value) {
+    const loading = await this.loadingController.create({
+      message: 'Signing up...',
+      duration: 2200,
+       translucent: true
+    });
+    await loading.present();
+  
     this.authService.registerUser(value)
       // tslint:disable-next-line: align
       .then(res => {
@@ -82,6 +81,7 @@ export class RegistrationPage implements OnInit {
      // res.present();
     this.validations_form.reset();
   //  });
+    return await loading.onDidDismiss();
   }
 
   goLoginPage() {

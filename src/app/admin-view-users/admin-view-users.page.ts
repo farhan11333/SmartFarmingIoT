@@ -1,8 +1,10 @@
+import { NavController } from '@ionic/angular';
 import { Component, OnInit } from "@angular/core";
 
 import { AngularFirestore } from "@angular/fire/firestore";
 import { firestore } from "firebase";
 import * as firebase from 'firebase';
+
 
 @Component({
   selector: "app-admin-view-users",
@@ -12,7 +14,7 @@ import * as firebase from 'firebase';
 export class AdminViewUsersPage implements OnInit {
   users: any = [];
 
-  constructor(private afs: AngularFirestore) {}
+  constructor(private afs: AngularFirestore, private NavCtrl: NavController) {}
 
   ngOnInit() {
     const ownerEmail = localStorage.getItem("email");
@@ -57,5 +59,8 @@ export class AdminViewUsersPage implements OnInit {
     //   // .subscribe((users) => {
     //   // debugger;
     //   // });
+  }
+  addUser(){
+this.NavCtrl.navigateForward('/add-user');
   }
 }

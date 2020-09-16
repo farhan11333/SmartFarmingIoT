@@ -74,7 +74,8 @@ export class UserProfilePage implements OnInit {
         
         const toast = await this.toastController.create({
           message: 'Username Updated successfully.',
-          duration: 2000
+          duration: 2000,
+          position: 'top'
         });
         await toast.present();
       });

@@ -9,7 +9,7 @@ ion-toolbar {
 }
 
 .icon {
-    width: 25px;
+    width: 32px;
     height: 25px;
     padding-right: 10px;
     margin-top: 2px;
@@ -61,12 +61,19 @@ ion-row {
 ion-label {
     font-weight: bolder;
     color: green;
-    margin-left: 100px;
+    margin-left: 50px;
 }
 
 button {
-    margin-left: 300px;
-    margin-top: 9px;
+    // margin-left: 300px;
+    // margin-top: 9px;
     font-size: 22px;
     background: transparent;
+}
+
+.delete {
+    background: transparent;
+    margin-top: 9px;
+    //   font-size: 22px;
+    margin-left: 89%;
 }

@@ -11,10 +11,10 @@ ion-content {
 //------------------------NEW---------------------------------------//
 .top {
     // width: 100%;
-    // margin-inline-start: 0%;
-    // margin-top: 0%;
-    // margin-right: 10px;
-    height: 225px;
+    margin-top: -6px;
+    height: 93%;
+    margin-left: -6px;
+    margin-right: -6px;
 }
 
 .img {
@@ -28,8 +28,8 @@ ion-content {
 .user {
     height: 120px;
     width: 120px;
-    margin-inline-start: 50px;
-    margin-top: 40px;
+    margin-inline-start: 36px;
+    margin-top: 6%;
     margin-inline-end: 12px;
     // background-color: #FEEBE5;
     // --background: linear-gradient(0deg, #abdcff, #d396ff);
@@ -49,7 +49,7 @@ ion-content {
     height: 120px;
     width: 120px;
     // margin-inline-start: 120px;
-    margin-top: 40px;
+    margin-top: 6%;
     //margin-inline-end: 12px;
     // background-color: #FEEBE5;
     // --background: linear-gradient(0deg, #fff687, #f6416c);
@@ -91,7 +91,7 @@ ion-content {
     height: 120px;
     width: 120px;
     // margin-inline-start: 120px;
-    margin-top: 30px;
+    margin-top: 5%;
     margin-left: 120px;
     border-radius: 10px 10px 10px 10px;
     box-shadow: 0 15px 20px rgba(0, 0, 0, 0.19), 0 10px 6px rgba(0, 0, 0, 0.19);
@@ -134,9 +134,16 @@ ion-toolbar {
 .lbl-user {
     font-family: sans-serif;
     font-weight: bold;
-    margin-top: 220px;
-    margin-left: 70px;
+    // margin-top: 220px;
+    margin-left: 65px;
     //text-align: center;
+}
+
+.lbl-smartdevice {
+    font-family: sans-serif;
+    font-weight: bold;
+    // margin-top: 220px;
+    margin-left: 15px;
 }
 
 .img-device {
@@ -148,7 +155,7 @@ ion-toolbar {
 
 ion-menu-button {
     //font-size: 150px;
-    margin-left: 278px;
+    margin-left: 85%;
     //margin-top: 11px;
     display: inline;
     // width: 80%;

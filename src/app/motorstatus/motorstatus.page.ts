@@ -42,7 +42,11 @@ export class MotorstatusPage implements OnInit {
       `devices/${deviceId}/history`,
       (ref) => ref.orderBy("time", "desc")
     );
+<<<<<<< HEAD
     // debugger;
+=======
+   // debugger;
+>>>>>>> 6a8a110cc1464d8fad86a2b7b61ea52276467e39
     this.motorStatus = this.statusCollection.valueChanges();
 
     this.motorStatus.subscribe((history) => {

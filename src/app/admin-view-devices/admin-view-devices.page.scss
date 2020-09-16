@@ -31,6 +31,7 @@ h3 {
     line-height: 1.2;
     margin-left: 10px;
     color: #167129;
+    font-family: 'Open Sans Condensed', sans-serif;
 }
 
 ion-card {
@@ -66,6 +67,7 @@ ion-card-header {
 
 h1 {
     color: #4c5945;
+    font-family: 'Alfa Slab One', cursive;
 }
 
 .icon-delete {
@@ -80,7 +82,9 @@ ion-button {
 }
 
 .delete {
-    margin-left: 304px;
+    margin-left: 90%;
+    --background-hover: transparent;
+    margin-right: auto;
 }
 
 button {
@@ -92,6 +96,7 @@ button {
 .h3 {
     margin-left: 6px;
     font-size: 18px;
+    font-family: 'Open Sans Condensed', sans-serif;
 }
 
 .icon-location {
@@ -109,6 +114,7 @@ h4 {
     margin-top: -5px;
     margin-left: 10px;
     color: #c46b6b;
+    font-family: 'Oxanium', cursive;
 }
 
 .icon-device {

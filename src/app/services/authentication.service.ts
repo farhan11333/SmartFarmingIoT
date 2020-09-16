@@ -64,7 +64,11 @@ export class AuthenticateService {
         .signInWithEmailAndPassword(value.email, value.password)
         .then(
           (res) => {
+<<<<<<< HEAD
             // debugger;
+=======
+           // debugger;
+>>>>>>> 6a8a110cc1464d8fad86a2b7b61ea52276467e39
             console.log("res", res);
             const uid = res.user.uid;
             resolve(res);

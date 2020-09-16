@@ -28,15 +28,17 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+//@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Comfortaa&family=Lobster&family=Open+Sans+Condensed:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Comfortaa&family=Lobster&family=Open+Sans+Condensed:wght@300&family=Oxanium:wght@200&display=swap');
 .popover-top-right .popover-content {
-    // transform: translateY(-120%) !important;
+    //transform: translateY(-120%) !important;
     // top: 12% !important;
     // right: 0px !important;
     // left: 70% !important;
     // width: 86px !important;
     // height: 7% !important;
     // background: #f95151;
-    // transform-origin: right top 0px;
+    //transform-origin: bottom bottom 10px;
     width: 100% !important;
     left: 0 !important;
     bottom: 0 !important;

@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 
 import { AngularFirestore } from "@angular/fire/firestore";
 import { debug } from "console";
+import { PopoverController } from '@ionic/angular';
 
 @Component({
   selector: "app-delete-popover",
@@ -10,8 +11,8 @@ import { debug } from "console";
 })
 export class DeletePopoverPage implements OnInit {
   fields: any = [];
-  // field: any;
-  constructor(private afs: AngularFirestore) {}
+  field: any;
+  constructor(private afs: AngularFirestore,  private popover: PopoverController,) {}
 
   ngOnInit() {
     /**************************************************************** */
@@ -36,6 +37,7 @@ export class DeletePopoverPage implements OnInit {
     // console.log("fields/" + this.field);
     // debugger;
     this.afs.doc('fields/' + field.id).delete();
+    this.popover.dismiss();
     // debugger;
   }
 }
