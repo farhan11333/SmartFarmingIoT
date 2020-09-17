@@ -61,21 +61,12 @@ export class MotorstatusPage implements OnInit {
   async buttonMotor($event) {
     const deviceId = localStorage.getItem("deviceId");
     const name = this.db.database.ref(`farms/${deviceId}`);
-    // debugger;
+   
     try {
-      //this.isChecked = !this.isChecked;
+    
       console.log("in buttonMotor:" + this.isChecker);
       this.currentDate = new Date();
-      // var currentTime = new Date().getTime();
-
-      // await this.motorStatusdoc.update({motor: {
-      // isRunning: isChecked}, startedAt: firebase.firestore.FieldValue.serverTimestamp() });
-      // await this.motorStatusdoc.update({motorIsrunning: isChecked, startedAt: firebase.firestore.FieldValue.serverTimestamp() });
-
-      // await this.afs.collection(`devices/${deviceId}/history`).add({
-      //   motorIsrunning: !this.isChecker,
-      //   startedAt: firebase.database.ServerValue.TIMESTAMP,
-      // });
+    
       await name.update({
         motorIsrunning: !this.isChecker,
         startedAt: firebase.database.ServerValue.TIMESTAMP,
@@ -84,4 +75,6 @@ export class MotorstatusPage implements OnInit {
       // catch error
     }
   }
+/*****************************Auto Motor ***************************/
+  
 }

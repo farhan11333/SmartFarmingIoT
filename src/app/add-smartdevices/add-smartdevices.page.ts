@@ -128,6 +128,9 @@ export class AddSmartdevicesPage implements OnInit {
       motorIsrunning: false,
       startedAt: "0",
       water_level:"0",
+      min: "0",
+      max: "0",
+      autoIsrunning: false
     });
     ref
       .collection("history")
