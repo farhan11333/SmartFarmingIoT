@@ -73,16 +73,16 @@ export class MotorstatusPage implements OnInit {
       console.log('MY check' + this.check);
       if (this.check == true) {
         console.log('success');
-        if (state.water_level == state.min) { 
+        if (state.water_level <= state.min) { 
           name.update({
             motorIsrunning: true,
-           // startedAt: firebase.database.ServerValue.TIMESTAMP,
+            startedAt: firebase.database.ServerValue.TIMESTAMP,
           });
         }
-        if (state.water_level == state.max){
+        if (state.water_level >= state.max){
           name.update({
             motorIsrunning: false,
-           // startedAt: firebase.database.ServerValue.TIMESTAMP,
+            startedAt: firebase.database.ServerValue.TIMESTAMP,
           });
         }
 
