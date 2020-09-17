@@ -29,7 +29,7 @@
                     <div text-center></div>
                     <div padding>
                         <ion-item class="min">
-                            <ion-input formControlName="min" type="number" min="10" placeholder="Minimum 10%" required>
+                            <ion-input formControlName="min" type="number" min="10" placeholder="Minimum 10%" [disabled]="!Auto" required>
                             </ion-input>
                         </ion-item>
                         <div class="validation-errors">
@@ -41,7 +41,7 @@
                         </div>
 
                         <ion-item class="max">
-                            <ion-input formControlName="max" type="number" max="100" placeholder="Maximum 100%" required>
+                            <ion-input formControlName="max" type="number" max="100" placeholder="Maximum 100%" [disabled]="!Auto" required>
                             </ion-input>
                         </ion-item>
                         <div class="validation-errors">
@@ -63,7 +63,7 @@
                 <label class="success-message">{{successMessage}}</label>
             </div>
             <ion-row class="buttonns" justify-content-centre>
-                <ion-button type="submit" class="button" shape="round" expand="block" [disabled]="!Auto">SET</ion-button>
+                <ion-button type="submit" class="button" shape="round" expand="block" [disabled]="!validations_form.valid">SET</ion-button>
             </ion-row>
         </form>
     </ion-card>
