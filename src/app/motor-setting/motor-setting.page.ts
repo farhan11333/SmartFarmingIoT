@@ -42,6 +42,7 @@ export class MotorSettingPage implements OnInit {
     this.autoButton.subscribe((state) => {
       this.isChecker = state.autoIsrunning;
       console.log('On value Observe:' + this.isChecker);
+      
   });
 
 }

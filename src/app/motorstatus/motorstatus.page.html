@@ -24,7 +24,7 @@
 
         <div class="buttons">
             <ion-buttons>
-                <ion-toggle class="toggle" (click)="buttonMotor($event)" [checked]="isChecker" mode="ios" class="all-custom"></ion-toggle>
+                <ion-toggle *ngIf="!check" class="toggle" (click)="buttonMotor($event)" [checked]="isChecker" mode="ios" class="all-custom"></ion-toggle>
                 <!--- <ion-button class="round " fill="solid " color="success " (click)="buttonMotor() ">ON</ion-button>
                 <ion-button class="round " size="large " fill="solid " color="danger ">OFF</ion-button> -->
             </ion-buttons>
