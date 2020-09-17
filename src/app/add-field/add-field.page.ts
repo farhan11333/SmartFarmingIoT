@@ -131,17 +131,7 @@ export class AddFieldPage implements OnInit {
 
   /************************************************************** */
  async addfield(value) {
-    // console.log(value);
-    // // debugger;
-    // // debugger;
-    // this.loadingController
-    //   .create({
-    //     message: "Adding Field...",
-    //     duration: 3000,
-    //     spinner: "dots",
-    //     cssClass: "custom-loader-class",
-    //   })
-    //   .then((res) => {
+  
       const loading = await this.loadingController.create({
         message: 'Adding Field...',
         duration: 2200,

@@ -11,7 +11,7 @@ ion-toolbar {
 }
 
 .top {
-    height: 198px;
+    height: 42%;
     margin-inline-start: 12px;
     margin-top: 16px;
     margin-inline-end: 12px;
@@ -44,4 +44,26 @@ ion-item {
 
 ion-button {
     --background: #adb2d3;
+}
+
+.validation-errors {
+    //padding-left: 20px;
+    text-align: end;
+    color: var(--ion-color-danger);
+    font-size: small;
+}
+
+.error {
+    .error-message {
+        text-align: center;
+        color: var(--ion-color-danger);
+        font-size: small;
+        margin-left: 10px;
+    }
+    .success-message {
+        text-align: center;
+        color: yellow;
+        font-size: small;
+        margin-left: 10px;
+    }
 }

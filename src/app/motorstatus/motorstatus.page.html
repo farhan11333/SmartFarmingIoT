@@ -24,6 +24,7 @@
       Motor Status
     </ion-card-title>
 
+<<<<<<< HEAD
     <h2 class="h2">{{isChecker?"Running":"Stopped"}}</h2>
 
     <div class="buttons">
@@ -36,6 +37,15 @@
           class="all-custom"
         ></ion-toggle>
         <!--- <ion-button class="round " fill="solid " color="success " (click)="buttonMotor() ">ON</ion-button>
+=======
+        <h2 class="run">{{isChecker?"Running":""}}</h2>
+        <h2 class="h2">{{isChecker?'':"Stopped"}}</h2>
+
+        <div class="buttons">
+            <ion-buttons>
+                <ion-toggle *ngIf="!check" class="toggle" (click)="buttonMotor($event)" [checked]="isChecker" mode="ios" class="all-custom"></ion-toggle>
+                <!--- <ion-button class="round " fill="solid " color="success " (click)="buttonMotor() ">ON</ion-button>
+>>>>>>> fc5fca2d104568ef83ffbac55d51b5f7c0d92f41
                 <ion-button class="round " size="large " fill="solid " color="danger ">OFF</ion-button> -->
       </ion-buttons>
     </div>
