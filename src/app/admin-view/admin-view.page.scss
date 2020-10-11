@@ -8,6 +8,11 @@ ion-content {
     // --background: linear-gradient(315deg, #84fb95 50%, #cef576 74%);
     --background: linear-gradient(417deg, #3ee577 22%, #42fcdb 114%);
 }
+ ion-toolbar {
+        --background: transparent;
+        --ion-color-base: transparent !important;
+        --min-height:20px!important
+        }
 
 //------------------------NEW---------------------------------------//
 .top {
@@ -134,7 +139,7 @@ ion-content {
     font-weight: bold;
     color: #304a29f2;
     //  margin-top: 220px;
-    margin-left: 44%
+    margin-left: 43%
 }
 
 //------------------------NEW---------------------------------------//
@@ -164,9 +169,16 @@ ion-toolbar {
     font-family: sans-serif;
     font-weight: bold;
     margin-top: 220px;
-    margin-left: 65px;
+    margin-left: 73px;
     color: #304a29f2;
     //text-align: center;
+}
+.lbl-field{
+    font-family: sans-serif;
+    font-weight: bold;
+    margin-top: 220px;
+    margin-left: 59px;
+    color: #304a29f2;
 }
 
 .img-user {

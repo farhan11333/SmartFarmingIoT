@@ -7,6 +7,11 @@ ion-content {
     // --background: linear-gradient(293deg, #f8ef42 30%, #0fd64f 88%);
     --background: linear-gradient(319deg, #dbf26e 49%, #61fa74 44%, #1cfdd6 109%)
 }
+ ion-toolbar {
+        --background: transparent;
+        --ion-color-base: transparent !important;
+        --min-height:20px!important
+        }
 
 //------------------------NEW---------------------------------------//
 .top {
