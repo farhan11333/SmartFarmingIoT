@@ -58,7 +58,7 @@ export class MainPage implements OnInit {
   }
 
   async fetchDeviceInfo(deviceId) {
-    console.log({ deviceId });
+    // console.log({ deviceId });
     // debugger;
     this.afs
       .collection("devices")
@@ -72,7 +72,7 @@ export class MainPage implements OnInit {
     /***************************************************************** */
 
     const email = localStorage.getItem("email");
-    console.log(email);
+    // console.log(email);
     this.afs
       .collection("users", (ref) => ref.where("email", "==", email))
       .snapshotChanges()
@@ -129,7 +129,7 @@ export class MainPage implements OnInit {
   async popclick(event) {
     const myPopover = await this.popover.create({
       component: PopoverPage,
-      cssClass: 'popover-main',
+      cssClass: "popover-main",
       event,
     });
     return await myPopover.present();

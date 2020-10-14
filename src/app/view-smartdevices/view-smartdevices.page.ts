@@ -19,7 +19,7 @@ export class ViewSmartdevicesPage implements OnInit {
       .valueChanges()
       .subscribe((fields) => {
         this.fields = fields;
-       // console.log(this.fields);
+        // console.log(this.fields);
       });
 
     /****************************************************************************************/
@@ -43,7 +43,7 @@ export class ViewSmartdevicesPage implements OnInit {
           const data: any = device.payload.doc.data();
           return { id, ...data };
         });
-       // console.log(this.devices);
+        // console.log(this.devices);
         // debugger;
       });
     /******************************************************************************************/
@@ -54,6 +54,6 @@ export class ViewSmartdevicesPage implements OnInit {
     // console.log(this.device);
     // console.log(device);
     // console.log("devices/" + device.id);
-    debugger;
+    // debugger;
   }
 }
