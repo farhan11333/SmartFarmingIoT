@@ -61,7 +61,7 @@ ion-row {
 ion-label {
     font-weight: bolder;
     color: green;
-    margin-left: 50px;
+    margin-left: 5px;
 }
 
 button {
@@ -76,4 +76,7 @@ button {
     margin-top: 9px;
     //   font-size: 22px;
     margin-left: 89%;
+}
+.device-name{
+    margin-inline-start: 6px;
 }

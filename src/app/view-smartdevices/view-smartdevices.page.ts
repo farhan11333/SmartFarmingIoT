@@ -39,10 +39,10 @@ export class ViewSmartdevicesPage implements OnInit {
           return { id, ...data };
         });
         // console.log(this.users);
-        debugger;
+        //debugger;
       });
     console.log(this.users);
-    debugger;
+    //debugger;
     /****************************************************************************************/
     /******************************************************************************************/
 

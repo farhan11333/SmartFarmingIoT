@@ -23,8 +23,9 @@
                 <ion-label>Farmers</ion-label>
                 <ion-select formControlName="ownerid" placeholder="Select " required>
                     <ion-select-option [value]='user.id' *ngFor="let user of users">
-                        {{user.username}}
+                        {{user.username}} 
                         {{user.email}}
+                       
                     </ion-select-option>
                     <!-- <ion-select-option [value]='user.id' *ngFor="let user of users">
                         {{user.username}}
