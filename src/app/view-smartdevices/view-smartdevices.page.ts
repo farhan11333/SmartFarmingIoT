@@ -7,30 +7,42 @@ import { AngularFirestore } from "@angular/fire/firestore";
   styleUrls: ["./view-smartdevices.page.scss"],
 })
 export class ViewSmartdevicesPage implements OnInit {
-  //  users: any = [];
-  fields: any = [];
+  users: any = [];
+  // fields: any = [];
   devices: any = [];
   constructor(private afs: AngularFirestore) {}
 
   ngOnInit() {
     // console.log(this.device);
-    this.afs
-      .collection("fields")
-      .valueChanges()
-      .subscribe((fields) => {
-        this.fields = fields;
-        // console.log(this.fields);
-      });
-
-    /****************************************************************************************/
     // this.afs
-    //   .collection("users")
+    //   .collection("fields")
     //   .valueChanges()
-    //   .subscribe((users) => {
-    //     this.users = users;
-    //     console.log(this.users);
+    //   .subscribe((fields) => {
+    //     this.fields = fields;
+    //     console.log(this.fields);
     //     debugger;
     //   });
+
+    /****************************************************************************************/
+    this.afs
+      .collection("users")
+      .snapshotChanges()
+      .subscribe((_users) => {
+        // this.users = users;
+        // console.log(this.users);
+        this.users = _users.map((user) => {
+          const id = user.payload.doc.id;
+          const data: any = user.payload.doc.data();
+          console.log(data);
+          console.log(id);
+          // debugger;
+          return { id, ...data };
+        });
+        // console.log(this.users);
+        debugger;
+      });
+    console.log(this.users);
+    debugger;
     /****************************************************************************************/
     /******************************************************************************************/
 
